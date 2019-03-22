@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:text="http://www.w3.org/1999/xhtml">
+<head>
+<title>徐半仙电影</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/static/css/medile.css" rel='stylesheet' type='text/css' />
+<link href="/static/css/single.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="/static/css/contactstyle.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/static/css/faqstyle.css" type="text/css" media="all" />
+<!-- news-css -->
+<link rel="stylesheet" href="/static/news-css/news.css" type="text/css" media="all" />
+<!-- //news-css -->
+<!-- list-css -->
+<link rel="stylesheet" href="/static/list-css/list.css" type="text/css" media="all" />
+<!-- //list-css -->
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" />
+
+	<link href="/static/css/common.css" rel='stylesheet' type='text/css' />
+	<link href="/static/css/highlight.min.css" rel='stylesheet' type='text/css' />
+	<link href="/static/css/reset.css" rel='stylesheet' type='text/css' />
+	<link href="/static/css/pagination.css" rel='stylesheet' type='text/css' />
+
+<!-- //font-awesome icons -->
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.pagination.js"></script>
+	<script type="text/javascript" src="/static/js/highlight.min.js"></script>
+
+	<!-- //js -->
+<!---<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>--->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+<link href="/static/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+<script src="/static/js/owl.carousel.js"></script>
+<script>
+	$(document).ready(function() { 
+		$("#owl-demo").owlCarousel({
+	 
+		  autoPlay: 3000, //Set AutoPlay to 3 seconds
+	 
+		  items : 5,
+		  itemsDesktop : [640,5],
+		  itemsDesktopSmall : [414,4]
+	 
+		});
+	 
+	}); 
+</script>
+<script src="/static/js/simplePlayer.js"></script>
+<script>
+	$("document").ready(function() {
+		$("#video").simplePlayer();
+	});
+</script>
+
+</head>
+	
+<body>
+<!-- header -->
+	<div class="header">
+		<div class="container">
+			<div class="w3layouts_logo">
+				<a href="index.html"><h1><span>movies</span></h1></a>
+			</div>
+
+
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
+<!-- bootstrap-pop-up -->
+		<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					登录 & 注册
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<section>
+					<div class="modal-body">
+						<div class="w3_login_module">
+							<div class="module form-module">
+							  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+								<div class="tooltip">注册</div>
+							  </div>
+							  <div class="form">
+								<h3>登录账户</h3>
+								<form action="#" method="post">
+								  <input type="text" name="Username" placeholder="账户名" required="">
+								  <input type="password" name="Password" placeholder="密码" required="">
+
+								</form>
+							  </div>
+							  <div class="form">
+								<h3>创建账号</h3>
+								<form action="#" method="post">
+								  <input type="text" name="Username" placeholder="账户名" required="">
+								  <input type="password" name="Password" placeholder="密码" required="">
+								  <input type="email" name="Email" placeholder="邮箱" required="">
+								  <input type="text" name="Phone" placeholder="电话号码" required="">
+								  <input type="submit" value="注册">
+								</form>
+							  </div>
+							  <div class="cta"><a href="#">忘记密码</a></div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script>
+		$('.toggle').click(function(){
+		  // Switches the Icon
+		  $(this).children('i').toggleClass('fa-pencil');
+		  // Switches the forms  
+		  $('.form').animate({
+			height: "toggle",
+			'padding-top': 'toggle',
+			'padding-bottom': 'toggle',
+			opacity: "toggle"
+		  }, "slow");
+		});
+	</script>
+<!-- //bootstrap-pop-up -->
+<!-- nav -->
+		<div class="movies_nav">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header navbar-left">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+					<nav>
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="/pages/index">首页</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">类别 <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<li>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="/pages/action">动作片</a></li>
+											<li><a href="/pages/comedy">喜剧片</a></li>
+											
+
+
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+										<li><a href="/pages/love">爱情片</a></li>
+
+											<li><a href="/pages/scary">恐怖片</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+										<li><a href="horror.html">剧情片</a></li>
+											<li><a href="genres.html">战争片</a></li>
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+									</li>
+								</ul>
+							</li>
+
+							<li><a href="/pages/newtv">最新影视</a></li>
+							<li class="dropdown">
+
+								<ul class="dropdown-menu multi-column columns-3">
+									<li>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="genres.html">亚洲</a></li>
+												<li><a href="genres.html">法国</a></li>
+												<li><a href="genres.html">台湾</a></li>
+												<li><a href="genres.html">美国</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="genres.html">中国</a></li>
+												<li><a href="genres.html">香港</a></li>
+												<li><a href="genres.html">日本</a></li>
+												<li><a href="genres.html">泰国</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="genres.html">欧洲</a></li>
+												<li><a href="genres.html">印度</a></li>
+												<li><a href="genres.html">韩国</a></li>
+												<li><a href="genres.html">英国</a></li>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+								</ul>
+							</li>
+						
+							<li><a href="/pages/dongman">最热动漫</a></li>
+							<li><a href="list.html">交流论坛(维护中)</a></li>
+						</ul>
+					</nav>
+				</div>
+			</nav>	
+		</div>
+	</div>
+<!-- //nav -->
+<!-- single -->
+<div class="single-page-agile-main">
+<div class="container">
+		<!-- /w3l-medile-movies-grids -->
+			<div class="agileits-single-top">
+				<ol class="breadcrumb">
+				  <li><a href="/pages/index">首页</a></li>
+				</ol>
+			</div>
+			<div class="single-page-agile-info">
+                   <!-- /movie-browse-agile -->
+                           <div class="show-top-grids-w3lagile">
+				<div class="col-sm-8 single-left">
+					<div class="song">
+						<div class="song-info">
+							<h3><a id="moviename" name="moviename" th:text="${moviename}"/></h3>
+							<!--<h3><a hr-ef=""- name="moviename">${moviename}</a></h3>-->
+					</div>
+						<div class="video-grid-single-page-agileits">
+							<div data-video="dLmKio67pVQ" id="video"> <img th:src="${moviepictureaddress}" alt="" class="img-responsive" /> </div>
+						</div>
+					</div>
+					<div class="song-grid-right">
+						<div class="share">
+							<h5>播放地址</h5>
+
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+
+					<div class="all-comments">
+						<div class="all-comments-info">
+							<div class="agile-info-wthree-box">
+								<form>
+									爱奇艺:<input type="text" th:value="${aiqiyi}" required=""><br>
+									腾讯  :<input type="text" th:value="${tengxun}" required=""><br>
+									优酷  :<input type="text" th:value="${youku}" required=""><br>
+									简介:<p><a th:text="${info}"></a></p>
+									<div class="clearfix"> </div>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+
+				<div class="clearfix"> </div>
+			</div>
+
+
+				<!-- //w3l-latest-movies-grids -->
+			</div>	
+		</div>
+	<!-- //w3l-medile-movies-grids -->
+	
+<!-- footer -->
+
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+</script>
+<!-- //Bootstrap Core JavaScript -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+
+	<script type="text/javascript">
+		$('.M-box3').pagination({
+			pageCount:1000,
+			homePage: '首页',
+			prevContent: '上页',
+			nextContent: '下页',
+			callback: function (api) {
+				var pagesize =String(api.getCurrent());
+				console.log(api.getCurrent());
+				var moviename2 =$("#moviename").html();
+				console.log(moviename2);
+				window.location.href = "/signel/info?id="+moviename2+"&pagesresult="+pagesize;
+			//	window.location.href = "/signel/info?pagesresult="+pagesize;
+			}
+		});
+
+	</script>
+
+</body>
+</html>
