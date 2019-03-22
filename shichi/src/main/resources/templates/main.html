@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>古诗词网</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/static/index/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/index/css/header.css">
+      <link rel="stylesheet" type="text/css" href="/static/regsiter/css/regist.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-nav navbar-fixed-top my-navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#">52诗词网</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-left ">
+
+                <li><a href="#">Hi，请登录/注册</a></li>
+
+
+            </ul>
+            <ul class="nav nav-pills navbar-right  " style="color:black">
+                <li><a href="#">诗词首页</a></li>
+
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">作者目录
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" style="min-width:100%">
+                        <li>
+                            <a href="#">诗</a>
+                        </li>
+
+                        <li>
+                            <a href="#">词</a>
+                        </li>
+                        <li>
+                            <a href="#">曲</a>
+                        </li>
+                        <li>
+                            <a href="#">赋</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">诗词大全
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" style="min-width:100%">
+                        <li>
+                            <a href="#">诗</a>
+                        </li>
+
+                        <li>
+                            <a href="#">词</a>
+                        </li>
+                        <li>
+                            <a href="#">曲</a>
+                        </li>
+                        <li>
+                            <a href="#">赋</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">个人中心
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" style="min-width:100%">
+                        <li>
+                            <a href="#">个人信息</a>
+                        </li>
+
+                        <li>
+                            <a href="#">修改信息</a>
+                        </li>
+                        <li>
+                            <a href="#">常见问题</a>
+                        </li>
+                        <li>
+                            <a href="#">在线投诉</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+                <li><a href="#">关于我们</a></li>
+                 
+
+            </ul>
+
+
+
+        </div>
+    </nav>
+
+
+
+
+
+    <div class="bg"> 
+        <!--这个标签是大背景--> 
+<div class="container">
+    
+
+<div class="row">
+    
+
+
+        
+     <div>
+            <h1><a th:text="${zuopingming}" target="_blank"></a></h1>
+            <h2>作者:<a th:text="${zuozhe}"  target="_blank">朝代:<a th:text="${zuozheinfo}"  target="_blank"></h2>
+            <p><a th:text="${zuopinginfo}"  target="_blank"></p>
+             </div>
+
+             <div class="form-container" style=" max-width: 500px;
+             margin: 0 auto;">
+                 <form action="/user/words" method="post">
+                     <div class="form-group">
+                         <label>昵称</label>
+                         <input type="text" class="form-control"name="nicheng">
+                     </div>
+                     <div class="form-group">
+                         <label>留言板</label>
+                         <input type="text" class="form-control"name="words">
+                     </div>
+                     <p>忘记密码？</p>
+                     <div class="form-group">
+                         <button class="btn btn-primary btn-block">留言</button>
+                     </div>
+                 </form>
+             </div>
+         
+
+
+          
+               
+
+
+     
+        
+    </div>
+</div>
+
+
+</div> 
+
+
+    <script src="/static/index/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/index/js/bootstrap.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(".navbar").offset().top > 50) {
+                $(".navbar-fixed-top").addClass("top-nav");
+            } else { $(".navbar-fixed-top").removeClass("top-nav"); }
+        })
+    </script>
+</body>
+
+</html>
