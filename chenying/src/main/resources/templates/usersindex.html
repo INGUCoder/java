@@ -1,0 +1,210 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>吉阳区港门村居委会党员信息管理系统</title>
+  <meta name="Keywords" content="" >
+  <meta name="Description" content="" >
+  <link href="/static/users/css/index.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="/static/users/js/modernizr.js"></script>
+  <![endif]-->
+  <!--[if IE 6]>
+  <script  src="/static/users/js/png.js"></script>
+  <script type="text/javascript">
+    EvPNG.fix('.logo');
+  </script>
+  <![endif]-->
+</head>
+<body>
+<header>
+  <div class="headtop">
+    <div class="timer box"><span><a onclick="javascript:window.external.addFavorite('/','')" href="/"></a>  <a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('/');" href="/"></a></span><script type="text/javascript" src="/static/users/js/timer.js"></script></div>
+  </div>
+
+  <nav id="nav" class="box">
+    <ul>
+      <li><a href="/user/index">网站首页</a></li>
+      <li><a href="#">机构设置</a></li>
+      <li><a href="list.html">政策法规</a></li>
+      <li><a href="list.html">最新新闻</a></li>
+      <li><a href="gbook.html">办事指南</a></li>
+      <li><a href="/pages/admin">管理员登陆</a></li>
+    </ul>
+  </nav>
+  <script src="/static/users/js/silder.js"></script>
+</header>
+<!--头部 end-->
+<div class="banner box"><img src="/static/users/images/banner.jpg"></div>
+<div class="box">
+  <div class="news left">
+    <h2><span class="more"><a href="/" target="_blank"></a></span>新闻中心</h2>
+    <ul>
+      <div class="pic_news left"><img src="/static/users/images/newspic.jpg"></div>
+      <div class="center_news right">
+        <section class="c_n_top">
+          <h3>三亚元旦假期三天接待游客21.86万人次 旅游总收入7.78亿元</h3>
+          <p>南海网、南海网客户端三亚1月1日消息(南海网记者 刘丽萍) 1月1日，南海网记者从2019年元旦小长假旅游工作总结会上获悉，元旦期间，三亚接待游客21.86万人次，同比增长1.19%;旅游总收入达7.78亿元，同比增长5.58%。[<a href="http://www.hinews.cn/news/system/2019/01/01/032008164.shtml" target="_blank">详情</a>]</p>
+        </section>
+        <ul>
+          <li><a href="http://www.hinews.cn/news/system/2019/01/02/032008191.shtml" target="_blank">三亚妇幼保健院新院区启用 挂牌三级专科医院<img src="/static/users/images/new.gif"></a></li>
+          <li><a href="http://www.hinews.cn/news/system/2019/01/02/032008204.shtml" target="_blank">海南破获特大假烟案 查扣数量和货值为建省以来之最<img src="/static/users/images/new.gif"></a></li>
+          <li><a href="http://www.hinews.cn/news/system/2019/01/02/032008206.shtml" target="_blank">海口交警提示：驾车未随车携带驾驶证可这样操作</a></li>
+          <li><a href="http://www.hinews.cn/news/system/2019/01/02/032008327.shtml" target="_blank">海口秀英区城市建设投资有限公司董事长张光学严重违纪违法被撤职</a></li>
+          <li><a href="http://sanya.hinews.cn/system/2019/01/02/032008464.shtml" target="_blank">三亚织密国际航线网络 推动入境游发展 提升城市国际化水平</a></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <div class="announce right">
+    <h2><a href="/">通知公告</a></h2>
+    <ul>
+      <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2" direction="up" height="240">
+        <li><a th:text="${tongzhiinfo1}" th:href="@{${tongzhiurl1}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
+        <li><a th:text="${tongzhiinfo2}" th:href="@{${tongzhiurl2}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
+        <li><a th:text="${tongzhiinfo3}" th:href="@{${tongzhiurl3}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
+        <li><a th:text="${tongzhiinfo4}" th:href="@{${tongzhiurl4}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
+        <li><a th:text="${tongzhiinfo5}" th:href="@{${tongzhiurl5}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
+      </marquee>
+    </ul>
+  </div>
+  <div class="blank"></div>
+  <div class="ad left"><img src="/static/users/images/ad01.jpg"></div>
+  <div class="ad right"><img src="/static/users/images/ad02.jpg"></div>
+  <div class="blank"></div>
+  <div class="linews left">
+    <h3><span><a href="http://cpc.people.com.cn/GB/64093/64094/index.html" class="more"></a></span>高层动态</h3>
+    <ul>
+      <li><a th:text="${gaocenginfo1}" th:href="@{${gaocengurl1}}" target="_blank">《告台湾同胞书》发表40周年纪念会在京隆重举行 习近平发表重要讲话</a></li>
+      <li><a th:text="${gaocenginfo2}" th:href="@{${gaocengurl2}}" target="_blank">《告台湾同胞书》发表40周年纪念会在京隆重举行 习近平发表重要讲话</a></li>
+      <li><a th:text="${gaocenginfo3}" th:href="@{${gaocengurl3}}" target="_blank">《告台湾同胞书》发表40周年纪念会在京隆重举行 习近平发表重要讲话</a></li>
+      <li><a th:text="${gaocenginfo4}" th:href="@{${gaocengurl4}}" target="_blank">《告台湾同胞书》发表40周年纪念会在京隆重举行 习近平发表重要讲话</a></li>
+      <li><a th:text="${gaocenginfo5}" th:href="@{${gaocengurl5}}" target="_blank">《告台湾同胞书》发表40周年纪念会在京隆重举行 习近平发表重要讲话</a></li>
+
+    </ul>
+  </div>
+  <div class="linews left ln">
+    <h3><span><a href="" class="more"></a></span>时代先锋</h3>
+    <ul>
+      <li><a  th:text="${shidaiinfo1}" th:href="@{${shidaiurl1}}" target="_blank">中宣部授予郝井文“时代楷模”称号</a></li>
+      <li><a  th:text="${shidaiinfo2}" th:href="@{${shidaiurl2}}" target="_blank">中宣部授予郝井文“时代楷模”称号</a></li>
+      <li><a  th:text="${shidaiinfo3}" th:href="@{${shidaiurl3}}"  target="_blank">中宣部授予郝井文“时代楷模”称号</a></li>
+      <li><a  th:text="${shidaiinfo4}" th:href="@{${shidaiurl4}}" target="_blank">中宣部授予郝井文“时代楷模”称号</a></li>
+      <li><a  th:text="${shidaiinfo5}" th:href="@{${shidaiurl5}}" target="_blank">中宣部授予郝井文“时代楷模”称号</a></li>
+
+    </ul>
+  </div>
+  <div class="linews right">
+    <h3><span><a href="/" class="more"></a></span>疾病控制</h3>
+    <ul>
+      <li><a th:text="${jingbinginfo1}" th:href="@{${jibingurl1}}"  target="_blank">关于开展2018年三亚市食源性疾病监测督导的通知</a></li>
+      <li><a th:text="${jingbinginfo2}" th:href="@{${jibingurl2}}" target="_blank">关于开展2018年三亚市食源性疾病监测督导的通知</a></li>
+      <li><a th:text="${jingbinginfo3}" th:href="@{${jibingurl3}}" target="_blank">关于开展2018年三亚市食源性疾病监测督导的通知</a></li>
+      <li><a th:text="${jingbinginfo4}" th:href="@{${jibingurl4}}" target="_blank">关于开展2018年三亚市食源性疾病监测督导的通知</a></li>
+      <li><a th:text="${jingbinginfo5}" th:href="@{${jibingurl5}}" target="_blank">关于开展2018年三亚市食源性疾病监测督导的通知</a></li>
+
+    </ul>
+  </div>
+  <div class="blank"></div>
+  <div class="linews left">
+    <h3><span><a href="/" class="more"></a></span>支部信息</h3>
+    <ul>
+      <li><a th:text="${zhibuinfo1}" th:href="@{${zhibuurl1}}" target="_blank">喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
+      <li><a th:text="${zhibuinfo2}" th:href="@{${zhibuurl2}}" target="_blank">喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
+      <li><a th:text="${zhibuinfo3}" th:href="@{${zhibuurl3}}" target="_blank">喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
+      <li><a th:text="${zhibuinfo4}" th:href="@{${zhibuurl4}}" target="_blank">喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
+      <li><a th:text="${zhibuinfo5}" th:href="@{${zhibuurl5}}" target="_blank">喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
+
+    </ul>
+  </div>
+  <div class="linews left ln">
+    <h3><span><a href="/" class="more"></a></span>党史</h3>
+    <ul>
+      <li><a th:text="${info1}"th:href="@{${url1}}" target="_blank">抗日将军寸性奇：壮烈殉国中条山</a></li>
+      <li><a th:text="${info2}"th:href="@{${url2}}" target="_blank">抗日将军寸性奇：壮烈殉国中条山</a></li>
+      <li><a th:text="${info3}"th:href="@{${url3}}" target="_blank">抗日将军寸性奇：壮烈殉国中条山</a></li>
+      <li><a th:text="${info4}"th:href="@{${url4}}" target="_blank">抗日将军寸性奇：壮烈殉国中条山</a></li>
+      <li><a th:text="${info5}"th:href="@{${url5}}" target="_blank">抗日将军寸性奇：壮烈殉国中条山</a></li>
+    </ul>
+  </div>
+
+  <div class="blank"></div>
+  <div class="blank"></div>
+  <div class="zhishu left">
+    <h3>直属单位
+      <ul id="tab">
+        <li class="current"><a href="/">三亚市人民政府</a></li>
+      </ul>
+    </h3>
+    <section>
+      <div id="content">
+        <ul style="display:block;">
+          <div class="zs_pic left"> <img src="/static/users/images/newspic1.jpg"> </div>
+          <div class="zs_news right">
+            <ol>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>卫计局开展“道德讲堂”活动</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>“五心”做好孕前优生健康检查工作</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>实施“五项工程”帮助计生家庭发家致富</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>美国挑起对华贸易争端 矛头直指</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
+            </ol>
+          </div>
+        </ul>
+        <ul>
+          <div class="zs_pic left"> <img src="/static/users/images/newspic1.jpg"> </div>
+          <div class="zs_news right">
+            <ol>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>“五心”做好孕前优生健康检查工作</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>实施“五项工程”帮助计生家庭发家致富</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>卫计局开展“道德讲堂”活动</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>美国挑起对华贸易争端 矛头直指</a></li>
+              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
+            </ol>
+          </div>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div class="hd right">
+    <h3>互动交流</h3>
+    <ul>
+      <li><a href="/">投诉举报</a></li>
+      <li><a href="/">管理员信箱</a></li>
+    </ul>
+  </div>
+  <div class="blank"></div>
+  <div class="links">
+    <p>相关链接:</p>
+    <ul>
+      <li><a href="http://www.12371.cn/">共产党员网</a></li>
+      <li><a href="http://www.sanya.gov.cn/">三亚市人民政府</a></li>
+      <li><a href="http://www.ccyl.org.cn/">中国共青团网</a></li>
+      <li><a href="http://www.huanqiu.com/">环球网</a></li>
+    </ul>
+    <ul style="display:none">
+      <a href="/"><img src="/static/users/images/ad01.jpg"></a><a href="/"><img src="/static/users/images/ad02.jpg"></a>
+    </ul>
+  </div>
+</div>
+<footer>
+  <div class="footnav">
+    <ul>
+      <li><a href="/">网站首页</a></li>
+      <li><a href="/">机构设置</a></li>
+      <li><a href="/">政策法规</a></li>
+      <li><a href="/">最新新闻</a></li>
+      <li><a href="/">办事指南</a></li>
+        <li><a href="/pages/admin">管理员管理</a></li>
+
+    </ul>
+  </div>
+
+
+</footer>
+
+</body>
+</html>
