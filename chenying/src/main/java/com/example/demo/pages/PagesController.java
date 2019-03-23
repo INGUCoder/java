@@ -39,6 +39,7 @@ public class PagesController {
     public String member_list(){
         return "member-list";
     }
+
     //管理员登录页面
     @RequestMapping("/admin")
     public String admin(){
