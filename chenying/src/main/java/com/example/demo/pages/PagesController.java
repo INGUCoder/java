@@ -22,10 +22,22 @@ public class PagesController {
     public String  login(){
         return "login";
     }
-    //管理员登陆后管理信息  模板
-    @RequestMapping("/adminindex")
-    public String  adminindex(){
-        return "adminindex";
+    //管理员添加党员
+    @RequestMapping("/member-add")
+    public String  adminindex()
+    {
+        return "member-add";
+
+    }
+    //管理员删除党员
+    @RequestMapping("/member-del")
+    public String member_del(){
+        return "member-del";
+    }
+    //管理员查看 并管理所有党员页面
+    @RequestMapping("/member-list")
+    public String member_list(){
+        return "member-list";
     }
     //管理员登录页面
     @RequestMapping("/admin")
