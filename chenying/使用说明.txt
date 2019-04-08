@@ -1,0 +1,8 @@
+使用语言: java版本:11 + mysql版本：8.0+html5+JavaScript   
+使用springboot框架     数据库:mybatis框架   数据池:druid   显示：H-UI前端框架   服务器：jetty（tomcat
+（tomcat的升级版   总体架构结构和tomcat一样    再tomcat上面多了轻量级  为服务应用功能）
+
+
+后台页面:http://localhost:8080/pages/admin   
+前台页面:http://localhost:8080/user/index
+

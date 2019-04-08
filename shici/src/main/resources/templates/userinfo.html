@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8">
+    <title>52诗词网</title>
+	  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+	  <!--<style type="text/css">-->
+        <!--h1{-->
+    <!--font-size:30px;-->
+    <!--color:#930;-->
+    <!--text-align:center;-->
+        <!--}-->
+        <!--</style>-->
+  </head>
+  
+  <body> 
+	<div style="margin:0 auto">
+		<h1 style="color: #930">个人信息</h1>
+		<!--姓名(昵称):<p th:text="${user.username}"></p>-->
+		<!--性别:<p th:text="${user.sex}"></p>-->
+		<!--年龄：<p th:text="${user.age}"></p>-->
+		<!--生日:<p th:text="${user.birthdaty}"></p>-->
+		<!--电话:<p th:text="${user.birthdaty}"></p>-->
+		<!--家庭住址:<p th:text="${user.address}"></p>-->
+		<!--<a href="/pages/updateusers" style="color: #00a0e9">点击修改个人信息</a>-->
+		<ul class="list-group">
+			<li class="list-group-item" >姓名(昵称):<p th:text="${user.username}"></p></li>
+			<li class="list-group-item">性别:<p th:text="${user.sex}"></p></li>
+			<li class="list-group-item">年龄：<p th:text="${user.age}"></p></li>
+			<li class="list-group-item">生日:<p th:text="${user.birthdaty}"></p></li>
+			<li class="list-group-item">电话:<p th:text="${user.birthdaty}"></p></li>
+			<li class="list-group-item">家庭住址:<p th:text="${user.address}"></p></li>
+			<li class="list-group-item"><a href="/pages/updateusers" style="color: #00a0e9">点击修改个人信息</a></li>
+		</ul>
+	</div>
+
+	<div>
+
+
+	</div>
+
+
+  
+  </body>
+
+</html>
+  
+

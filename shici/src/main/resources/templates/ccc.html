@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>52诗词网</title>
+
+
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/index/css/header.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/regsiter/css/regist.css"> -->
+    <link rel="stylesheet" href="/static/index/css/cc.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .cleanfloat::after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0;
+        }
+
+        ul li {
+            list-style: none;
+            float: left;
+            font-size: 20px;
+            margin: 0px;
+
+            cursor: pointer;
+        }
+
+        .hs,
+        .cs {
+            color: #f00;
+        }
+
+
+        commentBox,
+        .CommentList {
+            text-align: center;
+            width: 100%;
+            height: auto;
+            border: 1px solid #65a6d1;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .Ctop {
+            height: 25px;
+            border-bottom: 1px solid #4962d6;
+        }
+
+        .Ctitle {
+            float: left;
+            font-weight: bold;
+        }
+
+        .Ctip {
+            float: right;
+            color: blue;
+        }
+
+        .Ccount {
+            color: red
+        }
+
+        .Cattitude {
+            float: left;
+            margin-top: 10px;
+        }
+
+        .Ccont {
+            width: 100%;
+            height: 140px;
+            resize: none;
+            margin-top: 10px;
+        }
+
+        .Csunbmit {
+            height: 35px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .Cnick {
+            float: left;
+        }
+
+        .Cusername {
+            float: left;
+            height: 25px;
+        }
+
+        .submitBtn {
+            width: 75px;
+            height: 30px;
+            line-height: 26px;
+            background-color: #339b53;
+            text-align: center;
+            display: block;
+            color: #FFFFFF;
+            font-size: 12px;
+            border-radius: 6px;
+            float: left;
+        }
+
+
+        /*分页样式*/
+        .fydiv {
+            width: 100%;
+            text-align: center;
+            height: 10px;
+            margin-top: 10px;
+        }
+
+        .fenye {
+            text-align: center;
+            height: 25px;
+            margin: 0 auto;
+            float: right;
+        }
+
+        .fenye li {
+            color: #FFFFFF;
+            font-size: 12px;
+            float: left;
+            border: 1px solid #6CBFB7;
+            height: 26px;
+            line-height: 26px;
+            margin-right: 10px;
+            border-radius: 6px;
+        }
+
+        .fenye li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .fenye li a {
+            text-decoration: none;
+            color: #6CBFB7;
+            display: block;
+        }
+
+
+
+        .choose a {
+            color: #357973 !important;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-nav navbar-fixed-top my-navbar" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+
+            <a class="navbar-brand" href="/pages/showall">52诗词网</a>
+            <li>
+                <form action="/shichi/search" method="post">
+                    <input type="text" name="zuopingming" placeholder="请输入诗词名">
+                    <input type="submit" value="搜索">
+                </form>
+            </li>
+        </div>
+
+        <ul class="nav nav-pills navbar-right  " style="color:black">
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" style="min-width:100%">
+                    <li>
+                        <a href="/user/userCenter">用户信息</a>
+                    </li>
+
+                    <li>
+                        <a href="/pages/userInsertShichi">发布诗词</a>
+                    </li>
+
+                </ul>
+
+            </li>
+             
+
+        </ul>
+
+
+    </div>
+</nav>
+
+
+<div class="bg" style="    background: url(https://ws3.sinaimg.cn/large/005BYqpgly1g1hqy1j65vj307404074p.jpg) no-repeat bottom center;
+    background-size: cover;">
+    <!--这个标签是大背景-->
+    <div class="main3">
+        <div class="left">
+            <div class="sons" id="text_desc_p" th:each="shichi:${allshichi}">
+                <div class="cont">
+
+                    <p><b th:text="${shichi.zuopingming}"></b></p>
+                    <p class="source" th:text="${shichi.zuozheinfo}+'： '+${shichi.zuozhe}"><span></span></p>
+                    <div class="contson" id="contsonb2cb5220d9d2">
+                        <p th:text="${shichi.zuopinginfo}" id="shicicontent"> </p>
+                    </div>
+                </div>
+                <div style="height: auto;position: relative">
+
+;
+                    <!--////******************************-->
+
+                    <div style="height: 60px;">
+                        <button class="btn btn-default" style="display:inline-block;width:100px;height:60px;margin-left:5px;position: absolute;left:5px;" id="pl">评论</button>
+                        <button class="btn btn-default" style="display:inline-block;width:100px;height:60px;position: absolute;left: 110px" id="zs">注释</button>
+                        <button class="btn btn-default" style="display:inline-block;width:100px;height:60px;position: absolute;left: 210px" id="dzbutton">点赞</button>
+
+            <!--//星星就不要了  评论 输入昵称就行了  然后输入评论   然后提交   在这个下面又以往的评论显示区-->
+                        <!-- 这边是星星评价 -->
+                        <form action="/shichi/dianzhan" style="display: inline-block;position: absolute;right: 5px;">
+                            <input type="hidden" th:value="*{shichi.zuopingming}"  name="shichi.zuopingming">
+                            <ul class="cleanfloat" style="margin-top:18px; ">
+                                <li>点赞</li>
+                                <li><p th:text="${shichi.dianzhan}" style="display: inline-block;    margin-top: -4px;" id="dzp">0</p></li>
+                                <li>人</li>
+                            </ul>
+
+                        </form>
+                    </div>
+                    <br>
+
+                    <!-- 这边是评论区 -->
+                    <div class="mainContainner" style="display:none;margin-top: 0px;" id="pl_content">
+                        <div class="commentBox" >
+                            <div class="Ctop">
+                                <label class="Ctitle">评论</label>
+                                <label class="Ctip">已有<span class="Ccount" id="Ccount"  th:text="${nums}">0</span>条评论</label>
+                            </div>
+                            <form action="/comments/add"  method="post" id="pl_form" >
+                            <div class="Cinput">
+
+                                        <input th:value="*{shichi.zuopingming}"  name="shichi.zuopingming" type="hidden">
+                                    <textarea placeholder="请输入评论内容" class="Ccont" id="Ccont" name="pinglun"></textarea>
+
+                            </div>
+                            <div class="Csunbmit">
+                                <label class="Cnick" >你的昵称：</label>
+                                <input class="Cusername" placeholder="你的昵称" id="Cusername"  name="youkename" >
+                                <button class="submitBtn" id="plbutton">发布评论</button>
+
+                            </div>
+
+                            </form>
+                            <div >
+                                <ul>评论</ul><li>
+                                <ul th:text="${commentslist.username}"></ul>:<ul th:text="${commentslist.commnets}"></ul>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="CommentList">
+                            <ul class="listul">
+                            </ul>
+                        </div>
+                        <div class="fydiv">
+                            <ul class="fenye">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 这边是注释区 -->
+                    <div id="zs_div" style="border:1px wheat solid;display:none;margin-top: 0px;height: auto;margin-bottom: 30px;">
+
+                        <div id="zs_p" style="border:1px wheat solid;display:block;margin-top: 0px;height: auto;margin-bottom: 30px;"><p th:text="${shichi.zhushi}" style="height: auto;"></p></div>
+
+                    </div>
+
+
+
+
+                    <!--////******************************-->
+
+                </div>
+                <!--<div id="toolCopy137" style=" width:0px; height:0px; overflow:hidden; display:none;"></div>-->
+                <!--<div class="toolerweima" id="weixin137" style="background-color:aqua;"></div>-->
+                <!--<div id="toolPlay137" style=" display:none;clear:both;"></div>-->
+            </div>
+
+            <!--//分页-->
+            <form id="FromPage" method="get" action="/default.aspx" onsubmit="return PageSubmit()">
+                <div class="pagesright">
+
+                </div>
+            </form>
+        </div>
+        <div class="right">
+            <div class="sons">
+                <a href="/shichi/type2"><img style="float:left;" src="https://s2.ax1x.com/2019/04/02/AyRh90.jpg"
+                                 width="100%"  alt="清明"></a>
+            </div>
+            <div class="sons">
+                <div class="title">
+                    <div class="titleleft"></div>
+                    推荐诗文
+                </div>
+                <div class="cont">
+
+
+                    <form action="/shichi/type1" method="post">
+                        <input type="hidden"  value="唐诗三百" name="shichiname">
+                        <button type="submit" class="btn btn-success" >唐诗三百</button>
+                    </form>
+
+                    <form action="/shichi/type1" name="古诗三百" method="post">
+                        <input type="hidden" value="古诗三百" name="shichiname">
+                        <button type="submit" class="btn btn-success" >古诗三百</button>
+                    </form>
+
+                    <form action="/shichi/type1" name="宋词三百" method="post">
+                        <input type="hidden" value="宋词三百" name="shichiname">
+                        <button type="submit" class="btn btn-success"  >宋词三百</button>
+                    </form>
+
+                    <form action="/shichi/type1" name="诗经" method="post">
+                        <input type="hidden" value="诗经" name="shichiname">
+                        <button type="submit" class="btn btn-success">诗经</button>
+                    </form>
+
+                    <form action="/shichi/type1" name="楚辞" method="post">
+                        <input type="hidden" value="楚辞" name="shichiname">
+                        <button type="submit" class="btn btn-success">楚辞</button>
+                    </form>
+
+                    <form action="/shichi/type1" name="乐府" method="post">
+                        <input type="hidden" value="乐府" name="shichiname">
+                        <button type="submit"class="btn btn-success" >乐府</button>
+                    </form>
+
+                    <form action="/shichi/type1" name="抒情" method="post">
+                        <input type="hidden" value="抒情" name="shichiname">
+                        <button type="submit"class="btn btn-success" >抒情</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="sons">
+                <div class="title">
+                    <div class="titleleft"></div>
+                    个人创作
+                </div>
+                <div class="cont">
+                    <form action="/shichi/type1" name="用户创作" method="post">
+                        <input type="hidden"value="用户创作" name="shichiname">
+                        <button type="submit" class="btn btn-success">用户创作</button>
+                    </form>
+                    <!--<a href="#" style="color: #2e6da4" target="_blank">用户创作</a>-->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+</body>
+
+<script >
+    // window.onload = function () {
+    //     setIframeHeight(document.getElementById('external-frame'));
+    // };
+    // var break_line = document.getElementById("text_desc_p");
+    // var content = break_line.innerHTML;
+    // break_line.innerHTML = content.replace(/。/g, "。<br>");
+    $(window).scroll(function () {
+        if ($(".navbar").offset().top > 50) {
+            $(".navbar-fixed-top").addClass("top-nav");
+        } else {
+            $(".navbar-fixed-top").removeClass("top-nav");
+        }
+    });
+
+
+    $("#pl").click(function (e) {
+
+        if ($('#pl_content').is(':hidden')) {
+            //如果当前隐藏
+            console.log("显示评论区");
+
+            $('#pl_content').show();
+            //那么就显示div
+        } else {
+            //否则
+            console.log("隐藏评论区");
+
+            $('#pl_content').hide();
+            //就隐藏div
+        }
+
+
+    });
+
+    $("#zs").click(function (e) {
+        if ($('#zs_div').is(':hidden')) {//如果当前隐藏
+            console.log("显示注释区");
+
+            $('#zs_div').show();//那么就显示div
+        } else {//否则
+            console.log("隐藏注释区");
+
+            $('#zs_div').hide();//就隐藏div
+        }
+
+    });
+
+
+    $("#dzbutton").click(function (e) {
+        console.log("test");
+        var dznum= parseInt( $("#dzp").html());
+        dznum+=1;
+        $("#dzp").html(dznum);
+
+    });
+$("#plbutton").click(function (e) {
+var contentpl=$("#Ccont").val();
+console.log(contentpl);
+var nicheng=$("#Cusername").val();
+// var ccontent=nicheng+":"+ contentpl;
+$(".listul").text(nicheng+"发表评论："+contentpl);
+console.log("pinglunfabu");
+
+
+
+});
+$(function () {
+    var shicicc=$("#shicicontent");
+    var content=shicicc.html();
+    console.log(content);
+    shicicc.text(content.replace("/。/g","。<br>")) ; //replace替换标签
+    console.log("tihuan");
+
+})
+
+
+
+
+
+
+
+</script>
+</html>

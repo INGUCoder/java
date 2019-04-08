@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>52诗词网</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div>
+    <!--<h1>发布诗词</h1>-->
+    <!--<form action="/shichi/userInsertShichi" method="post">-->
+        <!--账户(邮箱):<input type="text" name="email"><br>-->
+        <!--密码:<input type="password" name="password"><br>-->
+        <!--作品名:<input type="zuopingming" name="zuopingming"><br>-->
+        <!--作者:<input type="text" name="zuozhe"><br>-->
+        <!--作品内容<input type="text" name="zuopinginfo"><br>-->
+        <!--类别:<input type="text" name="shichitype"><br>-->
+        <!--<input type="submit" value="提交">-->
+    <!--</form>-->
+
+    <form action="/shichi/userInsertShichi" method="POST" role="form">
+        <legend>发布诗词</legend>
+
+        <div class="form-group">
+            <label>账户(邮箱)</label>
+            <input type="text" name="email" class="form-control" placeholder="Input field">
+        </div>
+        <div class="form-group">
+            <label>密码)</label>
+            <input type="password" name="password" class="form-control" placeholder="Input field">
+        </div>
+        <div class="form-group">
+            <label>作品名</label>
+            <input type="zuopingming" name="zuopingming" class="form-control" placeholder="Input field">
+        </div>
+        <div class="form-group">
+            <label>作者</label>
+            <input type="text" name="zuozhe" class="form-control" placeholder="Input field">
+        </div>
+        <div class="form-group">
+            <label>作品内容</label>
+            <input type="text" name="zuopinginfo" class="form-control" placeholder="Input field">
+        </div>
+        <div class="form-group">
+            <label>类别</label>
+            <input type="text" name="shichitype" class="form-control" placeholder="Input field">
+        </div>
+        <div class="form-group">
+            <label>注释</label>
+            <input type="text" name="zhushi" class="form-control" placeholder="Input field">
+        </div>
+
+        <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+
+</div>
+</body>
+</html>

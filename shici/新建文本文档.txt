@@ -1,0 +1,9 @@
+登陆页面:http://localhost:8080/pages/login
+注册页面:http://localhost:8080/pages/register
+管理员登陆页面:http://localhost:8080/pages/adminlogin
+
+
+  用户:  mazheng326ss326@gmail.com	123456
+	
+管理员:admin  123456  
+
