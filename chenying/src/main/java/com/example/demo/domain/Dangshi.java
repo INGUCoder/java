@@ -4,7 +4,6 @@ public class Dangshi {
     public int id;
     public  String info;
     public  String url;
-
     public int getId() {
         return id;
     }
