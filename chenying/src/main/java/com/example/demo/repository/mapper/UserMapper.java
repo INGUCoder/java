@@ -12,10 +12,25 @@ import java.util.List;
 @Service
 @Mapper
 public interface UserMapper {
-    @Select("select * from users where username = #{username}")
-    public Users getByUsername(@Param("username") String username);
-    //查询所有党员信息
-    @Select("select * from users")
-    public List<Users> allUsers();
+  //查询所有党员信息
 
+    @Select("select * from users")
+    List<Users> selectAll();
+
+    //查询党员信息
+    @Select("select * from users where bianhao = #{bianhao}")
+    Users userifo(@Param("bianhao") String bianhao);
+
+    //按支部信息查询党员
+    @Select("select * from users where zhibu = #{zhibu}")
+    List<Users> selectByzhibu(@Param("zhibu") String zhibu);
+    //按性别查询
+    @Select("select * from users where sex = #{sex}")
+    List<Users> selectBySex(@Param("sex") String sex);
+    //按入党时间查询
+    @Select("select * from users where rudangtime = #{rudangtime}")
+    List<Users> selectByRudangtime(@Param("rudangtime") String rudangtime);
+    //按文化程度查询
+    @Select("select * from users where education = #{education}")
+    List<Users> selectByEducation(@Param("education") String education);
 }

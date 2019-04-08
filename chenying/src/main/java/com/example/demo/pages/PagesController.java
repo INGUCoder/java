@@ -5,16 +5,24 @@
  */
 package com.example.demo.pages;
 import com.example.demo.domain.Dangshi;
+import com.example.demo.domain.zhibuinfo;
 import com.example.demo.repository.mapper.DangshiMapper;
+import com.example.demo.repository.mapper.ZhibuInfoMapper;
+import com.example.demo.repository.mapper.ZhishuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 
 @Controller
 @RequestMapping("/pages")
 public class PagesController {
+    @Autowired
+    ZhibuInfoMapper zhibuInfoMapper;
     @Autowired
     DangshiMapper dangshiMapper;
     //登录页面
@@ -75,5 +83,26 @@ public class PagesController {
     @RequestMapping("/register")
     public  String register(){
         return "register";
+    }
+    //修改党员信息
+    @RequestMapping("/alternumber")
+    public  String alternumber(){
+        return "member-alter1";
+    }
+
+    //查看党员信息
+    @RequestMapping("/userinfo")
+    public String userinfo(){
+
+        return "member-search";
+    }
+
+    //党支部页面
+    @RequestMapping("/zhibu")
+    public String zhibu(Model model){
+        List<zhibuinfo> list = zhibuInfoMapper.selectAll();
+        model.addAttribute("length",list.size());
+        model.addAttribute("zhibuinfo",list);
+        return "zhibu-list";
     }
 }

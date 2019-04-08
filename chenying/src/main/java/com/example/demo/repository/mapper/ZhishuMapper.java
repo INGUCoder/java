@@ -12,11 +12,13 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Mapper
 @Service
 public interface ZhishuMapper {
-    //查询党史 显示在首页
-    @Select("select * from zhishu where id = #{id}")
-    public Zhishu selectAllById(@Param("id") int id);
+    //查询直属信息 显示在首页
+    @Select("select * from zhishu")
+    List<Zhishu> selectAll();
 
 }
