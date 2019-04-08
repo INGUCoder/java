@@ -55,6 +55,7 @@
   </div>
   <div class="announce right" th:each="tongzhi:${tongzhi}">
     <h2><a href="/">通知公告(事务)</a></h2>
+    <div th:each="tongzhi:${tongzhi}">
     <ul>
       <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2" direction="up" height="240">
         <li><a th:text="${tongzhi.info}+'   ------发布人：'+${tongzhi.url}"   target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
@@ -62,6 +63,7 @@
         <!--  <li><a th:text="${zhushu.info}"  th:href="@{${url1}}"></a></li>-->
       </marquee>
     </ul>
+      </div>
   </div>
   <div class="blank"></div>
   <div class="ad left"><img src="/static/users/images/ad01.jpg"></div>
