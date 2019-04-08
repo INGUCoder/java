@@ -24,12 +24,9 @@
 
   <nav id="nav" class="box">
     <ul>
-      <li><a href="/user/index">网站首页</a></li>
-      <li><a href="#">机构设置</a></li>
-      <li><a href="list.html">政策法规</a></li>
-      <li><a href="list.html">最新新闻</a></li>
-      <li><a href="gbook.html">办事指南</a></li>
+      <li><a href="/user/index" >网站首页</a></li>
       <li><a href="/pages/admin">管理员登陆</a></li>
+      <li><a href="/pages/userinfo">查看党员信息</a></li>
     </ul>
   </nav>
   <script src="/static/users/js/silder.js"></script>
@@ -56,15 +53,13 @@
       </div>
     </ul>
   </div>
-  <div class="announce right">
-    <h2><a href="/">通知公告</a></h2>
+  <div class="announce right" th:each="tongzhi:${tongzhi}">
+    <h2><a href="/">通知公告(事务)</a></h2>
     <ul>
       <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2" direction="up" height="240">
-        <li><a th:text="${tongzhiinfo1}" th:href="@{${tongzhiurl1}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
-        <li><a th:text="${tongzhiinfo2}" th:href="@{${tongzhiurl2}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
-        <li><a th:text="${tongzhiinfo3}" th:href="@{${tongzhiurl3}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
-        <li><a th:text="${tongzhiinfo4}" th:href="@{${tongzhiurl4}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
-        <li><a th:text="${tongzhiinfo5}" th:href="@{${tongzhiurl5}}" target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
+        <li><a th:text="${tongzhi.info}+'   ------发布人：'+${tongzhi.url}"   target="_blank">我们都是追梦人——习近平主席2019年新年贺词启示录②</a></li>
+
+        <!--  <li><a th:text="${zhushu.info}"  th:href="@{${url1}}"></a></li>-->
       </marquee>
     </ul>
   </div>
@@ -139,41 +134,31 @@
     <section>
       <div id="content">
         <ul style="display:block;">
-          <div class="zs_pic left"> <img src="/static/users/images/newspic1.jpg"> </div>
-          <div class="zs_news right">
+          <div class="zs_pic left"> <img src="/static/users/images/newspic1.jpg" th:text> </div>
+          <div class="zs_news right" th:each="zhushu:${zhushu}">
             <ol>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>卫计局开展“道德讲堂”活动</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>“五心”做好孕前优生健康检查工作</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>实施“五项工程”帮助计生家庭发家致富</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>美国挑起对华贸易争端 矛头直指</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
+              <li><a th:text="${zhushu.info}"  th:href="@{${url1}}"></a></li>
+
             </ol>
           </div>
         </ul>
         <ul>
           <div class="zs_pic left"> <img src="/static/users/images/newspic1.jpg"> </div>
-          <div class="zs_news right">
+          <div class="zs_news right" >
             <ol>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>“五心”做好孕前优生健康检查工作</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>实施“五项工程”帮助计生家庭发家致富</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>喜摘全市人口计生统计与信息岗位技能竞赛桂冠</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>卫计局开展“道德讲堂”活动</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>美国挑起对华贸易争端 矛头直指</a></li>
-              <li><a href="/" target="_blank"><span>2013-12-24</span>中医院开展“全国高血压日”义诊宣传活动</a></li>
+
+
             </ol>
           </div>
         </ul>
       </div>
     </section>
   </div>
-  <div class="hd right">
+ <div class="hd right">
     <h3>互动交流</h3>
     <ul>
-      <li><a href="/">投诉举报</a></li>
-      <li><a href="/">管理员信箱</a></li>
+      <li><a href="/user/sendmail">投诉举报</a></li>
+      <li><a href="/user/sendmail">管理员信箱</a></li>
     </ul>
   </div>
   <div class="blank"></div>
@@ -194,12 +179,8 @@
   <div class="footnav">
     <ul>
       <li><a href="/">网站首页</a></li>
-      <li><a href="/">机构设置</a></li>
-      <li><a href="/">政策法规</a></li>
-      <li><a href="/">最新新闻</a></li>
-      <li><a href="/">办事指南</a></li>
         <li><a href="/pages/admin">管理员管理</a></li>
-
+      <li><a href="/pages/userinfo">查看党员信息</a></li>
     </ul>
   </div>
 
