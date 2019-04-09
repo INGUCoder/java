@@ -106,4 +106,9 @@ public class PagesController {
     public String admindel(){
         return "member-del";
     }
+    //发布诗词页面
+    @RequestMapping("/shichi-add")
+    public String shichiAdd(){
+        return "shichi-add";
+    }
 }

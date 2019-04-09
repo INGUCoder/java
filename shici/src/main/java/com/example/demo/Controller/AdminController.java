@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -73,13 +74,16 @@ public class AdminController {
     //插入诗词信息
     @RequestMapping("/insert")
     public String update(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        String zuozhe = (String) session.getAttribute("username");
+        Users users =  userMapper.selectByEmail(zuozhe);
         String  zuopingming = request.getParameter("zuopingming");
         String  zuopinginfo=request.getParameter("zuopinginfo");
-        String  zuozhe = request.getParameter("zuozhe");
-        String  zuozheinfo = request.getParameter("zuozheinfo");
-        String  type=request.getParameter("type");
-       // shichiMappper.insertShichi(zuopingming,zuopinginfo,zuozhe,zuozheinfo,type);
-        return "adminsuccess";
+        String  zhushi = request.getParameter("zhushi");
+        String zuozheinfo = "网站作者";
+        String  type= "用户创作";
+        userMapper.usersInsertShichi(zuopingming,users.getUsername(),zuopinginfo,type,zuozheinfo,zhushi);
+        return "shichi-add-success";
 
     }
 
@@ -87,7 +91,10 @@ public class AdminController {
     //添加用户
     @RequestMapping("/adduser")
     public String addUser(HttpServletRequest request){
+
         String email = request.getParameter("email");
+        HttpSession session = request.getSession();
+        session.setAttribute("email",email);
         String password = request.getParameter("password");
         String username = request.getParameter("username");
         String sex = request.getParameter("sex");
@@ -96,7 +103,7 @@ public class AdminController {
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         userMapper.insertUser(email,password,username,sex,age,birthdaty,phone,address);
-         return    "adminLogin";
+         return    "member-add-success";
     }
 //添加诗词
     @RequestMapping("/addshichi")
@@ -141,4 +148,19 @@ public class AdminController {
 
         return "adminLogin";
     }
+    //用户中心
+    @RequestMapping("/userCenter")
+    public String userCenter(HttpServletRequest request, Model model)
+    {
+        HttpSession session = request.getSession(false);
+        String email = (String) session.getAttribute("email");
+        Users users = userMapper.selectByEmail(email);
+        System.out.println(users);
+        List<Shichi> zuozheList = shichiMappper.selectByZuozhe(users.getUsername());
+        model.addAttribute("zuozheList",zuozheList);
+        model.addAttribute("users",users);
+        return "userinfo";
+
+    }
+
 }

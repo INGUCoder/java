@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.domain.Comments;
 import com.example.demo.domain.Shichi;
+import com.example.demo.domain.Users;
 import com.example.demo.repository.mapper.CommentsMapper;
 import com.example.demo.repository.mapper.ShichiMappper;
 import com.example.demo.repository.mapper.UserMapper;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -56,8 +58,7 @@ public class ShichiController {
         System.out.println(shichiMappper.test(1).getZuopingming());
 
         Shichi shichi =  shichiMappper.searchShichi(name);
-        //System.out.println(shichi.getZuopingming());
-        //System.out.println(shichi.getId());
+
         if(shichi.getZuopingming().equals(name)){
             model.addAttribute("allshichi",shichi);
             return "ccc";
@@ -65,6 +66,24 @@ public class ShichiController {
 
         return "SearchFail1";
     }
+    //用户发布诗词成功后页面
+    @RequestMapping("/usersFabu")
+    public String usersFabu(Model model,HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        String email = (String) session.getAttribute("username");
+
+        Users users = userMapper.selectByEmail(email);
+        List<Shichi> list = shichiMappper.selectByZuozhe(users.getUsername());
+
+
+
+        model.addAttribute("allshichi",list);
+        return "ccc";
+
+
+    }
+
+
 
     //用户发布个人诗词
     @RequestMapping("/userInsertShichi")

@@ -35,4 +35,11 @@ public interface ShichiMappper {
     //点赞处理
     @Update("update shichi set dianzhan = #{dianzhan} where zuopingming =#{zuopingming}")
     void dianZhan(@Param("dianzhan") Integer dianzhan,@Param("zuopingming") String zuopingming);
+
+
+    //根据作者查询诗词
+
+    @Select("select * from shichi where zuozhe = #{zuozhe} ")
+    List<Shichi> selectByZuozhe(@Param("zuozhe") String zuozhe);
+
 }

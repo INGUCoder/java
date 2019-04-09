@@ -10,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -56,6 +59,11 @@ public class UserController {
         List<Comments> list1 = commentsMapper.selectComments();
         Integer nums = list1.size();
         if(users.getPassword().equals(password)&&users.getEmail().equals(email)){
+            //创建session
+            HttpSession session = request.getSession();
+            //把账号密码保存在session里面
+            session.setAttribute("username",users.getEmail());
+            session.setAttribute("password",users.getPassword());
             List<Shichi> list = shichiMappper.selectAll();
             System.out.println(list.size());
             System.out.println("--------------------");
@@ -107,10 +115,22 @@ public class UserController {
 
 
 //用户中心
-    @RequestMapping("/userCenter")//！！
-    public String userCenter(){
-        return "searchUsers";
+    @RequestMapping("/userCenter")
+    public String userCenter(HttpServletRequest request, Model model)
+    {
+        HttpSession session = request.getSession(false);
+        String username = (String) session.getAttribute("username");
+        String password = (String) session.getAttribute("password");
+        Users users = userMapper.selectByEmail(username);
+        List<Shichi> zuozheList = shichiMappper.selectByZuozhe(users.getUsername());
+        model.addAttribute("zuozheList",zuozheList);
+        model.addAttribute("users",users);
+        return "userinfo";
+
+
     }
+
+
     //用户信息查看修改
     @RequestMapping("/userInfo")
     public String  userInfo(HttpServletRequest request,Model model){
