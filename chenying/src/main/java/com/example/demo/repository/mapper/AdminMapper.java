@@ -38,4 +38,13 @@ public interface AdminMapper {
             ,@Param("work") String work,@Param("education") String education,@Param("address") String address,
                        @Param("rudangtime") String rudangtime,@Param("people") String people,@Param("zhibu") String zhibu,
                        @Param("status") String status,@Param("zhibubianhao") String zhibubianhao,@Param("bianhao") String bianhao);
+//修改党员信息  用户修改
+    @Update("update users  set username=#{username},sex=#{sex},minzu=#{minzu},jiguan=#{jiguan},phone=#{phone},idcard=#{idcard},birthday=#{birthday},work=#{work}" +
+            ",education=#{education},address=#{address},rudangtime=#{rudangtime} ,people=#{people} ,zhibu=#{zhibu} ,status=#{status} ,bianhao = #{bianhao},zhibubianhao=#{zhibubianhao}  where phone=#{phone}")
+    void  updateNumber1(@Param("username") String  username,@Param("sex") String sex  ,@Param("minzu") String minzu ,
+
+                       @Param("jiguan") String jiguan ,@Param("phone") String phone  ,@Param("idcard") String idcard  ,@Param("birthday") String birthday
+            ,@Param("work") String work,@Param("education") String education,@Param("address") String address,
+                       @Param("rudangtime") String rudangtime,@Param("people") String people,@Param("zhibu") String zhibu,
+                       @Param("status") String status,@Param("bianhao") String bianhao,@Param("zhibubianhao") String zhibubianhao,@Param("phone") String phone1);
 }

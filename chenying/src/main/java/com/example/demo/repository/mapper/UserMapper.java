@@ -33,4 +33,9 @@ public interface UserMapper {
     //按文化程度查询
     @Select("select * from users where education = #{education}")
     List<Users> selectByEducation(@Param("education") String education);
+
+    //根据手机号码搜索用户
+    @Select("select * from users where phone = #{phone}")
+    Users selectByPhone(@Param("phone") String phone);
+
 }

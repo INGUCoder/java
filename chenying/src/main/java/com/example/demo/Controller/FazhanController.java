@@ -1,13 +1,17 @@
 package com.example.demo.Controller;
 
 import com.example.demo.domain.Fazhan;
+import com.example.demo.domain.Users;
 import com.example.demo.repository.mapper.FaZhanMapper;
+import com.example.demo.repository.mapper.UserMapper;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -15,6 +19,8 @@ import java.util.List;
 @RequestMapping("/fazhan")
 public class FazhanController {
 
+    @Autowired
+    UserMapper userMapper;
     @Autowired
     FaZhanMapper faZhanMapper;
 
@@ -93,6 +99,19 @@ public class FazhanController {
         String idcard = request.getParameter("idcard");
         faZhanMapper.add(bianhao,name,sex,status,biaoxian,chuqing,workstatus,sixiang,idcard);
         return "fazhanadd-Success";
+    }
+
+    //查看个人工作发展情况
+    @RequestMapping("/userindex")
+    public String userindex(HttpServletRequest request,Model model){
+
+        HttpSession session = request.getSession(false);
+        String phone = (String) session.getAttribute("phone");
+        Users users = userMapper.selectByPhone(phone);
+        Fazhan fazhan  =faZhanMapper.selectByBianHao(users.getBianhao());
+
+        model.addAttribute("fazhan",fazhan);
+        return "userinfoFazhan";
     }
 
 }

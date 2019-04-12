@@ -1,8 +1,8 @@
-jdkç‰ˆæœ¬:11 + mysqlç‰ˆæœ¬8.0
-springboot     æ•°æ®åº“:mybatis  æ•°æ®æ± :druid   æ˜¾ç¤ºï¼šH-UIå‰ç«¯æ¡†æ¶  webå®¹å™¨ï¼šjetty
+Ê¹ÓÃÓïÑÔ: java°æ±¾:11 + mysql°æ±¾£º8.0+html5+JavaScript   
+Ê¹ÓÃspringboot¿ò¼Ü     Êı¾İ¿â:mybatis¿ò¼Ü   Êı¾İ³Ø:druid   ÏÔÊ¾£ºH-UIÇ°¶Ë¿ò¼Ü   ·şÎñÆ÷£ºjetty£¨tomcat
+£¨tomcatµÄÉı¼¶°æ   ×ÜÌå¼Ü¹¹½á¹¹ºÍtomcatÒ»Ñù    ÔÙtomcatÉÏÃæ¶àÁËÇáÁ¿¼¶  Îª·şÎñÓ¦ÓÃ¹¦ÄÜ£©
 
 
-
-åå°é¡µé¢:http://localhost:8080/pages/admin   
-å‰å°é¡µé¢:http://localhost:8080/user/index
+ºóÌ¨Ò³Ãæ:http://localhost:8080/pages/admin   
+Ç°Ì¨Ò³Ãæ:http://localhost:8080/user/index
 

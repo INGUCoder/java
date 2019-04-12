@@ -26,7 +26,7 @@
     <ul>
       <li><a href="/user/index" >网站首页</a></li>
       <li><a href="/pages/admin">管理员登陆</a></li>
-      <li><a href="/pages/userinfo">查看党员信息</a></li>
+      <li><a href="/user/loginPage">党员登录</a></li>
     </ul>
   </nav>
   <script src="/static/users/js/silder.js"></script>
@@ -35,7 +35,7 @@
 <div class="banner box"><img src="/static/users/images/banner.jpg"></div>
 <div class="box">
   <div class="news left">
-    <h2><span class="more"><a href="/" target="_blank"></a></span>新闻中心</h2>
+    <h2><span class="more"><a href="/" target="_blank"></a></span>最新新闻</h2>
     <ul>
       <div class="pic_news left"><img src="/static/users/images/newspic.jpg"></div>
       <div class="center_news right">
@@ -55,7 +55,6 @@
   </div>
   <div class="announce right" >
     <h2><a href="/">通知公告(事务)</a></h2>
-    <div th:each="tongzhi:${tongzhi}">
     <ul>
       <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2" direction="up" height="240">
 
@@ -67,7 +66,6 @@
         <!--  <li><a th:text="${zhushu.info}"  th:href="@{${url1}}"></a></li>-->
       </marquee>
     </ul>
-      </div>
   </div>
   <div class="blank"></div>
   <div class="ad left"><img src="/static/users/images/ad01.jpg"></div>
@@ -96,7 +94,7 @@
     </ul>
   </div>
   <div class="linews right">
-    <h3><span><a href="/" class="more"></a></span>疾病控制</h3>
+    <h3><span><a href="/" class="more"></a></span>政治法规</h3>
     <ul>
       <li><a th:text="${jingbinginfo1}" th:href="@{${jibingurl1}}"  target="_blank">关于开展2018年三亚市食源性疾病监测督导的通知</a></li>
       <li><a th:text="${jingbinginfo2}" th:href="@{${jibingurl2}}" target="_blank">关于开展2018年三亚市食源性疾病监测督导的通知</a></li>
@@ -186,7 +184,8 @@
     <ul>
       <li><a href="/">网站首页</a></li>
         <li><a href="/pages/admin">管理员管理</a></li>
-      <li><a href="/pages/userinfo">查看党员信息</a></li>
+      <li><a href="/user/loginPage">党员登录</a></li>
+      <!-- <li><a href="/pages/userinfo">党员登录</a></li>-->
     </ul>
   </div>
 

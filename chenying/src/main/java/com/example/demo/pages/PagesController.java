@@ -90,6 +90,8 @@ public class PagesController {
         return "member-alter1";
     }
 
+
+
     //查看党员信息
     @RequestMapping("/userinfo")
     public String userinfo(){

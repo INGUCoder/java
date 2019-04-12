@@ -12,12 +12,17 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.nio.channels.FileChannel;
 import java.util.List;
 @Service
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    @Autowired
+    DangFeiMapper dangFeiMapper;
+    @Autowired
+    NumbersMapper numbersMapper;
     @Autowired
     AdminMapper adminMapper;
     @Autowired
@@ -66,7 +71,7 @@ public class UserController {
             //显示通知公告
             List<Tongzhi> tongzhiList = tongzhiMapper.selectAll();
 
-            //显示高层动态
+            //显示高层
             Gaoceng gaoceng1 = gaocengMapper.selectAllById(1);
             Gaoceng gaoceng2 = gaocengMapper.selectAllById(2);
             Gaoceng gaoceng3 = gaocengMapper.selectAllById(3);
@@ -171,9 +176,25 @@ public class UserController {
         return  "sendmail";
    }
 
+   //用户查看看个人信息
+   @RequestMapping("/userinfoByNumber")
+   public String userinfoByNumber(Model model,HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        String  phone = (String) session.getAttribute("phone");
+        Users users = userMapper.selectByPhone(phone);
+        List<DangFei> dangFeiList= dangFeiMapper.selectDangFeis(users.getBianhao());
+        model.addAttribute("users",users);
+       model.addAttribute("dangFeiList",dangFeiList);
+        return "userinfo";
+
+   }
+
+
 //查看用户个人信息
     @RequestMapping("/userinfo")
     public String userinfo(Model model,HttpServletRequest request){
+
+
         String userinfo = request.getParameter("bianhao");
         System.out.println(userinfo);
         Users users = userMapper.userifo(userinfo);
@@ -183,24 +204,95 @@ public class UserController {
     //修改党员信息
     @RequestMapping("/useralter")
     public String useralter(HttpServletRequest request){
-        String username = request.getParameter("username");
-        String sex = request.getParameter("sex");
-        String minzu = request.getParameter("minzu");
-        String jiguan = request.getParameter("jiguan");
+        HttpSession session = request.getSession(false);
+        String  phone1 = (String) session.getAttribute("phone");
+        if(session!=null){
+
+            String username = request.getParameter("username");
+            String sex = request.getParameter("sex");
+            String minzu = request.getParameter("minzu");
+            String jiguan = request.getParameter("jiguan");
+            String phone = request.getParameter("phone");
+            String idcard = request.getParameter("idcard");
+            String birthday = request.getParameter("birthday");
+            String work = request.getParameter("work");
+            String education = request.getParameter("education");
+            String address = request.getParameter("address");
+            String rudangtime = request.getParameter("rudangtime");
+            String people = request.getParameter("people");
+            String zhibu = request.getParameter("zhibu");
+            String status = request.getParameter("status");
+            String zhibubianhao = request.getParameter("zhibubianhao");
+            String bianhao = request.getParameter("bianhao");
+            System.out.println("------Test----"+phone1);
+            adminMapper.updateNumber1(username,sex,minzu,jiguan,phone,idcard,birthday,work,education,address,rudangtime,people,zhibu,status,bianhao,zhibubianhao,phone1);
+            numbersMapper.update(phone,phone1);
+            return "updatenumber-success";
+        }else{
+            String username = request.getParameter("username");
+            String sex = request.getParameter("sex");
+            String minzu = request.getParameter("minzu");
+            String jiguan = request.getParameter("jiguan");
+            String phone = request.getParameter("phone");
+            String idcard = request.getParameter("idcard");
+            String birthday = request.getParameter("birthday");
+            String work = request.getParameter("work");
+            String education = request.getParameter("education");
+            String address = request.getParameter("address");
+            String rudangtime = request.getParameter("rudangtime");
+            String people = request.getParameter("people");
+            String zhibu = request.getParameter("zhibu");
+            String status = request.getParameter("status");
+            String zhibubianhao = request.getParameter("zhibubianhao");
+            String bianhao = request.getParameter("bianhao");
+            adminMapper.updateNumber(username,sex,minzu,jiguan,phone,idcard,birthday,work,education,address,rudangtime,people,zhibu,status,zhibubianhao,bianhao);
+            return "membeAlter-Success";
+        }
+
+    }
+
+    //党员登陆页面
+    @RequestMapping("/loginPage")
+    public String loginPage(){
+        return "numbers-login";
+    }
+    //党员注册页面
+    @RequestMapping("/registerPage")
+    public String registerPage(){
+        return "numbers-add";
+    }
+    //登录
+    @RequestMapping("/login")
+    public String login(HttpServletRequest request){
         String phone = request.getParameter("phone");
-        String idcard = request.getParameter("idcard");
-        String birthday = request.getParameter("birthday");
-        String work = request.getParameter("work");
-        String education = request.getParameter("education");
-        String address = request.getParameter("address");
-        String rudangtime = request.getParameter("rudangtime");
-        String people = request.getParameter("people");
-        String zhibu = request.getParameter("zhibu");
-        String status = request.getParameter("status");
-        String zhibubianhao = request.getParameter("zhibubianhao");
-        String bianhao = request.getParameter("bianhao");
-        adminMapper.updateNumber(username,sex,minzu,jiguan,phone,idcard,birthday,work,education,address,rudangtime,people,zhibu,status,zhibubianhao,bianhao);
-        return "membeAlter-Success";
+        String password = request.getParameter("password");
+        Numbers numbers = numbersMapper.selectByPhone(phone);
+        if(numbers.getPassword().equals(password)){
+            //保存当前用户登录信息 实现查询插入数据免登录
+            HttpSession session = request.getSession();
+            session.setAttribute("phone",phone);
+
+            return "userlogin-success";
+        }else {
+            return "账号/密码错误";
+        }
+
+
+    }
+//用户中心   用户
+
+    @RequestMapping("/center")
+    public String center(){
+        return "numbers-center";
+    }
+
+    //注册
+    @RequestMapping("/register")
+    public String register(HttpServletRequest request){
+        String phone = request.getParameter("phone");
+        String password = request.getParameter("password");
+        numbersMapper.insertNumber(phone,password);
+       return "register-success";
     }
 
 

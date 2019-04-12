@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>吉阳区港门村居委会党员信息管理系统(管理员)</title>
+    <title>吉阳区港门村居委会党员信息管理系统</title>
     <!--mobile apps-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -46,96 +46,74 @@
 
             </div>
             <div class="col-md-8 header-right">
-                <h2>支部信息</h2>
-                <h6 th:text="${zhibu.name}"></h6>
+                <h2>党员信息</h2>
+                <h6 th:text="${fazhan.name}"></h6>
                 <ul class="address">
                     <li>
                         <ul class="address-text">
-                            <li><b>支部编号</b></li>
-                            <li th:text="${zhibu.bianhao}"></li>
+                            <li><b>性别</b></li>
+                            <li th:text="${fazhan.sex}"></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul class="address-text">
-                            <li><b>负责人 </b></li>
-                            <li th:text="${zhibu.people}"></li>
+                            <li><b>状态 </b></li>
+                            <li th:text="${fazhan.status}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>联系电话</b></li>
-                            <li th:text="${zhibu.phone}"></li>
+                            <li><b>会议表现</b></li>
+                            <li th:text="${fazhan.biaoxian}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	联系地址 </b></li>
-                            <li th:text="${zhibu.address}"></li>
+                            <li><b>	出勤率 </b></li>
+                            <li th:text="${fazhan.chuqing}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	 </b></li>
-                            <li ></li>
+                            <li><b>	工作状态 </b></li>
+                            <li th:text="${fazhan.workstatus}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	 </b></li>
-                            <li ></li>
+                            <li><b>	思想总结 </b></li>
+                            <li th:text="${fazhan.sixiang}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	 </b></li>
+                            <li></li>
                             <li ></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul class="address-text">
-                            <li><b>	 </b></li>
+                            <li></li>
                             <li ></li>
                         </ul>
-                    </li>    <li>
+                    </li> <li>
                     <ul class="address-text">
-                        <li><b>	 </b></li>
+                        <li></li>
+                        <li ></li>
+                    </ul>
+                </li> <li>
+                    <ul class="address-text">
+                        <li></li>
+                        <li ></li>
+                    </ul>
+                </li> <li>
+                    <ul class="address-text">
+                        <li></li>
                         <li ></li>
                     </ul>
                 </li>
-                    <li>
-                        <ul class="address-text">
-                            <li><b>	 </b></li>
-                            <li ></li>
-                        </ul>
-                    </li>    <li>
-                    <ul class="address-text">
-                        <li><b>	 </b></li>
-                        <li ></li>
-                    </ul>
-                </li>    <li>
-                    <ul class="address-text">
-                        <li><b>	 </b></li>
-                        <li ></li>
-                    </ul>
-                </li>    <li>
-                    <ul class="address-text">
-                        <li><b>	 </b></li>
-                        <li ></li>
-                    </ul>
-                </li>    <li>
-                    <ul class="address-text">
-                        <li><b>	 </b></li>
-                        <li ></li>
-                    </ul>
-                </li>
-                    <li>
-                        <ul class="address-text">
-                            <li><b>	 </b></li>
-                            <li ></li>
-                        </ul>
-                    </li>
 
                 </ul>
             </div>
