@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -73,7 +74,7 @@ public class AdminController {
     }
     //插入诗词信息
     @RequestMapping("/insert")
-    public String update(HttpServletRequest request){
+    public String update(HttpServletRequest request,Model model){
         HttpSession session = request.getSession(false);
         String zuozhe = (String) session.getAttribute("username");
         Users users =  userMapper.selectByEmail(zuozhe);
@@ -83,8 +84,25 @@ public class AdminController {
         String zuozheinfo = "网站作者";
         String  type= "用户创作";
         userMapper.usersInsertShichi(zuopingming,users.getUsername(),zuopinginfo,type,zuozheinfo,zhushi);
+        model.addAttribute("info1","添加诗词成功，点击返回");
+        model.addAttribute("info2","/admin/selectAllShichi");
         return "shichi-add-success";
 
+    }
+    //管理员添加诗词
+    @RequestMapping("/adminInsert")
+    public String adminUpdate(HttpServletRequest request, Model model){
+
+        String  zuopingming = request.getParameter("zuopingming");
+        String  zuopinginfo = request.getParameter("zuopinginfo");
+        String  zuozhe = request.getParameter("zuozhe");
+        String  zuozheinfo = request.getParameter("zuozheinfo");
+        String  zhushi = request.getParameter("zhushi");
+        String  shichitype = request.getParameter("shichitype");
+        userMapper.usersInsertShichi(zuopingming,zuozhe,zuopinginfo,shichitype,zuozheinfo,zhushi);
+        model.addAttribute("info1","添加诗词成功，点击返回");
+        model.addAttribute("info2","/admin/selectAllShichi");
+        return "shichi-add-success";
     }
 
 
@@ -129,7 +147,7 @@ public class AdminController {
         System.out.println("------Test----------------");
         System.out.println(zuopingming+zuozhe+zuopinginfo+shichitype+zuozheinfo+zhushi);
         userMapper.updateShichi(zuozhe,zuopinginfo,shichitype,zuozheinfo,zhushi,zuopingming);
-        return "adminLogin";
+        return "ShiCHiUpdateSuccess";
     }
     //删除用户
     @RequestMapping("/admindel")

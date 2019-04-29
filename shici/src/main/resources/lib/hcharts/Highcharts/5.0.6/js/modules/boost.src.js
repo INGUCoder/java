@@ -391,7 +391,7 @@
                 series.plotGroup(
                     'group',
                     'series',
-                    series.visible ? 'visible' : 'hidden',
+                    series.visible ? 'static.images.visible' : 'hidden',
                     options.zIndex,
                     chart.seriesGroup
                 );

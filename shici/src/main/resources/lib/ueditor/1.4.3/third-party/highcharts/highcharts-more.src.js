@@ -1109,7 +1109,7 @@ var GaugeSeries = {
 		this.group = this.plotGroup(
 			'group', 
 			'series', 
-			this.visible ? 'visible' : 'hidden', 
+			this.visible ? 'static.images.visible' : 'hidden',
 			this.options.zIndex, 
 			this.chart.seriesGroup
 		);

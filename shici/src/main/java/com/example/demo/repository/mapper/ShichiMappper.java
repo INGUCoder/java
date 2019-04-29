@@ -3,6 +3,7 @@ import com.example.demo.domain.Shichi;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Service;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Service
@@ -21,8 +22,12 @@ public interface ShichiMappper {
 
 
     //查询诗词
-    @Select("select * from shichi where zuopingming=#{zuopingming}")
+    @Select("select * from shichi where zuopingming #{zuopingming}")
     Shichi searchShichi(@Param("zuopingming") String zuopingming);
+    //模糊查询
+
+    @Select("select * from shichi where zuopingming like concat(concat('%',#{zuopingming}),'%')")
+    List<Shichi> searchShichiList(@PathParam("zuopingming") String zuopingming);
     //测试
     @Select("select * from shichi where id = #{id}")
     Shichi test(@Param("id") Integer id);

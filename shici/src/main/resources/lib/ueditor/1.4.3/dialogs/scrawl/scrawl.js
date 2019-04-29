@@ -262,12 +262,12 @@ var scrawl = function (options) {
                         picBoard.appendChild(scale.init());
                         scale.startScale(img);
                     } else {
-                        if (scaleCon.style.visibility == "visible") {
+                        if (scaleCon.style.visibility == "static.images.visible") {
                             scaleCon.style.visibility = "hidden";
                             picBoard.style.position = "";
                             picBoard.style.zIndex = "";
                         } else {
-                            scaleCon.style.visibility = "visible";
+                            scaleCon.style.visibility = "static.images.visible";
                             picBoard.style.cssText += "position:relative;z-index:999";
                         }
                     }

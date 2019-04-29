@@ -25380,7 +25380,7 @@ UE.ui = baidu.editor.ui = {};
                 popEl.style.zIndex = this.editor.container.style.zIndex * 1 + 10;
                 baidu.editor.ui.uiUtils.getFixedLayer().style.zIndex = popEl.style.zIndex - 1;
             }
-            this.getDom().style.visibility = 'visible';
+            this.getDom().style.visibility = 'static.images.visible';
 
         },
         showAt: function (offset) {
@@ -26339,7 +26339,7 @@ UE.ui = baidu.editor.ui = {};
                 node.style.top = "";
 
             if (/hidden/ig.test(domUtils.getComputedStyle(node, "visibility"))) {
-                node.style.visibility = "visible";
+                node.style.visibility = "static.images.visible";
                 domUtils.addClass(cur, "edui-state-opened");
             } else {
                 node.style.visibility = "hidden";
@@ -27107,7 +27107,7 @@ UE.ui = baidu.editor.ui = {};
                 uiUtils.startDrag(evt, {
                     ondragstart: function (){
                         rect = uiUtils.getClientRect(me.getDom());
-                        me.getDom('contmask').style.visibility = 'visible';
+                        me.getDom('contmask').style.visibility = 'static.images.visible';
                         me.dragMask.show(me.getDom().style.zIndex - 1);
                     },
                     ondragmove: function (x, y){

@@ -72,9 +72,9 @@
                 <ul>
 
                     <li ><a href="#" title="用户列表">诗词列表</a></li>
-                    <li><a href="/pages/addshichi" title="添加用户">添加诗词</a></li>
+                    <li><a href="/pages/shichi-add-admin" title="添加诗词">添加诗词</a></li>
                     <li><a href="/pages/admindel" title="删除诗词">删除诗词</a></li>
-                    <li><a href="/shichi/alter" title="删除诗词">修改诗词</a></li>
+                    <li><a href="/shichi/alter" title="修改诗词">修改诗词</a></li>
                 </ul>
             </dd>
         </dl>
@@ -118,6 +118,7 @@
                         <th width="30">点赞</th>
                         <th width="100">注释</th>
                         <th width="100">类别</th>
+                        <th width="100">操作</th>
                     </tr>
                     </thead>
                     <div th:each="shichi:${shichi}">
@@ -172,6 +173,17 @@
         });
     }
 </script>
+<!--密码隐藏脚本-->
+
+
+
+
+
+
+
+
+
+
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

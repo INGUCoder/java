@@ -8128,7 +8128,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.prev').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth() && day >= this.endDate.getUTCDate() && hour >= this.endDate.getUTCHours()) {
@@ -8137,7 +8137,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.next').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				break;
@@ -8148,7 +8148,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.prev').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth() && day >= this.endDate.getUTCDate()) {
@@ -8157,7 +8157,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.next').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				break;
@@ -8168,7 +8168,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.prev').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth()) {
@@ -8177,7 +8177,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.next').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				break;
@@ -8189,7 +8189,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.prev').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear()) {
@@ -8198,7 +8198,7 @@ function($) {
 					});
 				} else {
 					this.picker.find('.next').css({
-						visibility: 'visible'
+						visibility: 'static.images.visible'
 					});
 				}
 				break;

@@ -55,11 +55,11 @@ public class ShichiController {
         String name = request.getParameter("zuopingming");
         System.out.println(name);
         System.out.println("------------------");
-        System.out.println(shichiMappper.test(1).getZuopingming());
+        //System.out.println(shichiMappper.test(1).getZuopingming());
 
-        Shichi shichi =  shichiMappper.searchShichi(name);
-
-        if(shichi.getZuopingming().equals(name)){
+       // Shichi shichi =  shichiMappper.searchShichi(name);
+        List<Shichi> shichi = shichiMappper.searchShichiList(name);
+        if(shichi.size()>0){
             model.addAttribute("allshichi",shichi);
             return "ccc";
         }

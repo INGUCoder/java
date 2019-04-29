@@ -73,7 +73,7 @@
 		this
 		.attr({
 			opacity: 0.1,
-			visibility: 'visible'
+			visibility: 'static.images.visible'
 		})
 		.animate({
 			opacity: 1

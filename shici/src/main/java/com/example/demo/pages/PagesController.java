@@ -111,4 +111,10 @@ public class PagesController {
     public String shichiAdd(){
         return "shichi-add";
     }
+
+    //管理员添加诗词
+    @RequestMapping("/shichi-add-admin")
+    public String shichiAddByAdmin(){
+        return "shichi-add-admin";
+    }
 }

@@ -1,9 +1,8 @@
-ç™»é™†é¡µé¢:http://localhost:8080/pages/login
-æ³¨å†Œé¡µé¢:http://localhost:8080/pages/register
-ç®¡ç†å‘˜ç™»é™†é¡µé¢:http://localhost:8080/pages/adminlogin
+µÇÂ½Ò³Ãæ:http://localhost:8080/pages/login
+×¢²áÒ³Ãæ:http://localhost:8080/pages/register
+¹ÜÀíÔ±µÇÂ½Ò³Ãæ:http://localhost:8080/pages/adminlogin
 
+ÓÃ»§:  mazheng326326@gmail.com	123456
 
-  ç”¨æˆ·:  mazheng326ss326@gmail.com	123456
-
-ç®¡ç†å‘˜:admin  123456  
+¹ÜÀíÔ±:admin  123456  
 

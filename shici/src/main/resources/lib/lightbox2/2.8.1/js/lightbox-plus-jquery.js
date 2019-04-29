@@ -9647,7 +9647,7 @@ return jQuery;
     this.$lightbox.fadeOut(this.options.fadeDuration);
     this.$overlay.fadeOut(this.options.fadeDuration);
     $('select, object, embed').css({
-      visibility: 'visible'
+      visibility: 'static.images.visible'
     });
   };
 

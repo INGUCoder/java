@@ -2925,7 +2925,7 @@ if (CanvasRenderingContext2D) {
 		ABSOLUTE = 'absolute',
 		RELATIVE = 'relative',
 		HIDDEN = 'hidden',
-		VISIBLE = 'visible',
+		VISIBLE = 'static.images.visible',
 		PX = 'px',
 		css = Highcharts.css,
 		CanVGRenderer = Highcharts.CanVGRenderer,
