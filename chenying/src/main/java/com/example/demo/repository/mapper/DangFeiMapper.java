@@ -15,8 +15,9 @@ public interface DangFeiMapper {
 
     //缴费
     @Insert("insert into dangfei (bianhao,name,idcard,zhibu,totalmoney,time) values(#{bianhao},#{name},#{idcard},#{zhibu},#{totalmoney},#{time})")
-    void addDangfei(@Param("bianhao") String bianhao,@Param("name") String name,@Param("idcard") String idcard
-            ,@Param("zhibu") String zhibu,@Param("totalmoney") Integer totalmoney,@Param("time") String time);
+    void addDangfei(@Param("bianhao") String bianhao, @Param("name") String name, @Param("idcard") String idcard
+            , @Param("zhibu") String zhibu, @Param("totalmoney") Integer totalmoney, @Param("time") String time);
+
     @Select("select * from dangfei")
     List<DangFei> selectAll();
 

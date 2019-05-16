@@ -8,11 +8,12 @@ import com.example.demo.repository.mapper.AdminMapper;
 import com.example.demo.repository.mapper.ShichiMappper;
 import com.example.demo.repository.mapper.UserMapper;
 import com.example.demo.repository.mapper.WordsMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,12 +35,23 @@ public class AdminController {
     //管理员登录 查询所有用户
     @RequestMapping("/login")
     public String login(HttpServletRequest request, Model model){
+
+        HttpSession session1 = request.getSession(false);
+        if (session1!=null){
+            List<Users> list = userMapper.selectAll();
+            int nums = list.size();
+            model.addAttribute("nums",nums);
+            model.addAttribute("users",list);
+            return "member-list";
+        }
+
         String name = request.getParameter("email") ;
         String password = request.getParameter("password");
         Admin admin = adminMapper.select(name);
 
         if(name.equals(admin.getName())&&password.equals(admin.getPassword())){
-
+            HttpSession session = request.getSession();
+            session.setAttribute("admin",name);
             List<Users> list = userMapper.selectAll();
             int nums = list.size();
             model.addAttribute("nums",nums);
@@ -85,7 +97,7 @@ public class AdminController {
         String  type= "用户创作";
         userMapper.usersInsertShichi(zuopingming,users.getUsername(),zuopinginfo,type,zuozheinfo,zhushi);
         model.addAttribute("info1","添加诗词成功，点击返回");
-        model.addAttribute("info2","/admin/selectAllShichi");
+        model.addAttribute("info2","/user/login");
         return "shichi-add-success";
 
     }
@@ -181,4 +193,79 @@ public class AdminController {
 
     }
 
+
+    /**
+     * 管理员删除数据
+     */
+    @RequestMapping("/shanchuId")
+    public String shanchuId(HttpServletRequest request,Model model){
+        int id = Integer.parseInt(request.getParameter("deleteId"));
+        adminMapper.deleteUserId(id);
+        System.out.println(id);
+        List<Users> list = userMapper.selectAll();
+        int nums = list.size();
+        model.addAttribute("nums",nums);
+        model.addAttribute("users",list);
+        return "member-list";
+    }
+
+    /**
+     * 管理员删除诗词
+     */
+
+    @RequestMapping("/shanchuShci")
+    public String shanchuShici(HttpServletRequest request,Model model){
+        int  id = Integer.parseInt(request.getParameter("deleteShiciId"));
+        System.out.println(id);
+        adminMapper.deleteShiciId(id);
+
+        List<Shichi> list = adminMapper.selectAllShichi();
+        int nums = list.size();
+        model.addAttribute("nums",nums);
+        model.addAttribute("shichi",list);
+        return "shichi-list";
+
+
+
+    }
+
+    /**
+     * 管理员修改用户信息
+     */
+
+    @RequestMapping("/updateUser")
+    public String  updateUser(HttpServletRequest request, Model model){
+
+        String email = request.getParameter("email");
+        if (userMapper.selectByEmail(email)!=null) {
+
+            String password = request.getParameter("password");
+            String username = request.getParameter("username");
+            String sex = request.getParameter("sex");
+            Integer age = Integer.parseInt(request.getParameter("age"));
+            String birthdaty = request.getParameter("birthdaty");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            adminMapper.updateUser(username,password,sex,age,birthdaty,phone,address,email);
+            model.addAttribute("success1","修改用户信息成功,点击返回");
+            System.out.println("------Test-------");
+            model.addAttribute("successhref1","/admin/selectAllShichi");
+            return "successPage";
+
+        }
+        return "errorPage";
+
+
+
+
+
+    }
+
 }
+
+
+
+
+
+
+

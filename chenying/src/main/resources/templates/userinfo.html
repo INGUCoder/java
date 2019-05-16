@@ -1,14 +1,19 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>吉阳区港门村居委会党员信息管理系统</title>
     <!--mobile apps-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="My Resume Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!--mobile apps-->
     <!--Custom Theme files-->
     <link rel="shortcut icon" href="/static/img/your_ico.ico" type="image/x-icon">
@@ -28,10 +33,10 @@
     <script type="text/javascript" src="/static/js/move-top.js"></script>
     <script type="text/javascript" src="/static/js/easing.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
                 event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
         });
     </script>
@@ -70,105 +75,112 @@
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	联系电话 </b></li>
+                            <li><b> 联系电话 </b></li>
                             <li th:text="${users.phone}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	身份证号码 </b></li>
+                            <li><b> 身份证号码 </b></li>
                             <li th:text="${users.idcard}"></li>
                         </ul>
-                    </li> <li>
-                    <ul class="address-text">
-                        <li><b>出生年月</b></li>
-                        <li th:text="${users.birthday}"></li>
-                    </ul>
-                </li> <li>
-                    <ul class="address-text">
-                        <li><b>	职业 </b></li>
-                        <li th:text="${users.work}" ></li>
-                    </ul>
-                </li> <li>
-                    <ul class="address-text">
-                        <li><b>	文化程度 </b></li>
-                        <li th:text="${users.education}"></li>
-                    </ul>
-                </li> <li>
-                    <ul class="address-text">
-                        <li><b>	现居地 </b></li>
-                        <li th:text="${users.address}"></li>
-                    </ul>
-                </li> <li>
-                    <ul class="address-text">
-                        <li><b>	入党时间 </b></li>
-                        <li th:text="${users.rudangtime}"></li>
-                    </ul>
-                </li>
-                    <li>
-                    <ul class="address-text">
-                        <li><b>	入党推荐人 </b></li>
-                        <li th:text="${users.people}"></li>
-                    </ul>
-                </li>
+                    </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	所属支部 </b></li>
+                            <li><b>出生年月</b></li>
+                            <li th:text="${users.birthday}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b> 职业 </b></li>
+                            <li th:text="${users.work}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b> 文化程度 </b></li>
+                            <li th:text="${users.education}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b> 现居地 </b></li>
+                            <li th:text="${users.address}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b> 入党时间 </b></li>
+                            <li th:text="${users.rudangtime}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b> 入党推荐人 </b></li>
+                            <li th:text="${users.people}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b> 所属支部 </b></li>
                             <li th:text="${users.zhibu}"></li>
                         </ul>
                     </li>
                     <li>
-                    <ul class="address-text">
-                        <li><b>	状态 </b></li>
-                        <li th:text="${users.status}"></li>
-                    </ul>
-                </li>
-                <li>
-                    <ul class="address-text">
-                        <li><b>	编号 </b></li>
-                        <li th:text="${users.bianhao}"></li>
-                    </ul>
-                </li>
+                        <ul class="address-text">
+                            <li><b> 状态 </b></li>
+                            <li th:text="${users.status}"></li>
+                        </ul>
+                    </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	所属支部编号 </b></li>
+                            <li><b> 编号 </b></li>
+                            <li th:text="${users.bianhao}"></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li><b> 所属支部编号 </b></li>
                             <li th:text="${users.zhibubianhao}"></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul class="address-text">
-                            <li><b><a href="/fazhan/userindex" style="color: #00a0e9">点击查看个人工作发展情况</a></b> </li>
+                            <li><b><a href="/fazhan/userindex" style="color: #00a0e9">点击查看个人工作发展情况</a></b></li>
 
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	党费缴纳记录</b></li>
+                            <li><b> 党费缴纳记录</b></li>
 
                         </ul>
                     </li>
                     <li>
                         <div th:each="dangFeiList:${dangFeiList}">
-                        <ul class="address-text">
+                            <ul class="address-text">
 
-                            时间: <li th:text="${dangFeiList.time}">无</li>
-                            金额: <li th:text="${dangFeiList.totalmoney}">无</li>
-                        </ul>
+                                时间:
+                                <li th:text="${dangFeiList.time}">无</li>
+                                金额:
+                                <li th:text="${dangFeiList.totalmoney}">无</li>
+                            </ul>
                         </div>
                     </li>
 
                 </ul>
             </div>
-            </div>
         </div>
     </div>
+</div>
 </div>
 
 <!--//footer-->
 <!--smooth-scrolling-of-move-up-->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         var defaults = {
             containerID: 'toTop', // fading element id
@@ -177,7 +189,7 @@
             easingType: 'linear'
         };
 
-        $().UItoTop({ easingType: 'easeOutQuart' });
+        $().UItoTop({easingType: 'easeOutQuart'});
 
     });
 </script>

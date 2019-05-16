@@ -1,6 +1,6 @@
 /**
- *
  * 从数据库中读取党史信息
+ *
  * @author chen ying
  */
 package com.example.demo.repository.mapper;

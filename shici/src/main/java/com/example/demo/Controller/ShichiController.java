@@ -124,11 +124,12 @@ public class ShichiController {
         dianzhan1 = dianzhan1 + 1;
         shichiMappper.dianZhan(dianzhan1,name);
         List<Shichi> list = shichiMappper.selectAll();
+        Shichi shichi = shichiMappper.searchShichi("shichi.zuopingming");
         List<Comments> list1 = commentsMapper.selectAllComments(name);
         Integer nums = list1.size();
         model.addAttribute("allshichi",list);
         model.addAttribute("nums",nums);
-
+        model.addAttribute("shichi",shichi.getDianzhan());
         System.out.println("----------------");
         System.out.println("---TEST--------");
         System.out.println(dianzhan1);

@@ -117,4 +117,11 @@ public class PagesController {
     public String shichiAddByAdmin(){
         return "shichi-add-admin";
     }
+    /**
+     *管理员 修改用户信息
+     */
+    @RequestMapping("/updateUser")
+    public String updateUser(){
+        return "user-update2";
+    }
 }

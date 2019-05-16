@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baidu.mapper.ConsultationInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.baidu.bean.ConsultationInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="street_name" property="street_name" jdbcType="VARCHAR" />
+    <result column="fixed_telephone" property="fixed_telephone" jdbcType="VARCHAR" />
+    <result column="mail_box" property="mail_bo" jdbcType="VARCHAR" />
+    <result column="postal_address" property="postal_address" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <select id="getConsultation" resultMap="BaseResultMap">
+  	select * from consultation_info 
+    LIMIT #{pageNum},#{pageSize}
+  </select>
+  
+  <select id="getLen" resultType="java.lang.Integer">
+  	select count(*) from consultation_info
+  </select>
+</mapper>

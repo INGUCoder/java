@@ -50,12 +50,32 @@ public class UserController {
     //登录
     @RequestMapping("/login")
     public String login(HttpServletRequest request, Model model) {
+        /**
+         * 如果session不为空 代表用户已经登陆
+         */
+        HttpSession session1 = request.getSession(false);
+        if(session1!=null){
+            List<Comments> list1 = commentsMapper.selectComments();
+            Integer nums = list1.size();
+            List<Shichi> list = shichiMappper.selectAll();
+            System.out.println(list.size());
+            System.out.println("--------------------");
+            model.addAttribute("nums",nums);
+            model.addAttribute("commentslist",list1);
+            model.addAttribute("allshichi",list);
+            return "ccc";
+
+        }
+
+
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         Users users = userMapper.selectByEmail(email);
         System.out.println(users.getEmail());
         System.out.println(users.getPassword());
+
+
         List<Comments> list1 = commentsMapper.selectComments();
         Integer nums = list1.size();
         if(users.getPassword().equals(password)&&users.getEmail().equals(email)){
@@ -64,6 +84,7 @@ public class UserController {
             //把账号密码保存在session里面
             session.setAttribute("username",users.getEmail());
             session.setAttribute("password",users.getPassword());
+            session.setAttribute("userId",users.getUsername());
             List<Shichi> list = shichiMappper.selectAll();
             System.out.println(list.size());
             System.out.println("--------------------");
@@ -96,14 +117,16 @@ public class UserController {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String newpassword = request.getParameter("newpassword");
+        String sex = request.getParameter("sex");
         String address =request.getParameter("address");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
+        Integer age = Integer.parseInt(request.getParameter("age"));
+        String birthdaty = request.getParameter("birthdaty");
         Users users = userMapper.selectByEmail(email);
         
        if(users.getPassword().equals(password)){
-           userMapper.update(username,newpassword,phone,address,email);
+           userMapper.updateUser(username,password,sex,age,birthdaty,phone,address,email);
            return "upadateSuccess";
 
        }
@@ -164,6 +187,9 @@ public class UserController {
         //查询失败  然后显示这个空白页面
         return "ccc";
     }
+
+
+
 }
 
     

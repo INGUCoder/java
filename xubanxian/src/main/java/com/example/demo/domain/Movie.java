@@ -1,11 +1,10 @@
 package com.example.demo.domain;
 
 
-
 public class Movie {
     public String moviename;
     public String pictureaddress;
-    public  String aiqiyi;
+    public String aiqiyi;
     public String tengxun;
     public String youku;
     public String info;

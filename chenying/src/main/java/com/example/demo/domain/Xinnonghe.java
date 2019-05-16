@@ -2,8 +2,8 @@ package com.example.demo.domain;
 
 public class Xinnonghe {
     public int id;
-    public  String info;
-    public  String url;
+    public String info;
+    public String url;
 
     public int getId() {
         return id;

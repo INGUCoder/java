@@ -2,6 +2,7 @@
  * 页面跳转控制类
  */
 package com.example.demo.pages;
+
 import com.example.demo.domain.*;
 import com.example.demo.repertories.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +16,17 @@ import javax.swing.*;
 @Controller
 @RequestMapping("/pages")
 public class PagesController {
-   @Autowired
+    @Autowired
     Movie1Mapper movie1Mapper;
 
-   @Autowired
-   Movie2Mapper movie2Mapper;
-   @Autowired
-   Movie3Mapper movie3Mapper;
+    @Autowired
+    Movie2Mapper movie2Mapper;
+    @Autowired
+    Movie3Mapper movie3Mapper;
+
     //首页
     @RequestMapping("/index")
-    public String index(ModelMap map){
+    public String index(ModelMap map) {
 
         //显示广告内容（movie1）内容在页面上
         Movie1 movie11 = movie1Mapper.selectById(1);
@@ -34,36 +36,36 @@ public class PagesController {
         Movie1 movie15 = movie1Mapper.selectById(5);
         Movie1 movie16 = movie1Mapper.selectById(6);
 
-        map.addAttribute("movie1pictureaddress1",movie11.getPictureaddress());
-        map.addAttribute("movie1name1",movie11.getName());
-        map.addAttribute("movie1info1",movie11.getInfo());
-        map.addAttribute("movie1href1",movie11.getHref());
+        map.addAttribute("movie1pictureaddress1", movie11.getPictureaddress());
+        map.addAttribute("movie1name1", movie11.getName());
+        map.addAttribute("movie1info1", movie11.getInfo());
+        map.addAttribute("movie1href1", movie11.getHref());
 
-        map.addAttribute("movie1pictureaddress2",movie12.getPictureaddress());
-        map.addAttribute("movie1name2",movie12.getName());
-        map.addAttribute("movie1info2",movie12.getInfo());
-        map.addAttribute("movie1href2",movie12.getHref());
-        map.addAttribute("info",movie12.getInfo());
+        map.addAttribute("movie1pictureaddress2", movie12.getPictureaddress());
+        map.addAttribute("movie1name2", movie12.getName());
+        map.addAttribute("movie1info2", movie12.getInfo());
+        map.addAttribute("movie1href2", movie12.getHref());
+        map.addAttribute("info", movie12.getInfo());
 
-        map.addAttribute("movie1pictureaddress3",movie13.getPictureaddress());
-        map.addAttribute("movie1name3",movie13.getName());
-        map.addAttribute("movie1info3",movie13.getInfo());
-        map.addAttribute("movie1href3",movie13.getHref());
+        map.addAttribute("movie1pictureaddress3", movie13.getPictureaddress());
+        map.addAttribute("movie1name3", movie13.getName());
+        map.addAttribute("movie1info3", movie13.getInfo());
+        map.addAttribute("movie1href3", movie13.getHref());
 
-        map.addAttribute("movie1pictureaddress4",movie14.getPictureaddress());
-        map.addAttribute("movie1name4",movie14.getName());
-        map.addAttribute("movie1info4",movie14.getInfo());
-        map.addAttribute("movie1href4",movie14.getHref());
+        map.addAttribute("movie1pictureaddress4", movie14.getPictureaddress());
+        map.addAttribute("movie1name4", movie14.getName());
+        map.addAttribute("movie1info4", movie14.getInfo());
+        map.addAttribute("movie1href4", movie14.getHref());
 
-        map.addAttribute("movie1pictureaddress5",movie15.getPictureaddress());
-        map.addAttribute("movie1name5",movie15.getName());
-        map.addAttribute("movie1info5",movie15.getInfo());
-        map.addAttribute("movie1href5",movie15.getHref());
+        map.addAttribute("movie1pictureaddress5", movie15.getPictureaddress());
+        map.addAttribute("movie1name5", movie15.getName());
+        map.addAttribute("movie1info5", movie15.getInfo());
+        map.addAttribute("movie1href5", movie15.getHref());
 
-        map.addAttribute("movie1pictureaddress6",movie16.getPictureaddress());
-        map.addAttribute("movie1name6",movie16.getName());
-        map.addAttribute("movie1info6",movie16.getInfo());
-        map.addAttribute("movie1href6",movie16.getHref());
+        map.addAttribute("movie1pictureaddress6", movie16.getPictureaddress());
+        map.addAttribute("movie1name6", movie16.getName());
+        map.addAttribute("movie1info6", movie16.getInfo());
+        map.addAttribute("movie1href6", movie16.getHref());
 
         //movie2展示页面
         Movie2 movie21 = movie2Mapper.selectById(1);
@@ -76,122 +78,122 @@ public class PagesController {
         Movie2 movie28 = movie2Mapper.selectById(8);
         Movie2 movie29 = movie2Mapper.selectById(9);
 
-        map.addAttribute("movie2pictureaddress1",movie21.getPictureaddress());
-        map.addAttribute("movie2name1",movie21.getName());
-        map.addAttribute("movie2years1",movie21.getYears());
+        map.addAttribute("movie2pictureaddress1", movie21.getPictureaddress());
+        map.addAttribute("movie2name1", movie21.getName());
+        map.addAttribute("movie2years1", movie21.getYears());
 
-        map.addAttribute("movie2pictureaddress2",movie22.getPictureaddress());
-        map.addAttribute("movie2name2",movie22.getName());
-        map.addAttribute("movie2years2",movie22.getYears());
+        map.addAttribute("movie2pictureaddress2", movie22.getPictureaddress());
+        map.addAttribute("movie2name2", movie22.getName());
+        map.addAttribute("movie2years2", movie22.getYears());
 
-        map.addAttribute("movie2pictureaddress3",movie23.getPictureaddress());
-        map.addAttribute("movie2name3",movie23.getName());
-        map.addAttribute("movie2years3",movie23.getYears());
+        map.addAttribute("movie2pictureaddress3", movie23.getPictureaddress());
+        map.addAttribute("movie2name3", movie23.getName());
+        map.addAttribute("movie2years3", movie23.getYears());
 
 
-        map.addAttribute("movie2pictureaddress4",movie24.getPictureaddress());
-        map.addAttribute("movie2name4",movie24.getName());
-        map.addAttribute("movie2years4",movie24.getYears());
+        map.addAttribute("movie2pictureaddress4", movie24.getPictureaddress());
+        map.addAttribute("movie2name4", movie24.getName());
+        map.addAttribute("movie2years4", movie24.getYears());
 
-        map.addAttribute("movie2pictureaddress5",movie25.getPictureaddress());
-        map.addAttribute("movie2name5",movie25.getName());
-        map.addAttribute("movie2years5",movie25.getYears());
+        map.addAttribute("movie2pictureaddress5", movie25.getPictureaddress());
+        map.addAttribute("movie2name5", movie25.getName());
+        map.addAttribute("movie2years5", movie25.getYears());
 
-        map.addAttribute("movie2pictureaddress6",movie26.getPictureaddress());
-        map.addAttribute("movie2name6",movie26.getName());
-        map.addAttribute("movie2years6",movie26.getYears());
+        map.addAttribute("movie2pictureaddress6", movie26.getPictureaddress());
+        map.addAttribute("movie2name6", movie26.getName());
+        map.addAttribute("movie2years6", movie26.getYears());
 
-        map.addAttribute("movie2pictureaddress7",movie27.getPictureaddress());
-        map.addAttribute("movie2name7",movie27.getName());
-        map.addAttribute("movie2years7",movie27.getYears());
+        map.addAttribute("movie2pictureaddress7", movie27.getPictureaddress());
+        map.addAttribute("movie2name7", movie27.getName());
+        map.addAttribute("movie2years7", movie27.getYears());
 
-        map.addAttribute("movie2pictureaddress8",movie28.getPictureaddress());
-        map.addAttribute("movie2name8",movie28.getName());
-        map.addAttribute("movie2years8",movie28.getYears());
+        map.addAttribute("movie2pictureaddress8", movie28.getPictureaddress());
+        map.addAttribute("movie2name8", movie28.getName());
+        map.addAttribute("movie2years8", movie28.getYears());
 
-        map.addAttribute("movie2pictureaddress9",movie29.getPictureaddress());
-        map.addAttribute("movie2name9",movie29.getName());
-        map.addAttribute("movie2years9",movie29.getYears());
+        map.addAttribute("movie2pictureaddress9", movie29.getPictureaddress());
+        map.addAttribute("movie2name9", movie29.getName());
+        map.addAttribute("movie2years9", movie29.getYears());
 
         //热门电影展示
 
-        Movie3  movie31 = movie3Mapper.selectById(1);
-        Movie3  movie32 = movie3Mapper.selectById(2);
-        Movie3  movie33 = movie3Mapper.selectById(3);
-        Movie3  movie34 = movie3Mapper.selectById(4);
-        Movie3  movie35 = movie3Mapper.selectById(5);
-        Movie3  movie36 = movie3Mapper.selectById(6);
-        Movie3  movie37 = movie3Mapper.selectById(7);
-        Movie3  movie38 = movie3Mapper.selectById(8);
-        Movie3  movie39 = movie3Mapper.selectById(9);
-        Movie3  movie310 = movie3Mapper.selectById(10);
-        Movie3  movie311 = movie3Mapper.selectById(11);
-        Movie3  movie312 = movie3Mapper.selectById(12);
+        Movie3 movie31 = movie3Mapper.selectById(1);
+        Movie3 movie32 = movie3Mapper.selectById(2);
+        Movie3 movie33 = movie3Mapper.selectById(3);
+        Movie3 movie34 = movie3Mapper.selectById(4);
+        Movie3 movie35 = movie3Mapper.selectById(5);
+        Movie3 movie36 = movie3Mapper.selectById(6);
+        Movie3 movie37 = movie3Mapper.selectById(7);
+        Movie3 movie38 = movie3Mapper.selectById(8);
+        Movie3 movie39 = movie3Mapper.selectById(9);
+        Movie3 movie310 = movie3Mapper.selectById(10);
+        Movie3 movie311 = movie3Mapper.selectById(11);
+        Movie3 movie312 = movie3Mapper.selectById(12);
 
 
-        map.addAttribute("moviename1",movie31.getName());
-        map.addAttribute("moviepictureaddress1",movie31.getPictureaddress());
-        map.addAttribute("movieyears1",movie31.getYears());
+        map.addAttribute("moviename1", movie31.getName());
+        map.addAttribute("moviepictureaddress1", movie31.getPictureaddress());
+        map.addAttribute("movieyears1", movie31.getYears());
 
-        map.addAttribute("moviename2",movie32.getName());
-        map.addAttribute("moviepictureaddress2",movie32.getPictureaddress());
-        map.addAttribute("movieyears2",movie32.getYears());
+        map.addAttribute("moviename2", movie32.getName());
+        map.addAttribute("moviepictureaddress2", movie32.getPictureaddress());
+        map.addAttribute("movieyears2", movie32.getYears());
 
-        map.addAttribute("moviename3",movie33.getName());
-        map.addAttribute("moviepictureaddress3",movie33.getPictureaddress());
-        map.addAttribute("movieyears3",movie33.getYears());
+        map.addAttribute("moviename3", movie33.getName());
+        map.addAttribute("moviepictureaddress3", movie33.getPictureaddress());
+        map.addAttribute("movieyears3", movie33.getYears());
 
-        map.addAttribute("moviename4",movie34.getName());
-        map.addAttribute("moviepictureaddress4",movie34.getPictureaddress());
-        map.addAttribute("movieyears4",movie34.getYears());
+        map.addAttribute("moviename4", movie34.getName());
+        map.addAttribute("moviepictureaddress4", movie34.getPictureaddress());
+        map.addAttribute("movieyears4", movie34.getYears());
 
-        map.addAttribute("moviename5",movie35.getName());
-        map.addAttribute("moviepictureaddress5",movie35.getPictureaddress());
-        map.addAttribute("movieyears5",movie35.getYears());
+        map.addAttribute("moviename5", movie35.getName());
+        map.addAttribute("moviepictureaddress5", movie35.getPictureaddress());
+        map.addAttribute("movieyears5", movie35.getYears());
 
-        map.addAttribute("moviename6",movie36.getName());
-        map.addAttribute("moviepictureaddress6",movie36.getPictureaddress());
-        map.addAttribute("movieyears6",movie36.getYears());
+        map.addAttribute("moviename6", movie36.getName());
+        map.addAttribute("moviepictureaddress6", movie36.getPictureaddress());
+        map.addAttribute("movieyears6", movie36.getYears());
 
-        map.addAttribute("moviename",movie31.getName());
-        map.addAttribute("moviepictureaddress1",movie31.getPictureaddress());
-        map.addAttribute("movieyears1",movie31.getYears());
+        map.addAttribute("moviename", movie31.getName());
+        map.addAttribute("moviepictureaddress1", movie31.getPictureaddress());
+        map.addAttribute("movieyears1", movie31.getYears());
 
-        map.addAttribute("moviename7",movie37.getName());
-        map.addAttribute("moviepictureaddress7",movie37.getPictureaddress());
-        map.addAttribute("movieyears7",movie37.getYears());
+        map.addAttribute("moviename7", movie37.getName());
+        map.addAttribute("moviepictureaddress7", movie37.getPictureaddress());
+        map.addAttribute("movieyears7", movie37.getYears());
 
-        map.addAttribute("moviename8",movie38.getName());
-        map.addAttribute("moviepictureaddress8",movie38.getPictureaddress());
-        map.addAttribute("movieyears8",movie38.getYears());
-
-
-        map.addAttribute("moviename9",movie39.getName());
-        map.addAttribute("moviepictureaddress9",movie39.getPictureaddress());
-        map.addAttribute("movieyears9",movie39.getYears());
-
-        map.addAttribute("moviename10",movie310.getName());
-        map.addAttribute("moviepictureaddress10",movie310.getPictureaddress());
-        map.addAttribute("movieyears10",movie310.getYears());
-
-        map.addAttribute("moviename11",movie311.getName());
-        map.addAttribute("moviepictureaddress11",movie311.getPictureaddress());
-        map.addAttribute("movieyears11",movie311.getYears());
-
-        map.addAttribute("moviename12",movie312.getName());
-        map.addAttribute("moviepictureaddress12",movie312.getPictureaddress());
-        map.addAttribute("movieyears12",movie312.getYears());
+        map.addAttribute("moviename8", movie38.getName());
+        map.addAttribute("moviepictureaddress8", movie38.getPictureaddress());
+        map.addAttribute("movieyears8", movie38.getYears());
 
 
+        map.addAttribute("moviename9", movie39.getName());
+        map.addAttribute("moviepictureaddress9", movie39.getPictureaddress());
+        map.addAttribute("movieyears9", movie39.getYears());
+
+        map.addAttribute("moviename10", movie310.getName());
+        map.addAttribute("moviepictureaddress10", movie310.getPictureaddress());
+        map.addAttribute("movieyears10", movie310.getYears());
+
+        map.addAttribute("moviename11", movie311.getName());
+        map.addAttribute("moviepictureaddress11", movie311.getPictureaddress());
+        map.addAttribute("movieyears11", movie311.getYears());
+
+        map.addAttribute("moviename12", movie312.getName());
+        map.addAttribute("moviepictureaddress12", movie312.getPictureaddress());
+        map.addAttribute("movieyears12", movie312.getYears());
 
 
-        return "index" ;
+        return "index";
     }
+
     //动作片
     @Autowired
     ActionMovieMapper actionMovieMapper;
+
     @RequestMapping("/action")
-    public String action(ModelMap map){
+    public String action(ModelMap map) {
         //显示动作片
         ActionMovie actionMovie1 = actionMovieMapper.selectById(1);
         ActionMovie actionMovie2 = actionMovieMapper.selectById(2);
@@ -206,96 +208,96 @@ public class PagesController {
         ActionMovie actionMovie11 = actionMovieMapper.selectById(11);
         ActionMovie actionMovie12 = actionMovieMapper.selectById(12);
         ActionMovie actionMovie13 = actionMovieMapper.selectById(13);
-        ActionMovie actionMovie14= actionMovieMapper.selectById(14);
-        ActionMovie actionMovie15= actionMovieMapper.selectById(15);
-        ActionMovie actionMovie16= actionMovieMapper.selectById(16);
-        ActionMovie actionMovie17= actionMovieMapper.selectById(17);
-        ActionMovie actionMovie18= actionMovieMapper.selectById(18);
+        ActionMovie actionMovie14 = actionMovieMapper.selectById(14);
+        ActionMovie actionMovie15 = actionMovieMapper.selectById(15);
+        ActionMovie actionMovie16 = actionMovieMapper.selectById(16);
+        ActionMovie actionMovie17 = actionMovieMapper.selectById(17);
+        ActionMovie actionMovie18 = actionMovieMapper.selectById(18);
         System.out.println(actionMovie1.getPictureaddress());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
-
-
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
 
         return "action";
     }
+
     //爱情片
     @Autowired
     LoveMovieMapper loveMovieMapper;
+
     @RequestMapping("/love")
-    public String love(ModelMap map){
+    public String love(ModelMap map) {
 
         LoveMovie actionMovie1 = loveMovieMapper.selectById(1);
         LoveMovie actionMovie2 = loveMovieMapper.selectById(2);
@@ -307,87 +309,87 @@ public class PagesController {
         LoveMovie actionMovie8 = loveMovieMapper.selectById(8);
         LoveMovie actionMovie9 = loveMovieMapper.selectById(9);
         LoveMovie actionMovie10 = loveMovieMapper.selectById(10);
-        LoveMovie actionMovie11= loveMovieMapper.selectById(11);
-        LoveMovie actionMovie12= loveMovieMapper.selectById(12);
-        LoveMovie actionMovie13= loveMovieMapper.selectById(13);
-        LoveMovie actionMovie14= loveMovieMapper.selectById(14);
-        LoveMovie actionMovie15= loveMovieMapper.selectById(15);
-        LoveMovie actionMovie16= loveMovieMapper.selectById(16);
-        LoveMovie actionMovie17= loveMovieMapper.selectById(17);
-        LoveMovie actionMovie18= loveMovieMapper.selectById(18);
+        LoveMovie actionMovie11 = loveMovieMapper.selectById(11);
+        LoveMovie actionMovie12 = loveMovieMapper.selectById(12);
+        LoveMovie actionMovie13 = loveMovieMapper.selectById(13);
+        LoveMovie actionMovie14 = loveMovieMapper.selectById(14);
+        LoveMovie actionMovie15 = loveMovieMapper.selectById(15);
+        LoveMovie actionMovie16 = loveMovieMapper.selectById(16);
+        LoveMovie actionMovie17 = loveMovieMapper.selectById(17);
+        LoveMovie actionMovie18 = loveMovieMapper.selectById(18);
 
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
 
         return "love";
@@ -398,8 +400,9 @@ public class PagesController {
     //剧情片
     @Autowired
     StoryMovieMapper storyMovieMapper;
+
     @RequestMapping("/story")
-    public String story(ModelMap map){
+    public String story(ModelMap map) {
 
         StoryMovie actionMovie1 = storyMovieMapper.selectById(1);
         StoryMovie actionMovie2 = storyMovieMapper.selectById(2);
@@ -420,87 +423,89 @@ public class PagesController {
         StoryMovie actionMovie17 = storyMovieMapper.selectById(17);
         StoryMovie actionMovie18 = storyMovieMapper.selectById(18);
 
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
 
         return "story";
     }
+
     //喜剧片
     @Autowired
     ComedyMovieMapper comedyMovieMapper;
+
     @RequestMapping("/comedy")
-    public String comedy(ModelMap map){
+    public String comedy(ModelMap map) {
 
         ComedyMovie actionMovie1 = comedyMovieMapper.selectById(1);
         ComedyMovie actionMovie2 = comedyMovieMapper.selectById(2);
@@ -521,88 +526,90 @@ public class PagesController {
         ComedyMovie actionMovie17 = comedyMovieMapper.selectById(17);
         ComedyMovie actionMovie18 = comedyMovieMapper.selectById(18);
 
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
         return "comedy";
 
 
     }
+
     //恐怖片
     @Autowired
     ScaryMovieMapper scaryMovieMapper;
+
     @RequestMapping("/scary")
-    public String scary(ModelMap map){
+    public String scary(ModelMap map) {
         ScaryMovie actionMovie1 = scaryMovieMapper.selectById(1);
         ScaryMovie actionMovie2 = scaryMovieMapper.selectById(2);
         ScaryMovie actionMovie3 = scaryMovieMapper.selectById(3);
@@ -622,82 +629,81 @@ public class PagesController {
         ScaryMovie actionMovie17 = scaryMovieMapper.selectById(17);
         ScaryMovie actionMovie18 = scaryMovieMapper.selectById(18);
 
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
 
         return "scary";
-
 
 
     }
@@ -705,8 +711,9 @@ public class PagesController {
     //战争片
     @Autowired
     WarMovieMapper warMovieMapper;
+
     @RequestMapping("/war")
-    public String war(ModelMap map){
+    public String war(ModelMap map) {
 
         WarMovie actionMovie1 = warMovieMapper.selectById(1);
         WarMovie actionMovie2 = warMovieMapper.selectById(2);
@@ -728,87 +735,88 @@ public class PagesController {
         WarMovie actionMovie18 = warMovieMapper.selectById(18);
 
 
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
         return "war";
     }
 
-//动漫
+    //动漫
     @Autowired
     DongmanMapper dongmanMapper;
+
     @RequestMapping("/dongman")
-    public  String dongman(ModelMap map){
+    public String dongman(ModelMap map) {
 
         Dongman actionMovie1 = dongmanMapper.selectById(1);
         Dongman actionMovie2 = dongmanMapper.selectById(2);
@@ -830,78 +838,78 @@ public class PagesController {
         Dongman actionMovie18 = dongmanMapper.selectById(18);
 
 
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
         return "dongman";
     }
@@ -909,8 +917,9 @@ public class PagesController {
 
     @Autowired
     NewtvMapper newtvMapper;
+
     @RequestMapping("/newtv")
-    public String newTv(ModelMap map){
+    public String newTv(ModelMap map) {
 
         Newtv actionMovie1 = newtvMapper.selectById(1);
         Newtv actionMovie2 = newtvMapper.selectById(2);
@@ -931,78 +940,78 @@ public class PagesController {
         Newtv actionMovie17 = newtvMapper.selectById(17);
         Newtv actionMovie18 = newtvMapper.selectById(18);
 
-        map.addAttribute("moviename1",actionMovie1.getName());
-        map.addAttribute("moviepictureaddress1",actionMovie1.getPictureaddress());
-        map.addAttribute("movieyears1",actionMovie1.getYears());
+        map.addAttribute("moviename1", actionMovie1.getName());
+        map.addAttribute("moviepictureaddress1", actionMovie1.getPictureaddress());
+        map.addAttribute("movieyears1", actionMovie1.getYears());
 
-        map.addAttribute("moviename2",actionMovie2.getName());
-        map.addAttribute("moviepictureaddress2",actionMovie2.getPictureaddress());
-        map.addAttribute("movieyears2",actionMovie2.getYears());
+        map.addAttribute("moviename2", actionMovie2.getName());
+        map.addAttribute("moviepictureaddress2", actionMovie2.getPictureaddress());
+        map.addAttribute("movieyears2", actionMovie2.getYears());
 
-        map.addAttribute("moviename3",actionMovie3.getName());
-        map.addAttribute("moviepictureaddress3",actionMovie3.getPictureaddress());
-        map.addAttribute("movieyears3",actionMovie3.getYears());
+        map.addAttribute("moviename3", actionMovie3.getName());
+        map.addAttribute("moviepictureaddress3", actionMovie3.getPictureaddress());
+        map.addAttribute("movieyears3", actionMovie3.getYears());
 
-        map.addAttribute("moviename4",actionMovie4.getName());
-        map.addAttribute("moviepictureaddress4",actionMovie4.getPictureaddress());
-        map.addAttribute("movieyears4",actionMovie4.getYears());
+        map.addAttribute("moviename4", actionMovie4.getName());
+        map.addAttribute("moviepictureaddress4", actionMovie4.getPictureaddress());
+        map.addAttribute("movieyears4", actionMovie4.getYears());
 
-        map.addAttribute("moviename5",actionMovie5.getName());
-        map.addAttribute("moviepictureaddress5",actionMovie5.getPictureaddress());
-        map.addAttribute("movieyears5",actionMovie5.getYears());
+        map.addAttribute("moviename5", actionMovie5.getName());
+        map.addAttribute("moviepictureaddress5", actionMovie5.getPictureaddress());
+        map.addAttribute("movieyears5", actionMovie5.getYears());
 
-        map.addAttribute("moviename6",actionMovie6.getName());
-        map.addAttribute("moviepictureaddress6",actionMovie6.getPictureaddress());
-        map.addAttribute("movieyears6",actionMovie6.getYears());
+        map.addAttribute("moviename6", actionMovie6.getName());
+        map.addAttribute("moviepictureaddress6", actionMovie6.getPictureaddress());
+        map.addAttribute("movieyears6", actionMovie6.getYears());
 
-        map.addAttribute("moviename7",actionMovie7.getName());
-        map.addAttribute("moviepictureaddress7",actionMovie7.getPictureaddress());
-        map.addAttribute("movieyears7",actionMovie7.getYears());
+        map.addAttribute("moviename7", actionMovie7.getName());
+        map.addAttribute("moviepictureaddress7", actionMovie7.getPictureaddress());
+        map.addAttribute("movieyears7", actionMovie7.getYears());
 
-        map.addAttribute("moviename8",actionMovie8.getName());
-        map.addAttribute("moviepictureaddress8",actionMovie8.getPictureaddress());
-        map.addAttribute("movieyears8",actionMovie8.getYears());
+        map.addAttribute("moviename8", actionMovie8.getName());
+        map.addAttribute("moviepictureaddress8", actionMovie8.getPictureaddress());
+        map.addAttribute("movieyears8", actionMovie8.getYears());
 
-        map.addAttribute("moviename9",actionMovie9.getName());
-        map.addAttribute("moviepictureaddress9",actionMovie9.getPictureaddress());
-        map.addAttribute("movieyears9",actionMovie9.getYears());
+        map.addAttribute("moviename9", actionMovie9.getName());
+        map.addAttribute("moviepictureaddress9", actionMovie9.getPictureaddress());
+        map.addAttribute("movieyears9", actionMovie9.getYears());
 
-        map.addAttribute("moviename10",actionMovie10.getName());
-        map.addAttribute("moviepictureaddress10",actionMovie10.getPictureaddress());
-        map.addAttribute("movieyears10",actionMovie10.getYears());
+        map.addAttribute("moviename10", actionMovie10.getName());
+        map.addAttribute("moviepictureaddress10", actionMovie10.getPictureaddress());
+        map.addAttribute("movieyears10", actionMovie10.getYears());
 
-        map.addAttribute("moviename11",actionMovie11.getName());
-        map.addAttribute("moviepictureaddress11",actionMovie11.getPictureaddress());
-        map.addAttribute("movieyears11",actionMovie11.getYears());
+        map.addAttribute("moviename11", actionMovie11.getName());
+        map.addAttribute("moviepictureaddress11", actionMovie11.getPictureaddress());
+        map.addAttribute("movieyears11", actionMovie11.getYears());
 
-        map.addAttribute("moviename12",actionMovie12.getName());
-        map.addAttribute("moviepictureaddress12",actionMovie12.getPictureaddress());
-        map.addAttribute("movieyears12",actionMovie12.getYears());
+        map.addAttribute("moviename12", actionMovie12.getName());
+        map.addAttribute("moviepictureaddress12", actionMovie12.getPictureaddress());
+        map.addAttribute("movieyears12", actionMovie12.getYears());
 
-        map.addAttribute("moviename13",actionMovie13.getName());
+        map.addAttribute("moviename13", actionMovie13.getName());
         System.out.println(actionMovie13.getName());
-        map.addAttribute("moviepictureaddress13",actionMovie13.getPictureaddress());
-        map.addAttribute("movieyears13",actionMovie13.getYears());
+        map.addAttribute("moviepictureaddress13", actionMovie13.getPictureaddress());
+        map.addAttribute("movieyears13", actionMovie13.getYears());
 
-        map.addAttribute("moviename14",actionMovie14.getName());
-        map.addAttribute("moviepictureaddress14",actionMovie14.getPictureaddress());
-        map.addAttribute("movieyears14",actionMovie14.getYears());
+        map.addAttribute("moviename14", actionMovie14.getName());
+        map.addAttribute("moviepictureaddress14", actionMovie14.getPictureaddress());
+        map.addAttribute("movieyears14", actionMovie14.getYears());
 
-        map.addAttribute("moviename15",actionMovie15.getName());
-        map.addAttribute("moviepictureaddress15",actionMovie15.getPictureaddress());
-        map.addAttribute("movieyears15",actionMovie15.getYears());
+        map.addAttribute("moviename15", actionMovie15.getName());
+        map.addAttribute("moviepictureaddress15", actionMovie15.getPictureaddress());
+        map.addAttribute("movieyears15", actionMovie15.getYears());
 
-        map.addAttribute("moviename16",actionMovie16.getName());
-        map.addAttribute("moviepictureaddress16",actionMovie16.getPictureaddress());
-        map.addAttribute("movieyears16",actionMovie16.getYears());
+        map.addAttribute("moviename16", actionMovie16.getName());
+        map.addAttribute("moviepictureaddress16", actionMovie16.getPictureaddress());
+        map.addAttribute("movieyears16", actionMovie16.getYears());
 
-        map.addAttribute("moviename17",actionMovie17.getName());
-        map.addAttribute("moviepictureaddress17",actionMovie17.getPictureaddress());
-        map.addAttribute("movieyears17",actionMovie17.getYears());
+        map.addAttribute("moviename17", actionMovie17.getName());
+        map.addAttribute("moviepictureaddress17", actionMovie17.getPictureaddress());
+        map.addAttribute("movieyears17", actionMovie17.getYears());
 
-        map.addAttribute("moviename18",actionMovie18.getName());
-        map.addAttribute("moviepictureaddress18",actionMovie18.getPictureaddress());
-        map.addAttribute("movieyears18",actionMovie18.getYears());
+        map.addAttribute("moviename18", actionMovie18.getName());
+        map.addAttribute("moviepictureaddress18", actionMovie18.getPictureaddress());
+        map.addAttribute("movieyears18", actionMovie18.getYears());
 
 
         return "newtv";

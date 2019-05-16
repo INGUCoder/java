@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baidu.mapper.EnterpriseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.baidu.bean.EnterpriseInfo" >
+    <id column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="enterprise_zoning_division" property="enterpriseZoningDivision" jdbcType="INTEGER" />
+    <result column="enterprise_unified_social_credit_code" property="enterpriseUnifiedSocialCreditCode" jdbcType="VARCHAR" />
+    <result column="enterprise_organizational_code" property="enterpriseOrganizationalCode" jdbcType="VARCHAR" />
+    <result column="enterprise_detailed_name" property="enterpriseDetailedName" jdbcType="VARCHAR" />
+    <result column="enterprise_legal_representative" property="enterpriseLegalRepresentative" jdbcType="VARCHAR" />
+    <result column="enterprise_address_status" property="enterpriseAddressStatus" jdbcType="VARCHAR" />
+    <result column="enterprise_detailed_address" property="enterpriseDetailedAddress" jdbcType="VARCHAR" />
+    <result column="enterprise_mobile_phone" property="enterpriseMobilePhone" jdbcType="VARCHAR" />
+    <result column="enterprise_business_activities" property="enterpriseBusinessActivities" jdbcType="VARCHAR" />
+    <result column="enterprise_industry_code" property="enterpriseIndustryCode" jdbcType="VARCHAR" />
+    <result column="enterprise_registration_types" property="enterpriseRegistrationTypes" jdbcType="VARCHAR" />
+    <result column="enterprise_is_have_branch_office" property="enterpriseIsHaveBranchOffice" jdbcType="VARCHAR" />
+    <result column="enterprise_area" property="enterpriseArea" jdbcType="VARCHAR" />
+    <result column="_611" property="_611" jdbcType="VARCHAR" />
+    <result column="611_1" property="_6111" jdbcType="VARCHAR" />
+    <result column="611_2" property="_6112" jdbcType="VARCHAR" />
+    <result column="611_3" property="_6113" jdbcType="VARCHAR" />
+    <result column="611_4_4" property="_61144" jdbcType="VARCHAR" />
+    <result column="611_5" property="_6115" jdbcType="VARCHAR" />
+    <result column="611_6" property="_6116" jdbcType="VARCHAR" />
+    <result column="611_7_7" property="_61177" jdbcType="VARCHAR" />
+    <result column="enterprise_energy_consumption" property="enterpriseEnergyConsumption" jdbcType="VARCHAR" />
+    <result column="enterprise_investment_fixed_assets" property="enterpriseInvestmentFixedAssets" jdbcType="VARCHAR" />
+    <result column="enterprise_registration_type" property="enterpriseRegistrationType" jdbcType="VARCHAR" />
+    <result column="enterprise_operation_state" property="enterpriseOperationState" jdbcType="VARCHAR" />
+    <result column="enterprise_registration_status" property="enterpriseRegistrationStatus" jdbcType="VARCHAR" />
+    <result column="enterprise_supplementary_items" property="enterpriseSupplementaryItems" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    enterprise_id, enterprise_zoning_division, enterprise_unified_social_credit_code, 
+    enterprise_organizational_code, enterprise_detailed_name, enterprise_legal_representative, 
+    enterprise_address_status, enterprise_detailed_address, enterprise_mobile_phone, 
+    enterprise_business_activities, enterprise_industry_code, enterprise_registration_types, 
+    enterprise_is_have_branch_office, enterprise_area, _611, 611_1, 611_2, 611_3, 611_4_4, 
+    611_5, 611_6, 611_7_7, enterprise_energy_consumption, enterprise_investment_fixed_assets, 
+    enterprise_registration_type, enterprise_operation_state, enterprise_registration_status, 
+    enterprise_supplementary_items
+  </sql>
+  
+   <select id="getAllEnterprise" resultMap="BaseResultMap">
+  		select * from enterprise_info group by enterprise_detailed_name
+  </select>
+  
+   <select id="getEnterprise" resultMap="BaseResultMap">
+  	select * from enterprise_info 
+  		<where>
+  			1=1
+  			<if test="enterpriseName!=null and enterpriseName!=''">
+				and enterprise_detailed_name like concat('%',#{enterpriseName},'%')
+			</if>
+  		</where>
+    LIMIT #{pageNum},#{pageSize}
+  </select>
+  
+  <select id="getLen" resultType="java.lang.Integer">
+  	select count(*) from enterprise_info
+  	<where>
+  			1=1
+  			<if test="enterpriseName!=null and enterpriseName!=''">
+				and enterprise_detailed_name like concat('%',#{enterpriseName},'%')
+			</if>
+  	</where>
+  	
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from enterprise_info
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from enterprise_info
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.baidu.bean.EnterpriseInfo" >
+    insert into enterprise_info (enterprise_zoning_division, 
+      enterprise_unified_social_credit_code, enterprise_organizational_code, 
+      enterprise_detailed_name, enterprise_legal_representative, 
+      enterprise_address_status, enterprise_detailed_address, 
+      enterprise_mobile_phone, enterprise_business_activities, 
+      enterprise_industry_code, enterprise_registration_types, 
+      enterprise_is_have_branch_office, enterprise_area, 
+      _611, 611_1, 611_2, 611_3, 
+      611_4_4, 611_5, 611_6, 
+      611_7_7, enterprise_energy_consumption, enterprise_investment_fixed_assets, 
+      enterprise_registration_type, enterprise_operation_state, 
+      enterprise_registration_status, enterprise_supplementary_items)
+    values (#{enterpriseZoningDivision,jdbcType=INTEGER}, 
+      #{enterpriseUnifiedSocialCreditCode,jdbcType=VARCHAR}, #{enterpriseOrganizationalCode,jdbcType=VARCHAR}, 
+      #{enterpriseDetailedName,jdbcType=VARCHAR}, #{enterpriseLegalRepresentative,jdbcType=VARCHAR}, 
+      #{enterpriseAddressStatus,jdbcType=VARCHAR}, #{enterpriseDetailedAddress,jdbcType=VARCHAR}, 
+      #{enterpriseMobilePhone,jdbcType=VARCHAR}, #{enterpriseBusinessActivities,jdbcType=VARCHAR}, 
+      #{enterpriseIndustryCode,jdbcType=VARCHAR}, #{enterpriseRegistrationTypes,jdbcType=VARCHAR}, 
+      #{enterpriseIsHaveBranchOffice,jdbcType=VARCHAR}, #{enterpriseArea,jdbcType=VARCHAR}, 
+      #{_611,jdbcType=VARCHAR}, #{_6111,jdbcType=VARCHAR}, #{_6112,jdbcType=VARCHAR}, #{_6113,jdbcType=VARCHAR}, 
+      #{_61144,jdbcType=VARCHAR}, #{_6115,jdbcType=VARCHAR}, #{_6116,jdbcType=VARCHAR}, 
+      #{_61177,jdbcType=VARCHAR}, #{enterpriseEnergyConsumption,jdbcType=VARCHAR}, #{enterpriseInvestmentFixedAssets,jdbcType=VARCHAR}, 
+      #{enterpriseRegistrationType,jdbcType=VARCHAR}, #{enterpriseOperationState,jdbcType=VARCHAR}, 
+      #{enterpriseRegistrationStatus,jdbcType=VARCHAR}, #{enterpriseSupplementaryItems,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.baidu.bean.EnterpriseInfo" >
+    update enterprise_info
+    set enterprise_zoning_division = #{enterpriseZoningDivision,jdbcType=INTEGER},
+      enterprise_unified_social_credit_code = #{enterpriseUnifiedSocialCreditCode,jdbcType=VARCHAR},
+      enterprise_organizational_code = #{enterpriseOrganizationalCode,jdbcType=VARCHAR},
+      enterprise_detailed_name = #{enterpriseDetailedName,jdbcType=VARCHAR},
+      enterprise_legal_representative = #{enterpriseLegalRepresentative,jdbcType=VARCHAR},
+      enterprise_address_status = #{enterpriseAddressStatus,jdbcType=VARCHAR},
+      enterprise_detailed_address = #{enterpriseDetailedAddress,jdbcType=VARCHAR},
+      enterprise_mobile_phone = #{enterpriseMobilePhone,jdbcType=VARCHAR},
+      enterprise_business_activities = #{enterpriseBusinessActivities,jdbcType=VARCHAR},
+      enterprise_industry_code = #{enterpriseIndustryCode,jdbcType=VARCHAR},
+      enterprise_registration_types = #{enterpriseRegistrationTypes,jdbcType=VARCHAR},
+      enterprise_is_have_branch_office = #{enterpriseIsHaveBranchOffice,jdbcType=VARCHAR},
+      enterprise_area = #{enterpriseArea,jdbcType=VARCHAR},
+      _611 = #{_611,jdbcType=VARCHAR},
+      611_1 = #{_6111,jdbcType=VARCHAR},
+      611_2 = #{_6112,jdbcType=VARCHAR},
+      611_3 = #{_6113,jdbcType=VARCHAR},
+      611_4_4 = #{_61144,jdbcType=VARCHAR},
+      611_5 = #{_6115,jdbcType=VARCHAR},
+      611_6 = #{_6116,jdbcType=VARCHAR},
+      611_7_7 = #{_61177,jdbcType=VARCHAR},
+      enterprise_energy_consumption = #{enterpriseEnergyConsumption,jdbcType=VARCHAR},
+      enterprise_investment_fixed_assets = #{enterpriseInvestmentFixedAssets,jdbcType=VARCHAR},
+      enterprise_registration_type = #{enterpriseRegistrationType,jdbcType=VARCHAR},
+      enterprise_operation_state = #{enterpriseOperationState,jdbcType=VARCHAR},
+      enterprise_registration_status = #{enterpriseRegistrationStatus,jdbcType=VARCHAR},
+      enterprise_supplementary_items = #{enterpriseSupplementaryItems,jdbcType=VARCHAR}
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+  </update>
+</mapper>

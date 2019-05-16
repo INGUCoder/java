@@ -25,8 +25,11 @@ public interface UserMapper {
 
 
     //用户修改个人信息
-    @Update("update userinfo set username = #{username},password =#{newpassword},phone=#{phone},address=#{address} where email =#{email} ")
-    void update(@Param("username")String username,@Param("newpassword") String newpassword,@Param("phone")String phone,@Param("address") String address,@Param("email") String email);
+    @Update("update userinfo set username = #{username},password =#{password},sex=#{sex}," +
+            "age=#{age},birthdaty=#{birthdaty},phone=#{phone},address=#{address} where email =#{email} ")
+    void updateUser(@Param("username")String username,@Param("password") String password,@Param("sex") String sex,
+                    @Param("age") Integer age,@Param("birthdaty") String birthdaty,@Param("phone")String phone,
+                    @Param("address") String address,@Param("email") String email);
 
 //根据诗词名查询诗词信息
     @Select("select * from shichi where zuopingming = #{zuopingming}")

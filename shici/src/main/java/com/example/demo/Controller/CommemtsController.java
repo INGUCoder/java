@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -28,6 +29,8 @@ public class CommemtsController {
         String commnets = request.getParameter("pinglun");
         String zuopingming = request.getParameter("shichi.zuopingming");
         commentsMapper.insertComments(zuopingming,username,commnets);
+        HttpSession session = request.getSession();
+        session.setAttribute("zuopingming",zuopingming);
         System.out.println("-----Test-------");
         System.out.println(zuopingming+username+commnets);
         System.out.println(zuopingming+"Test");
@@ -38,6 +41,7 @@ public class CommemtsController {
         Integer nums = list1.size();
         model.addAttribute("allshichi",list);
         model.addAttribute("nums",nums);
+        model.addAttribute("commentslist",list1);
         return "ccc";
 
     }

@@ -17,47 +17,45 @@ public class MovieController {
 
     @Autowired
     MovieMapper movieMapper;
-    @RequestMapping("/info")
-    public String info(ModelMap map, HttpServletRequest request){
 
-        String moviename =  request.getParameter("id");
+    @RequestMapping("/info")
+    public String info(ModelMap map, HttpServletRequest request) {
+
+        String moviename = request.getParameter("id");
         System.out.println(moviename);
         Movie movie = movieMapper.selectByname(request.getParameter("id"));
-        map.addAttribute("moviepictureaddress",movie.getPictureaddress());
-        map.addAttribute("moviename",movie.getMoviename());
-        map.addAttribute("aiqiyi",movie.getAiqiyi());
-        map.addAttribute("tengxun",movie.getTengxun());
-        map.addAttribute("youku",movie.getYouku());
-        map.addAttribute("info",movie.getInfo());
+        map.addAttribute("moviepictureaddress", movie.getPictureaddress());
+        map.addAttribute("moviename", movie.getMoviename());
+        map.addAttribute("aiqiyi", movie.getAiqiyi());
+        map.addAttribute("tengxun", movie.getTengxun());
+        map.addAttribute("youku", movie.getYouku());
+        map.addAttribute("info", movie.getInfo());
 
         return "single";
     }
+
     @RequestMapping("/search")
-    public String search(ModelMap map, HttpServletRequest request){
+    public String search(ModelMap map, HttpServletRequest request) {
 
         String search = request.getParameter("search");
-        if(movieMapper.selectByname(search)== null){
+        if (movieMapper.selectByname(search) == null) {
             return "error";
 
-        }else {
+        } else {
 
             Movie movie = movieMapper.selectByname(request.getParameter("search"));
-            map.addAttribute("moviepictureaddress",movie.getPictureaddress());
-            map.addAttribute("moviename",movie.getMoviename());
-            map.addAttribute("aiqiyi",movie.getAiqiyi());
-            map.addAttribute("tengxun",movie.getTengxun());
-            map.addAttribute("youku",movie.getYouku());
-            map.addAttribute("info",movie.getInfo());
+            map.addAttribute("moviepictureaddress", movie.getPictureaddress());
+            map.addAttribute("moviename", movie.getMoviename());
+            map.addAttribute("aiqiyi", movie.getAiqiyi());
+            map.addAttribute("tengxun", movie.getTengxun());
+            map.addAttribute("youku", movie.getYouku());
+            map.addAttribute("info", movie.getInfo());
             return "single";
 
         }
 
 
-
-
-
     }
-
 
 
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baidu.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.baidu.bean.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="user_name" jdbcType="VARCHAR" />
+    <result column="user_state" property="user_state" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="user_pwd" jdbcType="VARCHAR" />
+    <result column="enterprise_id" property="enterprise_id" jdbcType="INTEGER" />
+    <association property="enterpriseInfo" javaType="com.baidu.bean.EnterpriseInfo">
+    	 <result column="enterpriseDetailedName" property="enterprise_detailed_name" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+  	 *
+    from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+   <select id="getByUserName" resultType="java.lang.Integer" parameterType="java.lang.String" >
+   select 
+  	 enterprise_id
+    from user_info
+    where user_name = #{username}
+  </select>
+  
+  
+   <update id="updateByPrimaryKey" parameterType="com.baidu.bean.User" >
+    update user_info
+    set user_name = #{user_name,jdbcType=VARCHAR},
+      user_state = #{user_state,jdbcType=VARCHAR},
+      user_pwd = #{user_pwd,jdbcType=VARCHAR},
+      enterprise_id = #{enterprise_id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="loginValidate" resultMap="BaseResultMap">
+  	select * from user_info where user_name=#{userName} and user_pwd=#{userpwd}
+  </select>
+  
+  <select id="getAllUser" resultMap="BaseResultMap">
+  	select * from user_info LIMIT #{pageNum},#{pageSize}
+  </select>
+  <select id="getLen" resultType="java.lang.Integer">
+  	select count(*) from user_info
+  </select>
+  
+   <delete id="delUser" parameterType="java.lang.Integer" >
+    delete from user_info
+    where id = #{id}
+  </delete>
+  
+  <insert id="insert" parameterType="com.baidu.bean.User" >
+    insert into user_info ( user_name, user_state, 
+      user_pwd, enterprise_id)
+    values (#{user_name,jdbcType=VARCHAR}, #{user_state,jdbcType=VARCHAR}, 
+      #{user_pwd,jdbcType=VARCHAR}, #{enterprise_id,jdbcType=INTEGER})
+  </insert>
+  
+</mapper>

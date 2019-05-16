@@ -15,47 +15,50 @@ import java.util.List;
 @Controller
 @RequestMapping("/dangfei")
 public class DangFeiController {
-@Autowired
+    @Autowired
     DangFeiMapper dangFeiMapper;
+
     //党费列表页面
     @RequestMapping("/dangfeiPage")
-    public String dangfeiPage(Model model){
+    public String dangfeiPage(Model model) {
         List<DangFei> dangFeiList = dangFeiMapper.selectAll();
-        model.addAttribute("list",dangFeiList);
-        model.addAttribute("length",dangFeiList.size());
+        model.addAttribute("list", dangFeiList);
+        model.addAttribute("length", dangFeiList.size());
         return "dangfei-list";
     }
+
     //缴纳党费页面
     @RequestMapping("/adddangfei")
-    public String addDangfei(){
+    public String addDangfei() {
         return "dangfei-add";
     }
+
     //缴纳党费
     @RequestMapping("/dangfeiAdd")
-    public String dangfeiAdd(HttpServletRequest request){
+    public String dangfeiAdd(HttpServletRequest request) {
         String bianhao = request.getParameter("bianhao");
         String name = request.getParameter("name");
         String idcard = request.getParameter("idcard");
         String zhibu = request.getParameter("zhibu");
         String time = DateUtil.getCurrentTimeByFormat("yyyy/MM/dd");
         Integer totalmoney = Integer.parseInt(request.getParameter("totalmoney"));
-        dangFeiMapper.addDangfei(bianhao,name,idcard,zhibu,totalmoney,time);
+        dangFeiMapper.addDangfei(bianhao, name, idcard, zhibu, totalmoney, time);
 
         return "dangfeiDel-Success";
     }
 
     //党费缴纳记录页面
     @RequestMapping("/jiluPage")
-    public String jiluPage(){
+    public String jiluPage() {
         return "dangfei-search";
     }
 
     @RequestMapping("/jilu")
-    public  String jilu(HttpServletRequest request,Model model){
+    public String jilu(HttpServletRequest request, Model model) {
         String bianhao = request.getParameter("bianhao");
-        List<DangFei> dangFeiList= dangFeiMapper.selectDangFeis(bianhao);
-        model.addAttribute("list",dangFeiList);
-        model.addAttribute("length",dangFeiList.size());
+        List<DangFei> dangFeiList = dangFeiMapper.selectDangFeis(bianhao);
+        model.addAttribute("list", dangFeiList);
+        model.addAttribute("length", dangFeiList.size());
         return "dangfei-list";
     }
 }

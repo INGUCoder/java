@@ -1,8 +1,8 @@
 /**
- *
  * 上传图片到图片服务器   上床成功后 copy下面的地址即可   访问地址 列如：http://47.106.238.135:8080/group1/M00/00/00/rBAXlVxC1qqAO9N_AAFX4qxaEgQ036.jpg
  */
 package com.example.demo;
+
 import org.csource.fastdfs.*;
 import org.springframework.core.io.ClassPathResource;
 

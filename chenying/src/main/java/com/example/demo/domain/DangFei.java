@@ -3,12 +3,12 @@ package com.example.demo.domain;
 public class DangFei {
     private Integer id;
     private String bianhao;
-    private  String name;
+    private String name;
     private String idcard;
     private String zhibu;
     private Integer totalmoney;
 
-    private  String time;
+    private String time;
 
     public DangFei(Integer id, String bianhao, String name, String idcard, String zhibu, Integer totalmoney, String time) {
         this.id = id;

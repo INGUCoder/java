@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baidu.mapper.UploadFileInfoMapper">
+	<resultMap id="BaseResultMap" type="com.baidu.bean.UploadFileInfo" >
+	<id column="id" property="id" jdbcType="INTEGER" />
+	 <result column="filename" property="filename" jdbcType="VARCHAR" />
+	  <result column="url" property="url" jdbcType="VARCHAR" />
+	</resultMap>
+		  
+	<insert id="insertFileInfo" parameterType="com.baidu.bean.UploadFileInfo">
+	
+		insert into uploadfileinfo (filename,url) values (#{filename,jdbcType=VARCHAR},#{url,jdbcType=VARCHAR})
+	
+	</insert>
+	
+	<select id="selectFile" resultMap="BaseResultMap">
+	
+	select * from uploadfileinfo
+	</select>
+
+</mapper>
+
+
+

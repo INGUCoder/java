@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baidu.mapper.MailInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.baidu.bean.MailInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="mailer_telephone" property="mailerTelephone" jdbcType="VARCHAR" />
+    <result column="mailer_name" property="mailerName" jdbcType="VARCHAR" />
+    <result column="mail_time" property="mailTime" jdbcType="VARCHAR" />
+    <result column="mail_number" property="mailNumber" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="VARCHAR" />
+    <association property="enterpriseInfo" javaType="com.baidu.bean.EnterpriseInfo">
+    	 <result column="enterprise_area" property="enterpriseArea" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, enterprise_id, mailer_telephone, mailer_name, mail_time, mail_number
+  </sql>
+  
+   <select id="mailStatistics" resultMap="BaseResultMap">
+  	select ent.enterprise_area enterprise_area,COUNT(mail.id) num
+	from mail_info mail LEFT JOIN enterprise_info ent
+	on  mail.enterprise_id=ent.enterprise_id 
+	group by ent.enterprise_area
+  </select>
+  
+  <select id="getMail" resultMap="BaseResultMap">
+  	select * from mail_info 
+    LIMIT #{pageNum},#{pageSize}
+  </select>
+  
+   <select id="getLen" resultType="java.lang.Integer">
+  	select count(*) from mail_info
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mail_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mail_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.baidu.bean.MailInfo" >
+    insert into mail_info (id, enterprise_id, mailer_telephone, 
+      mailer_name, mail_time, mail_number
+      )
+    values (#{id,jdbcType=INTEGER}, #{enterpriseId,jdbcType=INTEGER}, #{mailerTelephone,jdbcType=VARCHAR}, 
+      #{mailerName,jdbcType=VARCHAR}, #{mailTime,jdbcType=VARCHAR}, #{mailNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.baidu.bean.MailInfo" >
+    insert into mail_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="mailerTelephone != null" >
+        mailer_telephone,
+      </if>
+      <if test="mailerName != null" >
+        mailer_name,
+      </if>
+      <if test="mailTime != null" >
+        mail_time,
+      </if>
+      <if test="mailNumber != null" >
+        mail_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="mailerTelephone != null" >
+        #{mailerTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mailerName != null" >
+        #{mailerName,jdbcType=VARCHAR},
+      </if>
+      <if test="mailTime != null" >
+        #{mailTime,jdbcType=VARCHAR},
+      </if>
+      <if test="mailNumber != null" >
+        #{mailNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baidu.bean.MailInfo" >
+    update mail_info
+    <set >
+      <if test="enterpriseId != null" >
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="mailerTelephone != null" >
+        mailer_telephone = #{mailerTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mailerName != null" >
+        mailer_name = #{mailerName,jdbcType=VARCHAR},
+      </if>
+      <if test="mailTime != null" >
+        mail_time = #{mailTime,jdbcType=VARCHAR},
+      </if>
+      <if test="mailNumber != null" >
+        mail_number = #{mailNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baidu.bean.MailInfo" >
+    update mail_info
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      mailer_telephone = #{mailerTelephone,jdbcType=VARCHAR},
+      mailer_name = #{mailerName,jdbcType=VARCHAR},
+      mail_time = #{mailTime,jdbcType=VARCHAR},
+      mail_number = #{mailNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,9 +1,10 @@
-<!--
-var datelocalweek=new Array("ÐÇÆÚÈÕ", "ÐÇÆÚÒ»", "ÐÇÆÚ¶þ","ÐÇÆÚÈý","ÐÇÆÚËÄ", "ÐÇÆÚÎå","ÐÇÆÚÁù");
-var datelocalnow=new Date(); 
-var datelocalyear=datelocalnow.getFullYear(); 
-var datelocalmonth=(datelocalmonth="0"+(datelocalnow.getMonth()+1)).substr(datelocalmonth.length-2,2); 
-var datelocalday=(datelocalday="0"+datelocalnow.getDate()).substr(datelocalday.length-2,2); 
-var datelocalweekday=datelocalweek[datelocalnow.getDay()]; 
-document.write("<font color=#f96c0f>±±¾©Ê±¼ä£º</font><font color=#333333> "+datelocalyear+"Äê"+datelocalmonth+"ÔÂ"+datelocalday+"ÈÕ"+" "+datelocalweekday+"</font>"); 
+<
+!--
+var datelocalweek = new Array("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½Ò»", "ï¿½ï¿½ï¿½Ú¶ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+var datelocalnow = new Date();
+var datelocalyear = datelocalnow.getFullYear();
+var datelocalmonth = (datelocalmonth = "0" + (datelocalnow.getMonth() + 1)).substr(datelocalmonth.length - 2, 2);
+var datelocalday = (datelocalday = "0" + datelocalnow.getDate()).substr(datelocalday.length - 2, 2);
+var datelocalweekday = datelocalweek[datelocalnow.getDay()];
+document.write("<font color=#f96c0f>ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º</font><font color=#333333> " + datelocalyear + "ï¿½ï¿½" + datelocalmonth + "ï¿½ï¿½" + datelocalday + "ï¿½ï¿½" + " " + datelocalweekday + "</font>");
 // -->

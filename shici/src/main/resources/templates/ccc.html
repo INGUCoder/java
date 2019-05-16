@@ -152,7 +152,7 @@
     </style>
 </head>
 
-<body>
+<body >
 
 
 <nav class="navbar navbar-nav navbar-fixed-top my-navbar" role="navigation">
@@ -183,6 +183,10 @@
                         <a href="/pages/shichi-add">发布诗词</a>
                     </li>
 
+                    <li>
+                        <a href="/pages/login">切换账号</a>
+                    </li>
+
                 </ul>
 
             </li>
@@ -195,8 +199,7 @@
 </nav>
 
 
-<div class="bg" style="background: url(https://ws3.sinaimg.cn/large/005BYqpgly1g1hqy1j65vj307404074p.jpg) no-repeat bottom center;
-    background-size: cover;">
+<div class="bg" >
     <!--这个标签是大背景-->
     <div class="main3">
         <div class="left">
@@ -209,15 +212,15 @@
                         <p th:text="${shichi.zuopinginfo}" id="shicicontent"> </p>
                     </div>
                 </div>
-                <div style="height: auto;position: relative">
+                <div style="height: auto;position: relative" class="fatherdiv">
 
 ;
                     <!--////******************************-->
 
                     <div style="height: 60px;">
-                        <button class="btn btn-default" style="display:inline-block;width:100px;height:60px;margin-left:5px;position: absolute;left:5px;" id="pl">评论</button>
-                        <button class="btn btn-default" style="display:inline-block;width:100px;height:60px;position: absolute;left: 110px" id="zs">注释</button>
-                        <button class="btn btn-default" style="display:inline-block;width:100px;height:60px;position: absolute;left: 210px" id="dzbutton">点赞</button>
+                        <button class="btn btn-default pl" style="display:inline-block;width:100px;height:60px;margin-left:5px;position: absolute;left:5px;" >评论</button>
+                        <button class="btn btn-default zs" style="display:inline-block;width:100px;height:60px;position: absolute;left: 110px">注释</button>
+                        <button class="btn btn-default dzbutton" style="display:inline-block;width:100px;height:60px;position: absolute;left: 210px" >点赞</button>
 
             <!--//星星就不要了  评论 输入昵称就行了  然后输入评论   然后提交   在这个下面又以往的评论显示区-->
                         <!-- 这边是星星评价 -->
@@ -225,7 +228,7 @@
                             <input type="hidden" th:value="*{shichi.zuopingming}"  name="shichi.zuopingming">
                             <ul class="cleanfloat" style="margin-top:18px; ">
                                 <li>点赞</li>
-                                <li><p th:text="${shichi.dianzhan}" style="display: inline-block;    margin-top: -4px;" id="dzp">0</p></li>
+                                <li><p th:text="${shichi.dianzhan}" style="display: inline-block;    margin-top: -4px;" class="dzp">0</p></li>
                                 <li>人</li>
                             </ul>
 
@@ -234,7 +237,9 @@
                     <br>
 
                     <!-- 这边是评论区 -->
-                    <div class="mainContainner" style="display:none;margin-top: 0px;" id="pl_content">
+
+
+                    <div class="mainContainner pl_content" style="display:none;margin-top: 0px;" >
                         <div class="commentBox" >
                             <div class="Ctop">
                                 <label class="Ctitle">评论</label>
@@ -248,16 +253,15 @@
 
                             </div>
                             <div class="Csunbmit">
-                                <label class="Cnick" >你的昵称：</label>
-                                <input class="Cusername" placeholder="你的昵称" id="Cusername"  name="youkename" >
+                                <input class="Cusername" type="hidden"   id="Cusername"  name="youkename" th:value="${session.userId}" >
                                 <button class="submitBtn" id="plbutton">发布评论</button>
 
                             </div>
 
                             </form>
-                            <div >
-                                <ul>评论</ul><li>
-                <!--   <ul th:text="${commentslist.username}"></ul>:<ul th:text="${commentslist.commnets}"></ul>-->
+                            <div  th:each="commentslist:${commentslist}" style="text-align: left">
+
+                           <ul style="text-decoration: none;display: inline;font-weight: bold" th:text="${commentslist.username}" ></ul> <span>:</span><ul style="text-decoration: none;display: inline" th:text="${commentslist.commnets}"></ul>
 
 
                             </div>
@@ -275,7 +279,7 @@
                     </div>
 
                     <!-- 这边是注释区 -->
-                    <div id="zs_div" style="border:1px wheat solid;display:none;margin-top: 0px;height: auto;margin-bottom: 30px;">
+                    <div class="zs_div" style="border:1px wheat solid;display:none;margin-top: 0px;height: auto;margin-bottom: 30px;">
 
                         <div id="zs_p" style="border:1px wheat solid;display:block;margin-top: 0px;height: auto;margin-bottom: 30px;"><p th:text="${shichi.zhushi}" style="height: auto;"></p></div>
 
@@ -395,46 +399,50 @@
     });
 
 
-    $("#pl").click(function (e) {
+    $(".pl").click(function (e) {
 
-        if ($('#pl_content').is(':hidden')) {
+        if ($(this).parent().parent().children('.pl_content').is(':hidden')) {
             //如果当前隐藏
             console.log("显示评论区");
 
-            $('#pl_content').show();
+            $(this).parent().parent().children('.pl_content').show();
             //那么就显示div
         } else {
             //否则
             console.log("隐藏评论区");
 
-            $('#pl_content').hide();
+            $(this).parent().parent().children('.pl_content').hide();
             //就隐藏div
         }
 
 
     });
 
-    $("#zs").click(function (e) {
-        if ($('#zs_div').is(':hidden')) {//如果当前隐藏
+    $(".zs").click(function (e) {
+        if ($(this).parent().parent().children('.zs_div').is(':hidden')) {//如果当前隐藏
             console.log("显示注释区");
 
-            $('#zs_div').show();//那么就显示div
+            $(this).parent().parent().children('.zs_div').show();//那么就显示div
         } else {//否则
             console.log("隐藏注释区");
 
-            $('#zs_div').hide();//就隐藏div
+            $(this).parent().parent().children('.zs_div').hide();//就隐藏div
         }
 
     });
 
-
-    $("#dzbutton").click(function (e) {
+    $(".dzbutton").click(function (e) {
         console.log("test");
-        var dznum= parseInt( $("#dzp").html());
+        var dznum= parseInt( $(this).parent().children("form").children("ul").children("li").children(".dzp").html());
         dznum+=1;
-        $("#dzp").html(dznum);
+        $(this).parent().children("form").children("ul").children("li").children(".dzp").html(dznum);
 
     });
+
+
+
+
+
 $("#plbutton").click(function (e) {
 var contentpl=$("#Ccont").val();
 console.log(contentpl);

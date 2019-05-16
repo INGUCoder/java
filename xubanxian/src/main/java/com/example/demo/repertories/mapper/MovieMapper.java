@@ -14,5 +14,4 @@ public interface MovieMapper {
     Movie selectByname(@Param("moviename") String moviename);
 
 
-
 }

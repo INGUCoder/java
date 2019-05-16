@@ -1,14 +1,19 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>吉阳区港门村居委会党员信息管理系统</title>
     <!--mobile apps-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="My Resume Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!--mobile apps-->
     <!--Custom Theme files-->
     <link rel="shortcut icon" href="/static/img/your_ico.ico" type="image/x-icon">
@@ -28,10 +33,10 @@
     <script type="text/javascript" src="/static/js/move-top.js"></script>
     <script type="text/javascript" src="/static/js/easing.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
                 event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
         });
     </script>
@@ -70,62 +75,65 @@
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	出勤率 </b></li>
+                            <li><b> 出勤率 </b></li>
                             <li th:text="${fazhan.chuqing}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	工作状态 </b></li>
+                            <li><b> 工作状态 </b></li>
                             <li th:text="${fazhan.workstatus}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
-                            <li><b>	思想总结 </b></li>
+                            <li><b> 思想总结 </b></li>
                             <li th:text="${fazhan.sixiang}"></li>
                         </ul>
                     </li>
                     <li>
                         <ul class="address-text">
                             <li></li>
-                            <li ></li>
+                            <li></li>
                         </ul>
                     </li>
 
                     <li>
                         <ul class="address-text">
                             <li></li>
-                            <li ></li>
+                            <li></li>
                         </ul>
-                    </li> <li>
-                    <ul class="address-text">
-                        <li></li>
-                        <li ></li>
-                    </ul>
-                </li> <li>
-                    <ul class="address-text">
-                        <li></li>
-                        <li ></li>
-                    </ul>
-                </li> <li>
-                    <ul class="address-text">
-                        <li></li>
-                        <li ></li>
-                    </ul>
-                </li>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="address-text">
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>
-            </div>
         </div>
     </div>
+</div>
 </div>
 
 <!--//footer-->
 <!--smooth-scrolling-of-move-up-->
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         var defaults = {
             containerID: 'toTop', // fading element id
@@ -134,7 +142,7 @@
             easingType: 'linear'
         };
 
-        $().UItoTop({ easingType: 'easeOutQuart' });
+        $().UItoTop({easingType: 'easeOutQuart'});
 
     });
 </script>

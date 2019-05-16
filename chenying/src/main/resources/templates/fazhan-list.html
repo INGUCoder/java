@@ -65,23 +65,19 @@
 <aside class="Hui-aside">
     <div class="menu_dropdown bk_2">
         <dl id="menu-membe1">
-            <dt class="selected"><i class="Hui-iconfont">&#xe60d;</i> 党员工作发展管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+            <dt class="selected"><i class="Hui-iconfont">&#xe60d;</i> 党员工作发展管理<i
+                    class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
             </dt>
             <dd style="display: block;">
                 <ul>
-                    <li ><a href="#" title="添加支部信息">党员工作发展列表</a></li>
-                    <li ><a href="/fazhan/addPage" title="添加支部信息">添加党员工作发展</a></li>
-                    <li ><a href="/fazhan/deletePage" title="删除支部信息">删除党员工作发展</a></li>
-                    <li ><a href="/fazhan/updatePage" title="修改支部信息">修改党员工作发展</a></li>
-                    <li ><a href="/fazhan/findPage" title="查看支部信息">查看党员工作发展</a></li>
+                    <li><a href="#" title="添加支部信息">党员工作发展列表</a></li>
+                    <li><a href="/fazhan/addPage" title="添加支部信息">添加党员工作发展</a></li>
+                    <li><a href="/fazhan/deletePage" title="删除支部信息">删除党员工作发展</a></li>
+                    <li><a href="/fazhan/updatePage" title="修改支部信息">修改党员工作发展</a></li>
+                    <li><a href="/fazhan/findPage" title="查看支部信息">查看党员工作发展</a></li>
                 </ul>
             </dd>
         </dl>
-
-
-
-
-
 
 
     </div>
@@ -91,15 +87,16 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 党员工作发展管理 <span class="c-gray en">&gt;</span>  <span
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 党员工作发展管理 <span class="c-gray en">&gt;</span> <span
             class="c-gray en">&gt;</span> 党员工作发展列表<a class="btn btn-success radius r"
-                                                  style="line-height:1.6em;margin-top:3px"
-                                                  href="javascript:location.replace(location.href);" title="刷新"><i
+                                                     style="line-height:1.6em;margin-top:3px"
+                                                     href="javascript:location.replace(location.href);" title="刷新"><i
             class="Hui-iconfont">&#xe68f;</i></a></nav>
     <div class="Hui-article">
         <article class="cl pd-20">
             <div class="text-c">
-                <input type="hidden" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin"
+                <input type="hidden" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
+                       id="datemin"
                        class="input-text Wdate" style="width:120px;">
                 <input type="hidden" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d'})"
                        id="datemax" class="input-text Wdate" style="width:120px;">
@@ -107,7 +104,8 @@
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
                                                                        class="btn btn-danger radius"><i
-                    class="Hui-iconfont"></i> 党员工作发展列表</a> </span> <span class="r">共有数据：<strong th:text="${length}" ></strong> 条</span>
+                    class="Hui-iconfont"></i> 党员工作发展列表</a> </span> <span class="r">共有数据：<strong
+                    th:text="${length}"></strong> 条</span>
             </div>
             <div class="mt-20">
                 <table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -127,23 +125,24 @@
                     </tr>
                     </thead>
                     <div th:each="list:${list}">
-                    <tbody>
+                        <tbody>
                         <tr class="text-c">
                             <td><input type="checkbox" value="1" name=""></td>
                             <td th:text="${list.id}"></td>
-                              <td th:text="${list.bianhao}"><u style="cursor:pointer" class="text-primary"
-                                      onclick="member_show('张三','member-show.html','10001','360','400')"></u></td>
-                              <td th:text="${list.name}"></td>
-                               <td th:text="${list.sex}"></td>
-                               <td th:text="${list.status}"></td>
-                              <td th:text="${list.biaoxian}"></td>
+                            <td th:text="${list.bianhao}"><u style="cursor:pointer" class="text-primary"
+                                                             onclick="member_show('张三','member-show.html','10001','360','400')"></u>
+                            </td>
+                            <td th:text="${list.name}"></td>
+                            <td th:text="${list.sex}"></td>
+                            <td th:text="${list.status}"></td>
+                            <td th:text="${list.biaoxian}"></td>
                             <td th:text="${list.chuqing}"></td>
                             <td th:text="${list.workstatus}"></td>
                             <td th:text="${list.sixiang}"></td>
                             <td th:text="${list.idcard}"></td>
                         </tr>
-                    </tbody>
-                </div>
+                        </tbody>
+                    </div>
                 </table>
             </div>
         </article>

@@ -71,9 +71,9 @@
             <dd style="display: block;">
                 <ul>
 
-                    <li ><a href="#" title="用户列表">党员列表</a></li>
+                    <li><a href="#" title="用户列表">党员列表</a></li>
                     <li><a href="/pages/member-add" title="添加党员">添加党员</a></li>
-                    <li><a href="/pages/member-del"  title="删除党员">删除党员</a></li>
+                    <li><a href="/pages/member-del" title="删除党员">删除党员</a></li>
                     <li><a href="/pages/alternumber" title="修改党员信息">修改党员信息</a></li>
                     <li><a href="/pages/userinfo" title="查看党员信息">查看党员信息</a></li>
                 </ul>
@@ -85,7 +85,7 @@
             </dt>
             <dd style="display: block;">
                 <ul>
-                    <li ><a href="/pages/zhibu" title="添加支部信息">党支部信息</a></li>
+                    <li><a href="/pages/zhibu" title="添加支部信息">党支部信息</a></li>
                 </ul>
             </dd>
         </dl>
@@ -95,8 +95,7 @@
             </dt>
             <dd style="display: block;">
                 <ul>
-                    <li ><a href="/dangfei/dangfeiPage" title="用户列表">党费缴纳</a></li>
-
+                    <li><a href="/dangfei/dangfeiPage" title="用户列表">党费缴纳</a></li>
 
 
                 </ul>
@@ -108,9 +107,9 @@
             <dd style="display: block;">
                 <ul>
 
-                    <li ><a href="/admin/writePage" title="发布事务">发布事务</a></li>
-                    <li ><a href="/admin/shiwu" title="查看已发布的事务">查看已发布的事务</a></li>
-                    <li ><a href="/admin/deletePage" title="删除已发布的事务">删除已发布的事务</a></li>
+                    <li><a href="/admin/writePage" title="发布事务">发布事务</a></li>
+                    <li><a href="/admin/shiwu" title="查看已发布的事务">查看已发布的事务</a></li>
+                    <li><a href="/admin/deletePage" title="删除已发布的事务">删除已发布的事务</a></li>
 
 
                 </ul>
@@ -123,19 +122,19 @@
             <dd style="display: block;">
                 <ul>
 
-                    <li ><a href="/tongji/tongjiPage" title="用户列表">按条件统计党员信息</a></li>
+                    <li><a href="/tongji/tongjiPage" title="用户列表">按条件统计党员信息</a></li>
                 </ul>
             </dd>
         </dl>
 
         <dl id="menu-membe4">
-            <dt class="selected"><i class="Hui-iconfont">&#xe60d;</i> 党员工作发展管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+            <dt class="selected"><i class="Hui-iconfont">&#xe60d;</i> 党员工作发展管理<i
+                    class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
             </dt>
             <dd style="display: block;">
                 <ul>
 
-                    <li ><a href="/fazhan/showList" title="用户列表">党员工作发展管理</a></li>
-
+                    <li><a href="/fazhan/showList" title="用户列表">党员工作发展管理</a></li>
 
 
                 </ul>
@@ -149,14 +148,12 @@
             <dd style="display: block;">
                 <ul>
 
-                    <li ><a href="https://mail.163.com" title="用户列表">信箱</a></li>
+                    <li><a href="https://mail.163.com" title="用户列表">信箱</a></li>
 
 
                 </ul>
             </dd>
         </dl>
-
-
 
 
     </div>
@@ -168,13 +165,14 @@
 <section class="Hui-article-box">
     <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 党员管理 <span
             class="c-gray en">&gt;</span> 党员列表<a class="btn btn-success radius r"
-                                                  style="line-height:1.6em;margin-top:3px"
-                                                  href="javascript:location.replace(location.href);" title="刷新"><i
+                                                 style="line-height:1.6em;margin-top:3px"
+                                                 href="javascript:location.replace(location.href);" title="刷新"><i
             class="Hui-iconfont">&#xe68f;</i></a></nav>
     <div class="Hui-article">
         <article class="cl pd-20">
             <div class="text-c">
-                <input type="hidden" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin"
+                <input type="hidden" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
+                       id="datemin"
                        class="input-text Wdate" style="width:120px;">
                 <input type="hidden" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d'})"
                        id="datemax" class="input-text Wdate" style="width:120px;">
@@ -182,7 +180,8 @@
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
                                                                        class="btn btn-danger radius"><i
-                    class="Hui-iconfont"></i> 党员列表</a> </span> <span class="r">共有数据：<strong th:text="${length}" ></strong> 条</span>
+                    class="Hui-iconfont"></i> 党员列表</a> </span> <span class="r">共有数据：<strong
+                    th:text="${length}"></strong> 条</span>
             </div>
             <div class="mt-20">
                 <table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -209,17 +208,18 @@
                     </tr>
                     </thead>
                     <div th:each="user:${users}">
-                    <tbody>
+                        <tbody>
                         <tr class="text-c">
                             <td><input type="checkbox" value="1" name=""></td>
                             <td th:text="${user.id}"></td>
-                              <td th:text="${user.username}"><u style="cursor:pointer" class="text-primary"
-                                      onclick="member_show('张三','member-show.html','10001','360','400')"></u></td>
-                              <td th:text="${user.sex}"></td>
-                               <td th:text="${user.minzu}"></td>
-                               <td th:text="${user.jiguan}"></td>
-                              <td th:text="${user.phone}"></td>
-                              <td th:text="${user.idcard}"></td>
+                            <td th:text="${user.username}"><u style="cursor:pointer" class="text-primary"
+                                                              onclick="member_show('张三','member-show.html','10001','360','400')"></u>
+                            </td>
+                            <td th:text="${user.sex}"></td>
+                            <td th:text="${user.minzu}"></td>
+                            <td th:text="${user.jiguan}"></td>
+                            <td th:text="${user.phone}"></td>
+                            <td th:text="${user.idcard}"></td>
                             <td th:text="${user.birthday}"></td>
                             <td th:text="${user.work}"></td>
                             <td th:text="${user.education}"></td>
@@ -231,8 +231,8 @@
                             <td th:text="${user.bianhao}"></td>
                             <td th:text="${user.zhibubianhao}"></td>
                         </tr>
-                    </tbody>
-                </div>
+                        </tbody>
+                    </div>
                 </table>
             </div>
         </article>

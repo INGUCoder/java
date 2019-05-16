@@ -69,18 +69,13 @@
             </dt>
             <dd style="display: block;">
                 <ul>
-                    <li ><a href="/zhibu/add" title="添加支部信息">添加支部信息</a></li>
-                    <li ><a href="/zhibu/delpage" title="删除支部信息">删除支部信息</a></li>
-                    <li ><a href="/zhibu/updatepage" title="修改支部信息">修改支部信息</a></li>
-                    <li ><a href="/zhibu/findPage" title="查看支部信息">查看支部信息</a></li>
+                    <li><a href="/zhibu/add" title="添加支部信息">添加支部信息</a></li>
+                    <li><a href="/zhibu/delpage" title="删除支部信息">删除支部信息</a></li>
+                    <li><a href="/zhibu/updatepage" title="修改支部信息">修改支部信息</a></li>
+                    <li><a href="/zhibu/findPage" title="查看支部信息">查看支部信息</a></li>
                 </ul>
             </dd>
         </dl>
-
-
-
-
-
 
 
     </div>
@@ -90,7 +85,7 @@
 <!--/_menu 作为公共模版分离出去-->
 
 <section class="Hui-article-box">
-    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 党支部信息 <span class="c-gray en">&gt;</span>  <span
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 党支部信息 <span class="c-gray en">&gt;</span> <span
             class="c-gray en">&gt;</span> 党支部列表<a class="btn btn-success radius r"
                                                   style="line-height:1.6em;margin-top:3px"
                                                   href="javascript:location.replace(location.href);" title="刷新"><i
@@ -98,7 +93,8 @@
     <div class="Hui-article">
         <article class="cl pd-20">
             <div class="text-c">
-                <input type="hidden" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin"
+                <input type="hidden" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})"
+                       id="datemin"
                        class="input-text Wdate" style="width:120px;">
                 <input type="hidden" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d'})"
                        id="datemax" class="input-text Wdate" style="width:120px;">
@@ -106,7 +102,8 @@
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
                                                                        class="btn btn-danger radius"><i
-                    class="Hui-iconfont"></i> 党支部列表</a> </span> <span class="r">共有数据：<strong th:text="${length}" ></strong> 条</span>
+                    class="Hui-iconfont"></i> 党支部列表</a> </span> <span class="r">共有数据：<strong
+                    th:text="${length}"></strong> 条</span>
             </div>
             <div class="mt-20">
                 <table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -122,19 +119,20 @@
                     </tr>
                     </thead>
                     <div th:each="zhibuinfo:${zhibuinfo}">
-                    <tbody>
+                        <tbody>
                         <tr class="text-c">
                             <td><input type="checkbox" value="1" name=""></td>
                             <td th:text="${zhibuinfo.id}"></td>
-                              <td th:text="${zhibuinfo.name}"><u style="cursor:pointer" class="text-primary"
-                                      onclick="member_show('张三','member-show.html','10001','360','400')"></u></td>
-                              <td th:text="${zhibuinfo.bianhao}"></td>
-                               <td th:text="${zhibuinfo.people}"></td>
-                               <td th:text="${zhibuinfo.phone}"></td>
-                              <td th:text="${zhibuinfo.address}"></td>
+                            <td th:text="${zhibuinfo.name}"><u style="cursor:pointer" class="text-primary"
+                                                               onclick="member_show('张三','member-show.html','10001','360','400')"></u>
+                            </td>
+                            <td th:text="${zhibuinfo.bianhao}"></td>
+                            <td th:text="${zhibuinfo.people}"></td>
+                            <td th:text="${zhibuinfo.phone}"></td>
+                            <td th:text="${zhibuinfo.address}"></td>
                         </tr>
-                    </tbody>
-                </div>
+                        </tbody>
+                    </div>
                 </table>
             </div>
         </article>

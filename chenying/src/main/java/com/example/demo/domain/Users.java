@@ -4,8 +4,8 @@ package com.example.demo.domain;
 //党员信息
 public class Users {
 
-   private Integer id;
-   private String username;
+    private Integer id;
+    private String username;
     private String sex;
     private String minzu;
     private String jiguan;
