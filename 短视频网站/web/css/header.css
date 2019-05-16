@@ -1,0 +1,7 @@
+.navbar-header .navbar-brand {
+    background-image: url("/images/logo.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 75%;
+    width: 60px;
+}

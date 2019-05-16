@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.svideo.mapper.TbCommentMapper">
+    <resultMap id="BaseResultMap" type="com.svideo.domain.TbComment">
+        <id column="cid" jdbcType="BIGINT" property="cid"/>
+        <result column="vedio_id" jdbcType="BIGINT" property="vedioId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="comment _date" jdbcType="TIMESTAMP" property="commentDate"/>
+        <result column="creator" jdbcType="BIGINT" property="creator"/>
+    </resultMap>
+    <resultMap id="BaseResultMap2" type="com.svideo.domain.TbVideo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="video_name" jdbcType="VARCHAR" property="videoName"/>
+        <result column="movie_year" jdbcType="INTEGER" property="movieYear"/>
+        <result column="show_time" jdbcType="TIMESTAMP" property="showTime"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="options" jdbcType="VARCHAR" property="options"/>
+        <result column="message" jdbcType="VARCHAR" property="message"/>
+        <result column="grade" jdbcType="DOUBLE" property="grade"/>
+        <result column="downloads" jdbcType="BIGINT" property="downloads"/>
+        <result column="plays" jdbcType="BIGINT" property="plays"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="mv_type" jdbcType="VARCHAR" property="mvType"/>
+        <result column="img_type" jdbcType="VARCHAR" property="imgType"/>
+        <result column="category_id" jdbcType="BIGINT" property="categoryId"/>
+        <result column="slider_image" jdbcType="VARCHAR" property="sliderImage"/>
+        <result column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <result column="isplay" jdbcType="INTEGER" property="isplay"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from comment
+        where cid = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.svideo.domain.TbComment">
+        insert into comment
+        values (#{cid,jdbcType=BIGINT}, #{vedioId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR},
+        #{commentDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=BIGINT})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.svideo.domain.TbComment">
+        update comment
+        set vedio_id = #{vedioId,jdbcType=BIGINT},
+        content = #{content,jdbcType=VARCHAR},
+        "comment _date" = #{commentDate,jdbcType=TIMESTAMP},
+        creator = #{creator,jdbcType=BIGINT}
+        where cid = #{cid,jdbcType=BIGINT}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select cid, vedio_id, content, "comment _date", creator
+        from comment
+        where cid = #{cid,jdbcType=BIGINT}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select cid, vedio_id, content, "comment _date", creator
+        from comment
+    </select>
+
+    <!--自定义标签-->
+    <select id="selectAllByUserId" parameterType="com.svideo.domain.TbVideo" resultMap="BaseResultMap2">
+        select * from `comment` as c LEFT JOIN video as v on c.vedio_id = v.id where c.creator = #{userId} order by id
+        desc limit #{startLimitPos},#{size}
+    </select>
+
+    <select id="selectCountByUserId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        select count(1) from comment where creator=#{userId}
+    </select>
+
+    <delete id="deleteByUserId" parameterType="java.lang.Long">
+        delete from comment where vedio_id=#{videoId}
+    </delete>
+</mapper>

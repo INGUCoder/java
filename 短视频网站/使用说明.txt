@@ -1,0 +1,3 @@
+开发环境 Indellij IDEA2018.2.3 + tomcat7+mysql5.7  框架java ssm 未使用maven  后台前端框架amazeui 前台前端bookstrap
+使用 http://localhost:8080/login.jsp 登录后台页面 账号admin 密码123
+使用http://localhost:8080/index.jsp 登录前端页面 账号blue 密码123456

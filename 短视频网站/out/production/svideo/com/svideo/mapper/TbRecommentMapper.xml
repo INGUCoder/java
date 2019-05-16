@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.svideo.mapper.TbRecommentMapper">
+    <resultMap id="BaseResultMap" type="com.svideo.domain.TbRecomment">
+        <id column="r_id" jdbcType="BIGINT" property="rId"/>
+        <result column="video_id" jdbcType="INTEGER" property="videoId"/>
+        <result column="prase_count" jdbcType="INTEGER" property="praseCount"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+        <association property="user" javaType="com.svideo.domain.TbUser">
+            <result column="id" property="id"/>
+            <result column="user_name" property="userName"/>
+            <result column="user_password" property="userPassword"/>
+            <result column="user_nickname" property="userNickname"/>
+            <result column="user_price" property="userPrice"/>
+            <result column="register_date" property="registerDate"/>
+            <result column="phone" property="phone"/>
+        </association>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from recomment
+        where r_id = #{rId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.svideo.domain.TbRecomment">
+        insert into recomment (r_id, video_id, user_id,
+        prase_count, createtime, content
+        )
+        values (#{rId,jdbcType=BIGINT}, #{videoId,jdbcType=INTEGER}, #{user.id,jdbcType=BIGINT},
+        #{praseCount,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.svideo.domain.TbRecomment">
+        update recomment
+        set video_id = #{videoId,jdbcType=INTEGER},
+        user_id = #{user.id,jdbcType=BIGINT},
+        prase_count = #{praseCount,jdbcType=INTEGER},
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+        content = #{content,jdbcType=LONGVARCHAR}
+        where r_id = #{rId,jdbcType=BIGINT}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select r_id, video_id, user_id, prase_count, createtime, content,id,user_name,user_nickname,user_price
+        from recomment as r LEFT JOIN user as s on s.id = r.user_id
+        where r_id = #{rId,jdbcType=BIGINT}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select r_id, video_id, user_id, prase_count, createtime, content,id,user_name,user_nickname,user_price
+        from recomment as r LEFT JOIN user as s on s.id = r.user_id where r.video_id=#{vid}
+        order by r_id desc
+    </select>
+</mapper>

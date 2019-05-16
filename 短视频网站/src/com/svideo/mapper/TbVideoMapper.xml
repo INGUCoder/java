@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.svideo.mapper.TbVideoMapper">
+    <resultMap id="BaseResultMap" type="com.svideo.domain.TbVideo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="video_name" jdbcType="VARCHAR" property="videoName"/>
+        <result column="movie_year" jdbcType="INTEGER" property="movieYear"/>
+        <result column="show_time" jdbcType="TIMESTAMP" property="showTime"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="options" jdbcType="VARCHAR" property="options"/>
+        <result column="message" jdbcType="VARCHAR" property="message"/>
+        <result column="grade" jdbcType="DOUBLE" property="grade"/>
+        <result column="downloads" jdbcType="BIGINT" property="downloads"/>
+        <result column="plays" jdbcType="BIGINT" property="plays"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="mv_type" jdbcType="VARCHAR" property="mvType"/>
+        <result column="img_type" jdbcType="VARCHAR" property="imgType"/>
+        <result column="category_id" jdbcType="BIGINT" property="categoryId"/>
+        <result column="slider_image" jdbcType="VARCHAR" property="sliderImage"/>
+        <result column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <result column="isplay" jdbcType="INTEGER" property="isplay"/>
+    </resultMap>
+    <sql id="where_sql">
+        <where>
+            <if test="keyword != null and keyword !=''">
+                and video_name like concat('%',#{keyword},'%')
+            </if>
+        </where>
+    </sql>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        id, video_name, movie_year, show_time, user_name, options, message, grade, downloads,
+        plays, user_id, mv_type, img_type, category_id, slider_image, admin_id, isplay
+    </sql>
+    <select id="selectByExample" parameterType="com.svideo.domain.TbVideoExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from video
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from video
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.svideo.domain.TbVideoExample">
+        delete from video
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.svideo.domain.TbVideo">
+        insert into video (id, video_name, movie_year,
+        show_time, user_name, options,
+        message, grade, downloads,
+        plays, user_id, mv_type,
+        img_type, category_id, slider_image,
+        admin_id, isplay)
+        values (#{id,jdbcType=INTEGER}, #{videoName,jdbcType=VARCHAR}, #{movieYear,jdbcType=INTEGER},
+        #{showTime,jdbcType=TIMESTAMP}, #{userName,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR},
+        #{message,jdbcType=VARCHAR}, #{grade,jdbcType=DOUBLE}, #{downloads,jdbcType=BIGINT},
+        #{plays,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{mvType,jdbcType=VARCHAR},
+        #{imgType,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT}, #{sliderImage,jdbcType=VARCHAR},
+        #{adminId,jdbcType=INTEGER}, #{isplay,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.svideo.domain.TbVideo">
+        insert into video
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="videoName != null">
+                video_name,
+            </if>
+            <if test="movieYear != null">
+                movie_year,
+            </if>
+            <if test="showTime != null">
+                show_time,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="options != null">
+                options,
+            </if>
+            <if test="message != null">
+                message,
+            </if>
+            <if test="grade != null">
+                grade,
+            </if>
+            <if test="downloads != null">
+                downloads,
+            </if>
+            <if test="plays != null">
+                plays,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="mvType != null">
+                mv_type,
+            </if>
+            <if test="imgType != null">
+                img_type,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="sliderImage != null">
+                slider_image,
+            </if>
+            <if test="adminId != null">
+                admin_id,
+            </if>
+            <if test="isplay != null">
+                isplay,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="videoName != null">
+                #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="movieYear != null">
+                #{movieYear,jdbcType=INTEGER},
+            </if>
+            <if test="showTime != null">
+                #{showTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="options != null">
+                #{options,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null">
+                #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null">
+                #{grade,jdbcType=DOUBLE},
+            </if>
+            <if test="downloads != null">
+                #{downloads,jdbcType=BIGINT},
+            </if>
+            <if test="plays != null">
+                #{plays,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="mvType != null">
+                #{mvType,jdbcType=VARCHAR},
+            </if>
+            <if test="imgType != null">
+                #{imgType,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=BIGINT},
+            </if>
+            <if test="sliderImage != null">
+                #{sliderImage,jdbcType=VARCHAR},
+            </if>
+            <if test="adminId != null">
+                #{adminId,jdbcType=INTEGER},
+            </if>
+            <if test="isplay != null">
+                #{isplay,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.svideo.domain.TbVideoExample" resultType="java.lang.Long">
+        select count(*) from video
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update video
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.videoName != null">
+                video_name = #{record.videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.movieYear != null">
+                movie_year = #{record.movieYear,jdbcType=INTEGER},
+            </if>
+            <if test="record.showTime != null">
+                show_time = #{record.showTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.userName != null">
+                user_name = #{record.userName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.options != null">
+                options = #{record.options,jdbcType=VARCHAR},
+            </if>
+            <if test="record.message != null">
+                message = #{record.message,jdbcType=VARCHAR},
+            </if>
+            <if test="record.grade != null">
+                grade = #{record.grade,jdbcType=DOUBLE},
+            </if>
+            <if test="record.downloads != null">
+                downloads = #{record.downloads,jdbcType=BIGINT},
+            </if>
+            <if test="record.plays != null">
+                plays = #{record.plays,jdbcType=BIGINT},
+            </if>
+            <if test="record.userId != null">
+                user_id = #{record.userId,jdbcType=BIGINT},
+            </if>
+            <if test="record.mvType != null">
+                mv_type = #{record.mvType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.imgType != null">
+                img_type = #{record.imgType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.categoryId != null">
+                category_id = #{record.categoryId,jdbcType=BIGINT},
+            </if>
+            <if test="record.sliderImage != null">
+                slider_image = #{record.sliderImage,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminId != null">
+                admin_id = #{record.adminId,jdbcType=INTEGER},
+            </if>
+            <if test="record.isplay != null">
+                isplay = #{record.isplay,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update video
+        set id = #{record.id,jdbcType=INTEGER},
+        video_name = #{record.videoName,jdbcType=VARCHAR},
+        movie_year = #{record.movieYear,jdbcType=INTEGER},
+        show_time = #{record.showTime,jdbcType=TIMESTAMP},
+        user_name = #{record.userName,jdbcType=VARCHAR},
+        options = #{record.options,jdbcType=VARCHAR},
+        message = #{record.message,jdbcType=VARCHAR},
+        grade = #{record.grade,jdbcType=DOUBLE},
+        downloads = #{record.downloads,jdbcType=BIGINT},
+        plays = #{record.plays,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=BIGINT},
+        mv_type = #{record.mvType,jdbcType=VARCHAR},
+        img_type = #{record.imgType,jdbcType=VARCHAR},
+        category_id = #{record.categoryId,jdbcType=BIGINT},
+        slider_image = #{record.sliderImage,jdbcType=VARCHAR},
+        admin_id = #{record.adminId,jdbcType=INTEGER},
+        isplay = #{record.isplay,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.svideo.domain.TbVideo">
+        update video
+        <set>
+            <if test="videoName != null">
+                video_name = #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="movieYear != null">
+                movie_year = #{movieYear,jdbcType=INTEGER},
+            </if>
+            <if test="showTime != null">
+                show_time = #{showTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="options != null">
+                options = #{options,jdbcType=VARCHAR},
+            </if>
+            <if test="message != null">
+                message = #{message,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null">
+                grade = #{grade,jdbcType=DOUBLE},
+            </if>
+            <if test="downloads != null">
+                downloads = #{downloads,jdbcType=BIGINT},
+            </if>
+            <if test="plays != null">
+                plays = #{plays,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="mvType != null">
+                mv_type = #{mvType,jdbcType=VARCHAR},
+            </if>
+            <if test="imgType != null">
+                img_type = #{imgType,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId,jdbcType=BIGINT},
+            </if>
+            <if test="sliderImage != null">
+                slider_image = #{sliderImage,jdbcType=VARCHAR},
+            </if>
+            <if test="adminId != null">
+                admin_id = #{adminId,jdbcType=INTEGER},
+            </if>
+            <if test="isplay != null">
+                isplay = #{isplay,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.svideo.domain.TbVideo">
+        update video
+        set video_name = #{videoName,jdbcType=VARCHAR},
+        movie_year = #{movieYear,jdbcType=INTEGER},
+        show_time = #{showTime,jdbcType=TIMESTAMP},
+        user_name = #{userName,jdbcType=VARCHAR},
+        options = #{options,jdbcType=VARCHAR},
+        message = #{message,jdbcType=VARCHAR},
+        grade = #{grade,jdbcType=DOUBLE},
+        downloads = #{downloads,jdbcType=BIGINT},
+        plays = #{plays,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=BIGINT},
+        mv_type = #{mvType,jdbcType=VARCHAR},
+        img_type = #{imgType,jdbcType=VARCHAR},
+        category_id = #{categoryId,jdbcType=BIGINT},
+        slider_image = #{sliderImage,jdbcType=VARCHAR},
+        admin_id = #{adminId,jdbcType=INTEGER},
+        isplay = #{isplay,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectPage" parameterType="com.svideo.domain.TbVideo" resultMap="BaseResultMap">
+        select * from video
+        <if test="userId != null">
+            where
+            user_id = #{userId,jdbcType=BIGINT}
+        </if>
+        order by id desc
+        limit #{currentPage},#{size}
+    </select>
+    <select id="selectByOrderAseId" resultMap="BaseResultMap">
+        select * from video where category_id = #{categoryId} order by id DESC
+    </select>
+    <select id="searchVideo" resultMap="BaseResultMap">
+        select * from video as v left join category as c on v.category_id = c.id
+        <include refid="where_sql"/>
+    </select>
+
+</mapper>
