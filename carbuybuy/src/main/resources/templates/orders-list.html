@@ -27,29 +27,18 @@
     <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">首页</a>
-        <a href="">会员管理</a>
+        <a href="">订单管理</a>
         <a>
-          <cite>会员列表</cite></a>
+          <cite>订单列表</cite></a>
       </span>
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-          <!--
-           <input class="layui-input" placeholder="开始日" name="start" id="start">
-          <input class="layui-input" placeholder="截止日" name="end" id="end">
-          <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-
-          -->
-
-        </form>
       </div>
       <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','/admin/pages/add/user',600,400)"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：<span th:text="${userNums}"></span>条</span>
+        <span class="x-right" style="line-height:40px">共有数据：<span th:text="${orderNums}"></span>条</span>
       </xblock>
       <table class="layui-table">
         <thead>
@@ -58,40 +47,39 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
-            <th>用户名</th>
-            <th>手机</th>
-            <th>订单</th>
-            <th>收藏</th>
-            <th>积分</th>
-            <th>加入时间</th>
+            <th>订单号</th>
+            <th>姓名</th>
+            <th>电话</th>
+            <th>地址</th>
+            <th>下单时间</th>
+            <th>产品名</th>
+            <th>价格</th>
+            <th>用户账号</th>
             <th>状态</th>
             <th>操作</th></tr>
         </thead>
         <tbody>
-          <tr th:each="users:${users}" >
+          <tr th:each="orders:${orders}" >
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td th:text="${users.id}" id="userId"  style="display: none"></td>
-            <td th:text="${usersStat.count}" ></td>
-            <td th:text="${users.username}"></td>
-            <td th:text="${users.phone}"></td>
-            
-            <td th:text="${users.orders}"></td>
-            <td th:text="${users.collects}"></td>
-            <td th:text="${users.points}"></td>
-            <td th:text="${#dates.format(users.joinTime,'yyyy-MM-dd')}"></td>
-            <td class="td-status" th:if="${users.status} eq '1' ">
-              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
+            <td th:text="${ordersStat.count}" ></td>
+            <td id="userId"   th:text="${orders.orderId}"></td>
+            <td th:text="${orders.name}"></td>
+            <td th:text="${orders.phone}"></td>
+            <td th:text="${orders.address}"></td>
+            <td th:text="${#dates.format(orders.orderTime,'yyyy-MM-dd')}"></td>
+            <td th:text="${orders.carName}"></td>
+            <td th:text="${orders.price}"></td>
+            <td th:text="${orders.orderForUserName}"></td>
+            <td class="td-status" th:if="${orders.status} eq '1' ">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">未完成</span>
             </td>
-            <td class="td-status" th:if="${users.status} eq '0' ">
-              <span class="layui-btn layui-btn-normal layui-btn-mini" >已停用</span>
+            <td class="td-status" th:if="${orders.status} eq '2' ">
+              <span class="layui-btn layui-btn-normal layui-btn-mini" >已完成</span>
             </td>
             <td class="td-manage">
-              <a th:if="${users.status} eq '1' " onclick="member_stop(this)" href="javascript:;"  title="停用">
-                <i class="layui-icon">&#xe601;</i>
-              </a>
-              <a th:if="${users.status} eq '0' " onclick="member_start(this)" href="javascript:;"  title="启用">
+              <a th:if="${orders.status} eq '1' " onclick="member_stop(this)" href="javascript:;"  title="完成订单">
                 <i class="layui-icon">&#xe601;</i>
               </a>
 
@@ -146,17 +134,13 @@
           var id = $("#userId").html();
           console.log(id+"test");
 
-          layer.confirm('确认要停用吗？',function(){
-
-
-              if($(obj).attr('title')=='启用'){
-
+          layer.confirm('确认？',function(){
 
                 $.ajax({
                   type:'post',
-                  url:'[[${basePath}]]/admin/user/stopUser',
+                  url:'[[${basePath}]]/admin/pages/confirm/order',
                   data:{
-                    "id":id,
+                        "orderId":id,
                   },
                   success: function () {
                     window.console.log('成功回调函数');
@@ -168,27 +152,12 @@
 
                 });
 
-
                 //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
+                $(obj).attr('title','已完成');
                 $(obj).find('i').html('&#xe62f;');
 
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
-
-
-              }
-
-              <!--
-                else{
-                $(obj).attr('title','启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
-              }
-              -->
+                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已完成');
+                layer.msg('已完成!',{icon: 5,time:1000});
 
               
           });
@@ -197,53 +166,7 @@
 
       }
 
-      /*用户-启用*/
-      function member_start(obj){
-        var id = $("#userId").html();
-        console.log(id+"test");
-        layer.confirm('确认要启用吗？',function(){
 
-          if($(obj).attr('title')=='停用'){
-
-            $.ajax({
-              type:'post',
-              url:'[[${basePath}]]/admin/user/startUser',
-              data:{
-                "id":id,
-              },
-              success: function () {
-                window.console.log('成功回调函数');
-
-              },
-              error: function () {
-                window.console.log('失败回调函数');
-              }
-
-            });
-
-            //发异步把用户状态进行更改
-            $(obj).attr('title','启用')
-            $(obj).find('i').html('&#xe62f;');
-
-            $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-normal').html('已启用');
-            layer.msg('已启用!',{icon: 5,time:1000});
-
-
-
-
-          }
-          <!--
-              else{
-              $(obj).attr('title','启用')
-              $(obj).find('i').html('&#xe601;');
-
-              $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-              layer.msg('已启用!',{icon: 5,time:1000});
-            }
-            -->
-
-        });
-      }
 
       /*用户-删除*/
       function member_del(obj,id){
@@ -255,21 +178,21 @@
             $.ajax({
 
               type: 'post',
-              url: '[[${basePath}]]/admin/user/delete',
+              url: '[[${basePath}]]/admin/pages/delete/order',
               data: {
-                'id': id,
+                'orderId': id,
               },
               dataType: 'text',
               success: function (data) {
                 if (data == 1) {
-                  layer.alert('删除用户成功!', {icon: 6});
+                  layer.alert('删除订单成功!', {icon: 6});
                 }
-                layer.alert('删除用户成功!', {icon: 6});
+                layer.alert('删除订单成功!', {icon: 6});
                 window.console.log('成功回调函数');
 
               },
               error: function () {
-                layer.alert('删除用户失败!', {icon: 6});
+                layer.alert('删除订单失败!', {icon: 6});
                 window.console.log('失败回调函数');
               }
 

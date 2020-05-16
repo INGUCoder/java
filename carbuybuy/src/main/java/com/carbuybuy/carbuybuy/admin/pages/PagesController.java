@@ -1,5 +1,6 @@
 package com.carbuybuy.carbuybuy.admin.pages;
 
+
 import com.carbuybuy.carbuybuy.admin.entity.AdminUsers;
 import com.carbuybuy.carbuybuy.admin.service.AdminUsersService;
 import com.carbuybuy.carbuybuy.entity.Cars;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -44,12 +47,6 @@ public class PagesController {
         return "adminIndex";
     }
 
-    //测试
-    @RequestMapping("/admin/pages/test")
-    public String test(){
-        return "admin-list";
-    }
-
     //欢迎页面
     @RequestMapping("/admin/pages/welcome")
     public String adminWelcome(HttpSession session, Model model){
@@ -75,6 +72,9 @@ public class PagesController {
 
         return "adminWelcome";
     }
+
+
+
 
 
 }

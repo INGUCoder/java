@@ -8,10 +8,17 @@
         <result column="address" property="address" jdbcType="VARCHAR"/>
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
         <result column="carId" property="carId" jdbcType="INTEGER"/>
+        <result column="ordertime" property="orderTime" jdbcType="DATE"/>
+        <result column="orderId" property="orderId" jdbcType="VARCHAR"/>
+        <result column="carName" property="carName" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="VARCHAR"/>
+        <result column="orderForUserName" property="orderForUserName" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, userId, name, address, phone, carId
+    id, userId, name, address, phone, carId, ordertime, orderId, carName, price, orderForUserName, status
     </sql>
 
     <select id="selectAll" resultMap="BaseResultMap">
@@ -30,13 +37,32 @@
 
 
     <insert id="insert" parameterType="com.carbuybuy.carbuybuy.entity.Orders">
-
-        insert into orders(userId,name,address,phone,carId)
-        values (#{userId,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},
-        #{phone,jdbcType=VARCHAR},#{carId,jdbcType=INTEGER})
+        insert into orders(userId,name,address,phone,carId,ordertime,carName,orderId,price,orderForUserName,status)
+        values (#{userId,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},#{carId,jdbcType=VARCHAR}, now(), #{carName,jdbcType=VARCHAR},
+        #{orderId,jdbcType=VARCHAR},
+        #{price,jdbcType=VARCHAR},
+        #{orderForUserName,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER})
 
     </insert>
 
+    <select id="selectByOrderId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
+        where orderId = #{orderId,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateOrderStatus" parameterType="com.carbuybuy.carbuybuy.entity.Orders">
+    update  orders
+    set status=#{status,jdbcType=INTEGER}
+    where orderId= #{orderId,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteOrder" parameterType="com.carbuybuy.carbuybuy.entity.Orders">
+        delete from orders where orderId= #{orderId,jdbcType=VARCHAR}
+    </delete>
 
 
 

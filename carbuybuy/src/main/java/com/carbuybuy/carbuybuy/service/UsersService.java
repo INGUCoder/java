@@ -32,5 +32,11 @@ public interface UsersService {
 
     void updatePhone(Users users);
 
+    //更新用户状态
+    void updateStatus(Users users);
+
+    //删除用户
+    void deleteUser(Users users);
+
 
 }

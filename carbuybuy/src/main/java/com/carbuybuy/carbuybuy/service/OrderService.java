@@ -14,4 +14,10 @@ public interface OrderService {
 
     void insert(Orders orders);
 
+    Orders selectByOrderId(String orderId);
+
+    void updateOrderStatus(Orders orders);
+
+    void deleteOrder(Orders orders);
+
 }

@@ -5,6 +5,7 @@ import com.carbuybuy.carbuybuy.service.CarsService;
 import com.carbuybuy.carbuybuy.service.OrderService;
 import com.carbuybuy.carbuybuy.service.UserOrderService;
 import com.carbuybuy.carbuybuy.service.UsersService;
+import com.carbuybuy.carbuybuy.utils.OrderIdByTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,6 +64,8 @@ public class OrderController {
         order.setUserId(userId);
         order.setCarId(carId);
 
+
+
         Cars cars = this.carsService.selectById(carId);
         UserOrder userOrder = new UserOrder();
         userOrder.setCarId(carId);
@@ -78,12 +81,17 @@ public class OrderController {
         //插入订单
         this.userOrderService.insert(userOrder);
 
+        order.setOrderId(OrderIdByTimeUtils.getOrderIdByTime());
+        order.setCarName(cars.getName());
+        order.setPrice(cars.getPrice());
+        order.setOrderForUserName(users.getName());
+
+        //设置订单状态  已下单  未完成
+        order.setStatus(1);
+
         this.orderService.insert(order);
         return "orderSuccess";
     }
-
-
-
 
 
 

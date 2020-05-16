@@ -1,5 +1,7 @@
 package com.carbuybuy.carbuybuy.entity;
 
+import java.util.Date;
+
 public class Users {
     private String id;
     //账号
@@ -23,6 +25,12 @@ public class Users {
 
     //积分数量
     private Integer points;
+
+    //账号状态 1 代表账号启用   0 代表账号停用
+    private Integer status;
+
+    //账号加入时间
+    private Date joinTime;
 
     public Integer getOrders() {
         return orders;
@@ -96,6 +104,22 @@ public class Users {
         this.phone = phone;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getJoinTime() {
+        return joinTime;
+    }
+
+    public void setJoinTime(Date joinTime) {
+        this.joinTime = joinTime;
+    }
+
     @Override
     public String toString() {
         return "Users{" +
@@ -108,6 +132,8 @@ public class Users {
                 ", orders=" + orders +
                 ", collects=" + collects +
                 ", points=" + points +
+                ", status=" + status +
+                ", joinTime=" + joinTime +
                 '}';
     }
 }

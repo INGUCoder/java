@@ -40,4 +40,28 @@
         where types = #{types,jdbcType=INTEGER}
     </select>
 
+    <select id="selectByName" resultMap="BaseResultMap">
+        select
+        *
+        from cars
+        <where>
+            <if test="name != null"></if>
+            name like CONCAT('%','${name}','%' )
+        </where>
+    </select>
+
+    <insert id="insertCar" parameterType="com.carbuybuy.carbuybuy.entity.Cars">
+
+        insert into cars(name,introduce,price,url,fromAddress,level,costType,engine,changeSpeed,speed,types)
+        values (#{name,jdbcType=VARCHAR},#{introduce,jdbcType=VARCHAR},#{price,jdbcType=VARCHAR},
+        #{url,jdbcType=VARCHAR},#{fromAddress,jdbcType=VARCHAR},#{level,jdbcType=VARCHAR}
+        ,#{costType,jdbcType=VARCHAR},#{engine,jdbcType=VARCHAR},
+        #{changeSpeed,jdbcType=VARCHAR},#{speed,jdbcType=VARCHAR},#{types,jdbcType=INTEGER})
+
+    </insert>
+
+    <delete id="deleteCar" parameterType="integer">
+        delete from cars where id = #{id,jdbcType=INTEGER}
+    </delete>
+
 </mapper>

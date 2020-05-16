@@ -25,4 +25,8 @@ public interface UsersMapper {
 
     void updatePhone(Users users);
 
+    void updateStatus(Users users);
+
+    void deleteUser(Users users);
+
 }

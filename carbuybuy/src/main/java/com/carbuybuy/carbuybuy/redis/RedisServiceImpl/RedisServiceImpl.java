@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -40,5 +41,16 @@ public class RedisServiceImpl implements RedisService {
     @Override
     public Long increment(String key, long delta) {
         return stringRedisTemplate.opsForValue().increment(key,delta);
+    }
+
+    @Override
+    public void addSet(String key, String value) {
+        stringRedisTemplate.opsForSet().add(key,value);
+    }
+
+    @Override
+    public Set<String> getSet(String key) {
+
+        return stringRedisTemplate.opsForSet().members(key);
     }
 }

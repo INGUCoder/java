@@ -28,10 +28,10 @@
           <li class="layui-nav-item">
             <a href="#">admin</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a href="/admin/pages/loginOut">退出</a></dd>
             </dl>
           </li>
-          <li class="layui-nav-item to-index"><a href="/">车买买首页</a></li>
+          <li class="layui-nav-item to-index"><a href="/pages/index">车买买首页</a></li>
         </ul>
         
     </div>
@@ -49,37 +49,80 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="/admin/pages/list">
+                        <a _href="/admin/pages/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>会员列表</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="member-del.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员删除</cite>
-                            
-                        </a>
-                    </li>
+
                   
                 </ul>
             </li>
             <li>
-                <a href="javascript:;">
+                <a _href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
                     <cite>订单管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="order-list.html">
+                        <a _href="/admin/pages/order/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>
                     </li >
                 </ul>
             </li>
+
             <li>
+                <a _href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>产品管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/admin/pages/product/list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>产品列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+
+<!--            <li>-->
+<!--                <a _href="javascript:;">-->
+<!--                    <i class="iconfont">&#xe723;</i>-->
+<!--                    <cite>智能搜索(开发中)</cite>-->
+<!--                    <i class="iconfont nav_right">&#xe697;</i>-->
+<!--                </a>-->
+<!--                <ul class="sub-menu">-->
+<!--                    <li>-->
+<!--                        <a _href="#">-->
+<!--                            <i class="iconfont">&#xe6a7;</i>-->
+<!--                            <cite></cite>-->
+<!--                        </a>-->
+<!--                    </li >-->
+<!--                </ul>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <a _href="javascript:;">-->
+<!--                    <i class="iconfont">&#xe723;</i>-->
+<!--                    <cite>智能推荐(开发中)</cite>-->
+<!--                    <i class="iconfont nav_right">&#xe697;</i>-->
+<!--                </a>-->
+<!--                <ul class="sub-menu">-->
+<!--                    <li>-->
+<!--                        <a _href="#">-->
+<!--                            <i class="iconfont">&#xe6a7;</i>-->
+<!--                            <cite></cite>-->
+<!--                        </a>-->
+<!--                    </li >-->
+<!--                </ul>-->
+<!--            </li>-->
+            <!--
+               <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
                     <cite>管理员管理</cite>
@@ -112,6 +155,8 @@
                     </li >
                 </ul>
             </li>
+            -->
+
             
         </ul>
       </div>

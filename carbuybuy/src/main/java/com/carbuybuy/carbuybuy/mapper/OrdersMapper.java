@@ -11,4 +11,10 @@ public interface OrdersMapper {
     Orders selectById(Integer id);
 
     void insert(Orders orders);
+
+    Orders selectByOrderId(String orderId);
+
+    void updateOrderStatus(Orders orders);
+
+    void deleteOrder(Orders orders);
 }

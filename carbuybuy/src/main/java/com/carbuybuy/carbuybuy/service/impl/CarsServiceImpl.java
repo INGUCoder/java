@@ -26,4 +26,19 @@ public class CarsServiceImpl implements CarsService {
     public List<Cars> selectByTypes(Integer types) {
         return carsMapper.selectByTypes(types);
     }
+
+    @Override
+    public void insertCar(Cars cars) {
+        this.carsMapper.insertCar(cars);
+    }
+
+    @Override
+    public void deleteCar(Integer id) {
+        this.carsMapper.deleteCar(id);
+    }
+
+    @Override
+    public List<Cars> selectByCarName(String name) {
+        return carsMapper.selectByName(name);
+    }
 }

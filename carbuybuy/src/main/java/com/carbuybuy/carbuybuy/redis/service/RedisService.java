@@ -1,5 +1,7 @@
 package com.carbuybuy.carbuybuy.redis.service;
 
+import java.util.Set;
+
 public interface RedisService {
     /**
      * 存储数据
@@ -24,5 +26,11 @@ public interface RedisService {
      * @param delta 自增
      */
     Long increment(String key,long delta);
+
+    void addSet(String key,String value);
+
+    Set<String> getSet(String key);
+
+
 
 }

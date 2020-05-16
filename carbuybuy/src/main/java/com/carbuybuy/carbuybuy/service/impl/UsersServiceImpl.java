@@ -63,4 +63,14 @@ public class UsersServiceImpl implements UsersService {
     public void updatePhone(Users users) {
         this.usersMapper.updatePhone(users);
     }
+
+    @Override
+    public void updateStatus(Users users) {
+        this.usersMapper.updateStatus(users);
+    }
+
+    @Override
+    public void deleteUser(Users users) {
+        this.usersMapper.deleteUser(users);
+    }
 }

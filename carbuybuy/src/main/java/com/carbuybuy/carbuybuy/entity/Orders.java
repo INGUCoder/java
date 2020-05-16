@@ -1,4 +1,7 @@
 package com.carbuybuy.carbuybuy.entity;
+
+import java.util.Date;
+
 //订单
 public class Orders {
 
@@ -20,6 +23,72 @@ public class Orders {
     //订单  汽车id
 
     private Integer carId;
+
+    //订单时间
+    private Date orderTime;
+
+    //订单号
+    private String orderId;
+
+    //汽车名
+    private String carName;
+
+    //价格
+    private String price;
+
+    //下单账号
+    private String orderForUserName;
+
+    //状态  1 代表已下单 未完成   2 代表完成订单
+    private Integer status;
+
+    public String getOrderForUserName() {
+        return orderForUserName;
+    }
+
+    public void setOrderForUserName(String orderForUserName) {
+        this.orderForUserName = orderForUserName;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public Integer getCarId() {
         return carId;
@@ -78,6 +147,12 @@ public class Orders {
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", carId=" + carId +
+                ", orderTime=" + orderTime +
+                ", orderId='" + orderId + '\'' +
+                ", carName='" + carName + '\'' +
+                ", price='" + price + '\'' +
+                ", orderForUserName='" + orderForUserName + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

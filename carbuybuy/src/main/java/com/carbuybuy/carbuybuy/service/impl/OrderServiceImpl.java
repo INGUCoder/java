@@ -26,4 +26,22 @@ public class OrderServiceImpl implements OrderService {
     public void insert(Orders orders) {
         ordersMapper.insert(orders);
     }
+
+    @Override
+    public Orders selectByOrderId(String orderId) {
+       return this.ordersMapper.selectByOrderId(orderId);
+    }
+
+    @Override
+    public void updateOrderStatus(Orders orders) {
+        this.ordersMapper.updateOrderStatus(orders);
+    }
+
+    @Override
+    public void deleteOrder(Orders orders) {
+
+        this.ordersMapper.deleteOrder(orders);
+    }
+
+
 }

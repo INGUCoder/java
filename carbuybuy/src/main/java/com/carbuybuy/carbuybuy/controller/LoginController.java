@@ -5,6 +5,7 @@ import com.carbuybuy.carbuybuy.entity.Users;
 import com.carbuybuy.carbuybuy.entity.UsersLoginRecords;
 import com.carbuybuy.carbuybuy.redis.service.RedisService;
 import com.carbuybuy.carbuybuy.service.CarsService;
+import com.carbuybuy.carbuybuy.service.UserCollectService;
 import com.carbuybuy.carbuybuy.service.UsersLoginRecordsService;
 import com.carbuybuy.carbuybuy.service.UsersService;
 import com.carbuybuy.carbuybuy.sms.SmsUtils;
@@ -12,20 +13,17 @@ import com.carbuybuy.carbuybuy.utils.DateUtils;
 import com.carbuybuy.carbuybuy.utils.IpUtils;
 import com.carbuybuy.carbuybuy.utils.MD5Utils;
 import com.carbuybuy.carbuybuy.utils.UUIDUtil;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class LoginController {
@@ -41,6 +39,9 @@ public class LoginController {
 
     @Autowired
     private UsersLoginRecordsService usersLoginRecordsService;
+
+    @Autowired
+    private UserCollectService userCollectService;
 
     //设置验证码过期时间为10分钟
     private static long CODE_EXPIRE_SECONDS = 600;
@@ -81,6 +82,7 @@ public class LoginController {
         users.setUserpassword(md5Password);
         users.setIdcard(idcard);
         users.setPhone(phone);
+        users.setStatus(1);
 
         usersService.addUser(users);
 
@@ -120,27 +122,27 @@ public class LoginController {
                 if (usersLoginRecordsService.selectByUserId(user.getId()) != null) {
                     UsersLoginRecords usersLoginRecords = usersLoginRecordsService.selectByUserId(user.getId());
                     //时间相同 修改ip
-                    if(DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime()))==true){
+                    if (DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime())) == true) {
                         usersLoginRecords.setIp(ip);
                         usersLoginRecordsService.updateIp(usersLoginRecords);
                     }
 
                     //时间不相同
-                    if (!DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime()))==true) {
+                    if (!DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime())) == true) {
                         System.out.println(DateUtils.getDateForYMD().equals(usersLoginRecords.getLastLoginTime()));
                         System.out.println(DateUtils.getDateForYMD());
                         System.out.println(usersLoginRecords.getLastLoginTime());
 
                         //积分规则   每日登陆 积分加1 修改时间
                         Users userForPoints = usersService.selectByName(name);
-                        userForPoints.setPoints(userForPoints.getPoints()+1);
+                        userForPoints.setPoints(userForPoints.getPoints() + 1);
                         usersService.updatePoints(userForPoints);
                         usersLoginRecords.setIp(ip);
                         usersLoginRecordsService.updateUserLoginRecord(usersLoginRecords);
                     }
 
                 }
-                if(usersLoginRecordsService.selectByUserId(user.getId()) == null){
+                if (usersLoginRecordsService.selectByUserId(user.getId()) == null) {
                     //如果登陆表中没有记录
                     UsersLoginRecords usersLoginRecords = new UsersLoginRecords();
                     usersLoginRecords.setIp(ip);
@@ -153,8 +155,7 @@ public class LoginController {
                 }
 
                 List<Cars> cars6 = new ArrayList<>();
-                //最顶层汽车展示 固定值为6
-                cars6 = carsService.selectByTypes(6);
+
 
                 //热门车
                 List<Cars> cars1;
@@ -170,15 +171,35 @@ public class LoginController {
                 cars4 = carsService.selectByTypes(4);
                 //猜你喜欢
                 List<Cars> cars5;
-                cars5 = carsService.selectByTypes(5);
+                System.out.println(session.getAttribute("userId"));
+                System.out.println(redisService.getSet((String) session.getAttribute("userId")).toString());
+                if (redisService.getSet((String) session.getAttribute("userId")).size() > 0) {
+                    Object[] array = redisService.getSet((String) session.getAttribute("userId")).toArray();
+                    Random random = new Random();
+                    int index = random.nextInt(array.length);
+                    cars5 = carsService.selectByCarName((String) array[index]);
+                    if (cars5.size() < carsService.selectByTypes(5).size()) {
+                        for (int i = 0; i < carsService.selectByTypes(5).size() - cars5.size(); i++) {
+                            cars5.add(carsService.selectByTypes(5).get(i));
+                        }
+                    }
+//                    if (cars5.size() > 5) {
+//                        int num = cars5.size() - carsService.selectByTypes(5).size();
+//                        for (int i = 0; i < num; i++) {
+//                            cars5.remove(carsService.selectByTypes(5).size() - i);
+//                        }
+//                    }
+                    List searchs = Arrays.asList(array);
+                    model.addAttribute("searchs", searchs);
+                } else {
+                    cars5 = carsService.selectByTypes(5);
+                }
 
                 model.addAttribute("cars5", cars5);
                 model.addAttribute("cars4", cars4);
                 model.addAttribute("cars3", cars3);
                 model.addAttribute("cars2", cars2);
                 model.addAttribute("cars1", cars1);
-                model.addAttribute("cars6", cars6);
-
                 session.setAttribute("userIdForName", name);
                 model.addAttribute("user", user);
                 return "index";
@@ -207,14 +228,12 @@ public class LoginController {
         redisService.set("userId:" + phone, token);
         redisService.expire("userId:" + phone, CODE_EXPIRE_SECONDS);
         Users users = new Users();
-        List<Cars> cars6 = new ArrayList<>();
         if (usersService.selectByPhone(phone) != null) {
             users = usersService.selectByPhone(phone);
         }
         if (smsCode.equals(redisSmsCode)) {
             //最顶层汽车展示 固定值为6
-            cars6 = carsService.selectByTypes(6);
-            //热门车
+
             List<Cars> cars1;
             cars1 = carsService.selectByTypes(1);
             //豪华车
@@ -228,7 +247,30 @@ public class LoginController {
             cars4 = carsService.selectByTypes(4);
             //猜你喜欢
             List<Cars> cars5;
-            cars5 = carsService.selectByTypes(5);
+            System.out.println(session.getAttribute("userId"));
+            System.out.println(redisService.getSet((String) session.getAttribute("userId")).toString());
+            if (redisService.getSet((String) session.getAttribute("userId")).size() > 0) {
+                Object[] array = redisService.getSet((String) session.getAttribute("userId")).toArray();
+                Random random = new Random();
+                int index = random.nextInt(array.length);
+                cars5 = carsService.selectByCarName((String) array[index]);
+                if (cars5.size() < carsService.selectByTypes(5).size()) {
+                    for (int i = 0; i < carsService.selectByTypes(5).size() - cars5.size(); i++) {
+                        cars5.add(carsService.selectByTypes(5).get(i));
+                    }
+                }
+//                    if (cars5.size() > 5) {
+//                        int num = cars5.size() - carsService.selectByTypes(5).size();
+//                        for (int i = 0; i < num; i++) {
+//                            cars5.remove(carsService.selectByTypes(5).size() - i);
+//                        }
+//                    }
+                List searchs = Arrays.asList(array);
+                model.addAttribute("searchs", searchs);
+            } else {
+                cars5 = carsService.selectByTypes(5);
+            }
+
 
             //插入用户登陆记录
             String ip = IpUtils.getIpAddress(request);
@@ -236,27 +278,27 @@ public class LoginController {
             if (usersLoginRecordsService.selectByUserId(user.getId()) != null) {
                 UsersLoginRecords usersLoginRecords = usersLoginRecordsService.selectByUserId(user.getId());
                 //时间相同 修改ip
-                if(DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime()))==true){
+                if (DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime())) == true) {
                     usersLoginRecords.setIp(ip);
                     usersLoginRecordsService.updateIp(usersLoginRecords);
                 }
 
                 //时间不相同
-                if (!DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime()))==true) {
+                if (!DateUtils.getDateForYMD().equals(DateUtils.getDateForYMD2(usersLoginRecords.getLastLoginTime())) == true) {
                     System.out.println(DateUtils.getDateForYMD().equals(usersLoginRecords.getLastLoginTime()));
                     System.out.println(DateUtils.getDateForYMD());
                     System.out.println(usersLoginRecords.getLastLoginTime());
 
                     //积分规则   每日登陆 积分加1 修改时间
                     Users userForPoints = usersService.selectByPhone(phone);
-                    userForPoints.setPoints(userForPoints.getPoints()+1);
+                    userForPoints.setPoints(userForPoints.getPoints() + 1);
                     usersService.updatePoints(userForPoints);
                     usersLoginRecords.setIp(ip);
                     usersLoginRecordsService.updateUserLoginRecord(usersLoginRecords);
                 }
 
             }
-            if(usersLoginRecordsService.selectByUserId(user.getId()) == null){
+            if (usersLoginRecordsService.selectByUserId(user.getId()) == null) {
                 //如果登陆表中没有记录
                 UsersLoginRecords usersLoginRecords = new UsersLoginRecords();
                 usersLoginRecords.setIp(ip);
@@ -270,7 +312,6 @@ public class LoginController {
             //采用session 存入 userIdForPhone
             session.setAttribute("userIdForPhone", phone);
             model.addAttribute("user", users);
-            model.addAttribute("cars6", cars6);
             model.addAttribute("cars5", cars5);
             model.addAttribute("cars4", cars4);
             model.addAttribute("cars3", cars3);
@@ -293,5 +334,59 @@ public class LoginController {
         redisService.expire(phone, CODE_EXPIRE_SECONDS);
     }
 
+    @RequestMapping("/sms")
+    public void Sms() {
+        String smsCode = SmsUtils.sendSms("19183856421");
+        //存储验证码 设置过期时间
+        System.out.println(smsCode);
 
+    }
+
+    //检查账号是否存在  存在返回0
+
+    @PostMapping("/users/checkName")
+    @ResponseBody
+    public void checkName(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("name");
+        String flag = "1";
+        if (name.equals("")) {
+            response.getWriter().write(flag);
+        } else if (usersService.selectByName(name) != null) {
+            flag = "0";
+        }
+        response.getWriter().write(flag);
+    }
+
+
+    //检查密码是否正确  正确返回0
+
+    @PostMapping("/users/checkPassword")
+    @ResponseBody
+    public void checkPassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("name");
+        String password = request.getParameter("userpassword");
+        String flag = "1";
+
+        if (name.equals("") || password.equals("")) {
+            response.getWriter().write(flag);
+        } else if (MD5Utils.md5(password).equals(this.usersService.selectByName(name).getUserpassword())) {
+            flag = "0";
+        }
+        response.getWriter().write(flag);
+    }
+
+    @PostMapping("/users/checkPhone")
+    @ResponseBody
+    public void checkPhone(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String phone = request.getParameter("phone");
+        String flag = "1";
+        System.out.println("ss" + phone);
+        if (phone == null || phone.equals("")) {
+            response.getWriter().write(flag);
+        } else if (usersService.selectByPhone(phone) != null) {
+            flag = "0";
+        }
+        response.getWriter().write(flag);
+    }
 }

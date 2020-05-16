@@ -98,7 +98,7 @@
 				
 				</h5>
                 <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto">
+                    <div class="col-md-12 ml-auto mr-auto">
                         
                         <div class="nav-align-center">
                             <ul class="nav nav-pills nav-pills-primary" role="tablist">
@@ -112,40 +112,40 @@
                                         <i><image src="/static/assets2/img/mycollect.jpg"/></i>
                                     </a>
                                 </li>
-
-                               
                             </ul>
                         </div>
-                    </div>
-                    <!-- Tab panes 我的收藏 -->  
-                    <div class="tab-content gallery">
-                        <div class="tab-pane active" id="home" role="tabpanel">
-                            <div class="col-md-10 ml-auto mr-auto">
-                                <div class="row collections">
-                                    <div th:each="userCollects:${userCollects}">
-                                        <div class="col-md-6">
-                                            <a th:href="@{/cars/index(id=${userCollects.carId})}"><img th:src="@{${userCollects.url}}" alt="" class="img-raised"></a>
-                                            <p style="align-content: center"  th:text="${userCollects.carName}"></p>
+                        <!-- Tab panes 我的收藏 -->
+                        <div class="tab-content gallery">
+
+
+                            <div class="tab-pane active" id="home" role="tabpanel">
+                                <div class="col-md-10 ml-auto mr-auto">
+                                    <div class="row collections">
+                                        <div th:each="userCollects:${userCollects}">
+                                            <div class="col-md-6">
+                                                <a th:href="@{/cars/index(id=${userCollects.carId})}"><img th:src="@{${userCollects.url}}" alt="" class="img-raised"></a>
+                                                <p style="align-content: center"  th:text="${userCollects.carName}"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-						<!--我的订单-->
-                        <div class="tab-pane" id="profile" role="tabpanel">
-                            <div class="col-md-10 ml-auto mr-auto">
-                                <div class="row collections">
-                                    <div th:each="userOrders:${userOrders}">
-                                        <div class="col-md-6">
-                                            <a th:href="@{/cars/index(id=${userOrders.carId})}"><img th:src="@{${userOrders.url}}" alt="" class="img-raised"></a>
-                                            <p style="align-content: center" th:text="${userOrders.carName}"></p>
+                            <!--我的订单-->
+                            <div class="tab-pane active" id="profile" role="tabpanel">
+                                <div class="col-md-10 ml-auto mr-auto">
+                                    <div class="row collections">
+                                        <div th:each="userOrders:${userOrders}">
+                                            <div class="col-md-6" >
+                                                <a th:href="@{/cars/index(id=${userOrders.carId})}"><img th:src="@{${userOrders.url}}" style="max-height: 160px;max-width: 160px; background:none;background-size: contain" alt="" ></a>
+                                                <p style="align-content: center" th:text="${userOrders.carName}"></p>
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
+
                         </div>
-                     
                     </div>
+
                 </div>
             </div>
         </div>

@@ -14,4 +14,10 @@ public interface CarsService {
 
     List<Cars> selectByTypes(Integer types);
 
+    void insertCar(Cars cars);
+
+    void deleteCar(Integer id);
+
+    List<Cars> selectByCarName(String name);
+
 }

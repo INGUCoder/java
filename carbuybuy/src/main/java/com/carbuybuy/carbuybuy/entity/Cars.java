@@ -33,6 +33,14 @@ public class Cars {
      */
     private Integer types;
 
+    public Integer getTypes() {
+        return types;
+    }
+
+    public void setTypes(Integer types) {
+        this.types = types;
+    }
+
     public Integer getType() {
         return types;
     }

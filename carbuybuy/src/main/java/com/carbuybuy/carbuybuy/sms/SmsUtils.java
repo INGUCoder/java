@@ -33,15 +33,22 @@ public class SmsUtils {
 
 
         try {
-            //HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
-            //System.out.println(response.toString());
-
-            //获取response的body
-            //System.out.println(EntityUtils.toString(response.getEntity()));
+            HttpResponse response = HttpUtils.doPost(host, path, method, headers, querys, bodys);
+            System.out.println(response);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return smsCode;
+    }
+
+
+    public static void main(String[] args){
+        StringBuilder str = new StringBuilder();
+        Random random = new Random();
+        for (int i=0;i<4;i++){
+            str.append(random.nextInt(10));
+        }
+        System.out.println(str);
     }
 
 }

@@ -11,10 +11,13 @@
         <result column="orders" property="orders" jdbcType="INTEGER"/>
         <result column="collects" property="collects" jdbcType="INTEGER"/>
         <result column="points" property="points" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="joinTime" property="joinTime" jdbcType="DATE"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, name, username, userpassword,idcard,phone, orders, collects, points
+    id, name, username, userpassword,idcard,phone, orders, collects, points, status,
+  joinTime
     </sql>
 
     <select id="selectAll" resultMap="BaseResultMap">
@@ -25,9 +28,10 @@
 
     <insert id="insert" parameterType="com.carbuybuy.carbuybuy.entity.Users">
 
-        insert into users(id,name,username,userpassword,idcard,phone)
+        insert into users(id,name,username,userpassword,idcard,phone,status,joinTime)
         values (#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR},
-        #{userpassword,jdbcType=VARCHAR},#{idcard,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR})
+        #{userpassword,jdbcType=VARCHAR},#{idcard,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}
+        ,#{status,jdbcType=INTEGER},now())
 
     </insert>
 
@@ -81,5 +85,16 @@
     set phone=#{phone,jdbcType=VARCHAR}
     where id= #{id,jdbcType=VARCHAR}
     </update>
+
+
+    <update id="updateStatus" parameterType="com.carbuybuy.carbuybuy.entity.Users">
+    update users
+    set status=#{status,jdbcType=INTEGER}
+    where id= #{id,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteUser" parameterType="com.carbuybuy.carbuybuy.entity.Users">
+        delete from users where id = #{id,jdbcType=VARCHAR}
+    </delete>
 
 </mapper>
